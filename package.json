@@ -1,0 +1,19 @@
+{
+  "name": "dimer-markdown",
+  "version": "1.0.0",
+  "description": "Markdown package to be used by client and server both",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "author": "virk",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "remark-autolink-headings": "^5.0.0",
+    "remark-html": "^7.0.0",
+    "remark-parse": "^5.0.0",
+    "remark-slug": "^5.0.0",
+    "unified": "^6.1.6"
+  }
+}
