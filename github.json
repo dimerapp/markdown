@@ -116,7 +116,8 @@
     ],
     "div": [
       "itemScope",
-      "itemType"
+      "itemType",
+      "className"
     ],
     "blockquote": [
       "cite"
