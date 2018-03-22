@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
 */
 
+const visit = require('unist-util-visit')
+const report = require('vfile-reporter')
 const test = require('japa')
 const dedent = require('dedent')
 const unified = require('unified')
@@ -34,20 +36,32 @@ test.group('Macroable', (group) => {
     const macroable = Macroable()
     assert.plan(2)
 
-    macroable.addMacro('alert', function (props, content) {
+    macroable.addMacro('alert', function (content, props) {
       assert.deepEqual(props, {})
-      assert.equal(content, '')
+      assert.equal(content, '\nHey dude\n')
     })
 
     const template = dedent`
     Hello world!
 
     [alert]
+
     Hey dude
+
     [/alert]
     `
 
-    const result = await exec(template, unifiedStream().use(macroable.transform).use(html))
-    console.log(result)
+    const linter = function () {
+      return function (tree, file) {
+        visit(tree, 'MissingMacroNode', visitor)
+        function visitor(node) {
+          const child = node.data.hChildren[0]
+          file.message(child.value, node.position.start)
+        }
+      }
+    }
+
+    const result = await exec(template, unifiedStream().use(macroable.transform).use(linter).use(html))
+    console.log(report(result))
   })
 })

@@ -13,47 +13,74 @@ const macroRegex = /^\[(\w+)(.*)?\]\n/
 
 module.exports = function () {
   const macros = {}
-  const openedTags = []
 
   function transformNodes (eat, value, silent) {
     const match = macroRegex.exec(value)
-
-    if (!match || silent || match.index !== 0) {
+    if (!match || match.index !== 0 || silent) {
       return
     }
 
-    let [content, macro, props] = match
+    let [$, macro, props] = match
     macro = macro.trim()
-    console.log(macros)
 
+    /**
+     * Return when the syntax matches but there is
+     * no registered macro for same
+     */
     if (!macros[macro]) {
       return
     }
 
-    let tag = { macro, meta: eat.now(), closed: false }
+    /**
+     * The macro tag and it's properties
+     */
+    const tag = {
+      macro,
+      isClosed: false,
+      body: [],
+      children: [],
+      props: props || ''
+    }
 
-    const contentLines = content.split()
-    const childcontent = []
+    const lines = value.split('\n')
 
-    while (contentLines.length) {
-      const line = contentLines.shift()
-      if (line !== macro) {
-        childcontent.push(line)
+    /**
+     * Loop over all the lines until we find a closing tag
+     * or the content ends. If there is no ending content
+     * then we add a missing macro node for linter
+     */
+    while (lines.length) {
+      const line = lines.shift()
+
+      tag.body.push(line)
+
+      /**
+       * Found ending tag. So break
+       * the loop
+       */
+      if (line === `[/${macro}]`) {
+        tag.isClosed = true
+        break
       }
 
-      if (line === `[/${macro}]`) {
-        tag.closed = true
-        break
+      if (line !== `[${macro}]`) {
+        tag.children.push(line)
       }
     }
 
-    if (!tag.closed) {
-      openedTags.push(tag)
-      eat(content)
+    /**
+     * Done with all the content, but the tag was never
+     * closed
+     */
+    if (!tag.isClosed) {
+      setMissingMacroNode($, eat, macro)
       return
     }
 
-    eat(content)
+    const propsHash = getProps(tag.props)
+    const astNode = macros[macro](tag.children.join('\n'), propsHash)
+
+    astNode ? eat(tag.body.join('\n'))(astNode) : eat(tag.body.join('\n'))
   }
 
   return {
