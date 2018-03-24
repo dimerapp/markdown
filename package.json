@@ -10,8 +10,10 @@
   "author": "virk",
   "license": "UNLICENSED",
   "dependencies": {
+    "haye": "^2.0.1",
     "remark-autolink-headings": "^5.0.0",
     "remark-html": "^7.0.0",
+    "remark-macro": "^1.0.0",
     "remark-parse": "^5.0.0",
     "remark-slug": "^5.0.0",
     "save": "^2.3.2",

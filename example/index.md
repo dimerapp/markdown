@@ -1,7 +1,7 @@
 # Hello dude
 
 ```
-	var a = require('a') 
+	var a = require('a')
 ```
 
 - [ ] hello
@@ -11,22 +11,9 @@
 - hi
 - what's up
 
-[alert]
-Hello dude
-asdsa
-dsad
-sad
-asdsad
-- hello
-- hi
-	- what's up
-[/alert]
-
-Hey man
-
-[alert type="info"]
+[note]
 Hello *dude*
-[/alert]
+[/note]
 
 [hello](what'sup)
 ![](img)

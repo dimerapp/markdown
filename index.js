@@ -13,32 +13,44 @@ const unified = require('unified')
 const markdown = require('remark-parse')
 const html = require('remark-html')
 const slug = require('remark-slug')
+const macro = require('remark-macro')()
 const headings = require('remark-autolink-headings')
 
-class MarkdownProcessor {
-	constructor (markdown, options) {
-		this.markdown = markdown
-		this.options = Object.assign({
-			sanitize: require('./github.json')
-		}, options)
-	}
+macro.addMacro('note', (content, props, { transformer, eat }) => {
+  return {
+    type: 'NoteNode',
+    data: {
+      hName: 'div',
+      hProperties: {
+        className: 'alert alert-note'
+      }
+    },
+    children: transformer.tokenizeBlock(content, eat.now())
+  }
+})
 
-	toHTML () {
-		return new Promise((resolve, reject) => {
-			unified()
-				.use(markdown)
-				.use(slug)
-				.use(headings)
-				.use(attacher)
-				.use(html, this.options)
-				.process(this.markdown, (error, file) => {
-					if (error) {
-						return reject(error)
-					}
-					resolve(file.toString())
-				})
-		})
-	}
+class MarkdownProcessor {
+  constructor (markdown, options) {
+    this.markdown = markdown
+    this.options = {}
+  }
+
+  toHTML () {
+    return new Promise((resolve, reject) => {
+      unified()
+        .use(markdown)
+        .use(slug)
+        .use(headings)
+        .use(macro.transformer)
+        .use(html, this.options)
+        .process(this.markdown, (error, file) => {
+          if (error) {
+            return reject(error)
+          }
+          resolve(file.toString())
+        })
+    })
+  }
 }
 
 module.exports = MarkdownProcessor
