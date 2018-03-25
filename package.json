@@ -24,6 +24,7 @@
   "devDependencies": {
     "dedent": "^0.7.0",
     "japa": "^1.0.6",
-    "japa-cli": "^1.0.1"
+    "japa-cli": "^1.0.1",
+    "js-beautify": "^1.7.5"
   }
 }
