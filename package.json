@@ -4,22 +4,19 @@
   "description": "Markdown package to be used by client and server both",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "japa"
   },
   "private": true,
   "author": "virk",
   "license": "UNLICENSED",
   "dependencies": {
-    "haye": "^2.0.1",
     "remark-autolink-headings": "git+https://github.com/thetutlage/remark-autolink-headings.git",
     "remark-html": "^7.0.0",
     "remark-macro": "^1.0.2",
     "remark-parse": "^5.0.0",
     "remark-slug": "^5.0.0",
-    "save": "^2.3.2",
     "unified": "^6.1.6",
-    "unist-util-visit": "^1.3.0",
-    "vfile-reporter": "^4.0.0"
+    "unist-util-visit": "^1.3.0"
   },
   "devDependencies": {
     "dedent": "^0.7.0",
