@@ -15,5 +15,5 @@ const content = require('fs').readFileSync(path.join(__dirname, './index.md'), '
 
 new Markdown(content)
 	.toHTML()
-	.then(console.log)
+	.then((file) => console.log(file.contents))
 	.catch(console.log)

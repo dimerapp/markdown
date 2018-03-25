@@ -1,19 +1,15 @@
-# Hello dude
+# Hello world
 
-```
-	var a = require('a')
-```
+Writing some notes here, so that we get what we need.
 
-- [ ] hello
-- [x] done
-
-- hello
-- hi
-- what's up
+Also a note
 
 [note]
-Hello *dude*
+This is a note
 [/note]
 
-[hello](what'sup)
-![](img)
+Ohh wow this is nice, right?
+
+How about a pen?
+
+[codepen url=https://codepen.io/ge1doot/pen/vRJyVG]

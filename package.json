@@ -11,9 +11,9 @@
   "license": "UNLICENSED",
   "dependencies": {
     "haye": "^2.0.1",
-    "remark-autolink-headings": "^5.0.0",
+    "remark-autolink-headings": "git+https://github.com/thetutlage/remark-autolink-headings.git",
     "remark-html": "^7.0.0",
-    "remark-macro": "^1.0.0",
+    "remark-macro": "^1.0.2",
     "remark-parse": "^5.0.0",
     "remark-slug": "^5.0.0",
     "save": "^2.3.2",

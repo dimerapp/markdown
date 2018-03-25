@@ -2,11 +2,8 @@
   "strip": [
     "script"
   ],
-  "clobberPrefix": "user-content-",
-  "clobber": [
-    "name",
-    "id"
-  ],
+  "clobberPrefix": "",
+  "clobber": [],
   "ancestors": {
     "li": [
       "ol",
@@ -97,27 +94,35 @@
     "li",
     "tr",
     "td",
+    "input",
     "th",
     "s",
+    "span",
     "strike",
     "summary",
     "details"
   ],
   "attributes": {
     "a": [
-      "href"
+      "href",
+      "aria-hidden"
     ],
     "img": [
       "src",
       "longDesc"
     ],
     "iframe": [
-      "src"
+      "src",
+      "height",
+      "scrolling",
+      "frameborder",
+      "allowtransparency",
+      "allowfullscreen",
+      "style"
     ],
     "div": [
       "itemScope",
-      "itemType",
-      "className"
+      "itemType"
     ],
     "blockquote": [
       "cite"
@@ -147,6 +152,7 @@
       "charoff",
       "charSet",
       "checked",
+      "className",
       "clear",
       "cols",
       "colSpan",
