@@ -93,14 +93,14 @@ module.exports = function (macro) {
    * [codepen url=https://codepen.io/ge1doot/pen/vRJyVG]
    */
   macro.addMacro('codepen', function (props, { transformer, eat, badNode }) {
-    const url = props.url ? props.url[0] : null
+    const url = props.url || null
 
     const errorMessage = ensureDomainUrl(url, 'codepen', 'codepen.io')
     if (errorMessage) {
       return badNode(errorMessage)
     }
 
-    const height = props.height ? props.height[0] : 410
+    const height = props.height || 410
     const urlSegments = url.replace(/http(s)?:\/\/codepen.io/, '').split('/')
     const username = urlSegments[1]
     const penId = urlSegments[urlSegments.length - 1]
@@ -126,7 +126,7 @@ module.exports = function (macro) {
    * [/youtube]
    */
   macro.addMacro('youtube', function (props, { transformer, eat, badNode }) {
-    const url = props.url ? props.url[0] : null
+    const url = props.url || null
     const errorMessage = ensureDomainUrl(url, 'youtube', 'youtube.com/watch')
 
     if (errorMessage) {
@@ -142,8 +142,8 @@ module.exports = function (macro) {
     }
 
     const embedUrl = `https://www.youtube.com/embed/${videoId[1]}`
-    const width = props.width ? props.width[0] : '100%'
-    const height = props.height ? props.height[0] : '400'
+    const width = props.width || '100%'
+    const height = props.height || '400'
 
     return getEmbedNode('youtube', {
       src: embedUrl,

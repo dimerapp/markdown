@@ -34,13 +34,15 @@ const fixtures = [
   'codepen',
   'codepen-custom-height',
   'codepen-missing-url',
-  'youtube'
+  'youtube',
+  'youtube-missing-url',
+  'youtube-invalid-url'
 ]
 
 module.exports = fixtures.reduce((result, name) => {
   result[name] = {
     in: fs.readFileSync(path.join(__dirname, name, 'index.md'), 'utf-8'),
-    out: fs.readFileSync(path.join(__dirname, name, 'index.html'), 'utf-8'),
+    out: fs.readFileSync(path.join(__dirname, name, 'index.html'), 'utf-8')
   }
   return result
 }, {})

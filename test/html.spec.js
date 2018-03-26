@@ -9,7 +9,6 @@
 * file that was distributed with this source code.
 */
 
-const dedent = require('dedent')
 const test = require('japa')
 const Markdown = require('..')
 const fixtures = require('../fixtures')
