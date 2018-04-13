@@ -14,6 +14,7 @@ const markdown = require('remark-parse')
 const html = require('remark-html')
 const slug = require('remark-slug')
 const headings = require('remark-autolink-headings')
+const setTitle = require('./src/title')
 
 const macro = require('remark-macro')()
 require('./src/macros')(macro)
@@ -32,15 +33,30 @@ class MarkdownProcessor {
     }
   }
 
+  /**
+   * Returns the stream of mdast
+   *
+   * @method getStream
+   *
+   * @return {Object}
+   */
   getStream () {
     return unified()
       .use(markdown)
+      .use(setTitle)
       .use(slug)
       .use(headings)
       .use(macro.transformer)
       .use(html, this.options)
   }
 
+  /**
+   * Converts markdown to HTML
+   *
+   * @method toHTML
+   *
+   * @return {File}
+   */
   toHTML () {
     return new Promise((resolve, reject) => {
       this.getStream()

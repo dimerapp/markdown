@@ -1,4 +1,4 @@
-# Showing note
+# Showing tip
 
 [tip]
 This is a tip

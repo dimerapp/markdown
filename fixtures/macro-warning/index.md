@@ -1,4 +1,4 @@
-# Showing note
+# Showing warning
 
 [warn]
 This is a warn
