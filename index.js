@@ -14,7 +14,11 @@ const markdown = require('remark-parse')
 const html = require('remark-html')
 const slug = require('remark-slug')
 const headings = require('remark-autolink-headings')
+const squeezeParagraphs = require('remark-squeeze-paragraphs')
+
 const setTitle = require('./src/title')
+const preCode = require('./src/preCode')
+const checkList = require('./src/checkList')
 
 const macro = require('remark-macro')()
 require('./src/macros')(macro)
@@ -47,6 +51,9 @@ class MarkdownProcessor {
       .use(slug)
       .use(headings)
       .use(macro.transformer)
+      .use(squeezeParagraphs)
+      .use(preCode)
+      .use(checkList)
       .use(html, this.options)
   }
 
