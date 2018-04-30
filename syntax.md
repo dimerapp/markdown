@@ -505,6 +505,21 @@ Some text afterwards too
 
 </details>
 <details>
+<summary>youtube-be-url</summary>
+<h3>Markdown</h3>
+
+````
+[youtube url="https://youtu.be/xKwHGewa9Fg"]
+````
+
+<h3>Html</h3>
+
+```
+<div class="embed youtube"><iframe src="https://www.youtube.com/embed/xKwHGewa9Fg" width="100%" height="400" frameborder="none" allowfullscreen></iframe></div>
+```
+
+</details>
+<details>
 <summary>youtube-missing-url</summary>
 <h3>Markdown</h3>
 
@@ -530,7 +545,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
-<div>The youtube macro needs a youtube/watch URL</div>
+<div>The youtube macro needs a youtube/watch or youtu.be URL</div>
 ```
 
 </details>

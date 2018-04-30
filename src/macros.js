@@ -9,6 +9,8 @@
 * file that was distributed with this source code.
 */
 
+const urlParser = require('url')
+
 function getEmbedNode (className, props) {
   return {
     type: 'EmbedNode',
@@ -43,12 +45,14 @@ function getAlertNode (className, children) {
   }
 }
 
-function ensureDomainUrl (url, macroName, fromDomain) {
+function ensureDomainUrl (url, macroName, fromDomains) {
   if (!url) {
     return `Url missing for ${macroName} macro`
   }
 
-  if (url.indexOf(fromDomain) === -1) {
+  fromDomains = Array.isArray(fromDomains) ? fromDomains : [fromDomains]
+  const matched = fromDomains.find((domain) => url.indexOf(domain) > -1)
+  if (!matched) {
     return `The ${macroName} macro needs a complete http URL`
   }
 }
@@ -127,7 +131,7 @@ module.exports = function (macro) {
    */
   macro.addMacro('youtube', function (props, { transformer, eat, badNode }) {
     const url = props.url || null
-    const errorMessage = ensureDomainUrl(url, 'youtube', 'youtube.com/watch')
+    const errorMessage = ensureDomainUrl(url, 'youtube', ['youtube.com/watch', 'youtu.be'])
 
     if (errorMessage) {
       return badNode(errorMessage)
@@ -136,12 +140,21 @@ module.exports = function (macro) {
     /**
      * Make sure video id exists
      */
-    const videoId = /v=(\w+)/.exec(url)
-    if (!videoId || !videoId[1]) {
-      return badNode('The youtube macro needs a youtube/watch URL')
+    const parsedUrl = urlParser.parse(url)
+    let videoId = null
+
+    if (parsedUrl.hostname === 'youtu.be') {
+      videoId = parsedUrl.pathname.replace(/^\//, '')
+    } else {
+      const matchedTokens = /v=(\w+)/.exec(parsedUrl.query)
+      videoId = matchedTokens ? matchedTokens[1] : ''
     }
 
-    const embedUrl = `https://www.youtube.com/embed/${videoId[1]}`
+    if (!videoId) {
+      return badNode('The youtube macro needs a youtube/watch or youtu.be URL')
+    }
+
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`
     const width = props.width || '100%'
     const height = props.height || '400'
 

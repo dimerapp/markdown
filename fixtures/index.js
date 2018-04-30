@@ -35,6 +35,7 @@ const fixtures = [
   'codepen-custom-height',
   'codepen-missing-url',
   'youtube',
+  'youtube-be-url',
   'youtube-missing-url',
   'youtube-invalid-url',
   'details',
