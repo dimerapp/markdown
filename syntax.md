@@ -1,4 +1,4 @@
-# Dimer syntax file
+# Dimer syntax file 
 <details>
 <summary>paragraphs</summary>
 <h3>Markdown</h3>
@@ -33,6 +33,7 @@ With some text here
 <h3>Html</h3>
 
 ```
+<dimertitle>Heading 1</dimertitle>
 <h1 id="heading-1"><a href="#heading-1" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 1</h1>
 <p>With some text here</p>
 <h2 id="heading-2"><a href="#heading-2" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 2</h2>
@@ -47,7 +48,7 @@ With some text here
 - item 1
     This is nested p
     ```
-      var a = require('a')
+    var a = require('a')
     ```
 - item 2
   - nested item 2.1
@@ -59,7 +60,7 @@ With some text here
 <ul>
     <li>
         <p>item 1 This is nested p</p>
-        <pre><code>  var a = require('a')
+        <pre><code class="line-numbers">var a = require('a')
 </code></pre>
     </li>
     <li>
@@ -85,8 +86,12 @@ With some text here
 
 ```
 <ul>
-    <li class="task-list-item"><input type="checkbox" disabled> Todo 1</li>
-    <li class="task-list-item"><input type="checkbox" checked disabled> Todo completed</li>
+    <li class="task-list-item"><input type="checkbox" disabled>
+        <p>Todo 1</p>
+    </li>
+    <li class="task-list-item"><input type="checkbox" checked disabled>
+        <p>Todo completed</p>
+    </li>
 </ul>
 ```
 
@@ -105,7 +110,7 @@ a.run()
 <h3>Html</h3>
 
 ```
-<pre><code class="language-js">var a = require('a')
+<pre><code class="language-js line-numbers">var a = require('a')
 a.run()
 </code></pre>
 ```
@@ -270,7 +275,7 @@ var a = require('a')
 ```
 <blockquote>
     <p>Blockquote start</p>
-    <pre><code>var a = require('a')
+    <pre><code class="line-numbers">var a = require('a')
 </code></pre>
 </blockquote>
 ```
@@ -352,6 +357,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
+<dimertitle>Showing note</dimertitle>
 <h1 id="showing-note"><a href="#showing-note" aria-hidden="true"><span class="icon icon-link"></span></a>Showing note</h1>
 <div class="alert alert-note">
     <p>This is a note</p>
@@ -365,7 +371,7 @@ Some text afterwards too
 <h3>Markdown</h3>
 
 ````
-# Showing note
+# Showing tip
 
 [tip]
 This is a tip
@@ -377,7 +383,8 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
-<h1 id="showing-note"><a href="#showing-note" aria-hidden="true"><span class="icon icon-link"></span></a>Showing note</h1>
+<dimertitle>Showing tip</dimertitle>
+<h1 id="showing-tip"><a href="#showing-tip" aria-hidden="true"><span class="icon icon-link"></span></a>Showing tip</h1>
 <div class="alert alert-tip">
     <p>This is a tip</p>
 </div>
@@ -390,7 +397,7 @@ Some text afterwards too
 <h3>Markdown</h3>
 
 ````
-# Showing note
+# Showing warning
 
 [warn]
 This is a warn
@@ -402,7 +409,8 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
-<h1 id="showing-note"><a href="#showing-note" aria-hidden="true"><span class="icon icon-link"></span></a>Showing note</h1>
+<dimertitle>Showing warning</dimertitle>
+<h1 id="showing-warning"><a href="#showing-warning" aria-hidden="true"><span class="icon icon-link"></span></a>Showing warning</h1>
 <div class="alert alert-warning">
     <p>This is a warn</p>
 </div>
@@ -486,15 +494,80 @@ Some text afterwards too
 <h3>Markdown</h3>
 
 ````
-This is a video
-
-[youtube url=https://www.youtube.com/watch?v=xKwHGewa9Fg]
+[youtube url="https://www.youtube.com/watch?v=xKwHGewa9Fg"]
 ````
 
 <h3>Html</h3>
 
 ```
-<div class="embed youtube"><iframe src="https://www.youtube.com/embed" height="400" width="100%" frameborder="none" allowfullscreen></iframe></div>
+<div class="embed youtube"><iframe src="https://www.youtube.com/embed/xKwHGewa9Fg" width="100%" height="400" frameborder="none" allowfullscreen></iframe></div>
+```
+
+</details>
+<details>
+<summary>youtube-missing-url</summary>
+<h3>Markdown</h3>
+
+````
+[youtube url=""]
+````
+
+<h3>Html</h3>
+
+```
+<div>Url missing for youtube macro</div>
+```
+
+</details>
+<details>
+<summary>youtube-invalid-url</summary>
+<h3>Markdown</h3>
+
+````
+[youtube url="http://youtube.com/watch"]
+````
+
+<h3>Html</h3>
+
+```
+<div>The youtube macro needs a youtube/watch URL</div>
+```
+
+</details>
+<details>
+<summary>details</summary>
+<h3>Markdown</h3>
+
+````
+[collapse title="cname"]
+Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. Learn more about cnames [here](cnames).
+[/collapse]
+````
+
+<h3>Html</h3>
+
+```
+<details>
+    <summary>cname</summary>
+    <p>Cname is the custom domain that you want to point to <code>subdomain.dimerapp.com</code>. Learn more about cnames <a href="cnames">here</a>.</p>
+</details>
+```
+
+</details>
+<details>
+<summary>details-missing-title</summary>
+<h3>Markdown</h3>
+
+````
+[collapse]
+Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. Learn more about cnames [here](cnames).
+[/collapse]
+````
+
+<h3>Html</h3>
+
+```
+<div>Make sure to give a title to the collapse macro</div>
 ```
 
 </details>

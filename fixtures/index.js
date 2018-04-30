@@ -36,7 +36,9 @@ const fixtures = [
   'codepen-missing-url',
   'youtube',
   'youtube-missing-url',
-  'youtube-invalid-url'
+  'youtube-invalid-url',
+  'details',
+  'details-missing-title'
 ]
 
 module.exports = fixtures.reduce((result, name) => {

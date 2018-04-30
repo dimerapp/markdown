@@ -154,4 +154,36 @@ module.exports = function (macro) {
       allowfullscreen: true
     })
   }, true)
+
+  /**
+   * Adds a collapse macro to the remark parser. Can be used as
+   *
+   * [collapse title=""]
+   * This is a tip
+   * [/collapse]
+   */
+  macro.addMacro('collapse', function (content, props, { transformer, eat, badNode }) {
+    if (!props.title) {
+      return badNode('Make sure to give a title to the collapse macro')
+    }
+
+    return {
+      type: 'DetailsNode',
+      data: {
+        hName: 'details'
+      },
+      children: [
+        {
+          type: 'SummaryNode',
+          data: {
+            hName: 'summary'
+          },
+          children: [{
+            type: 'text',
+            value: props.title
+          }]
+        }
+      ].concat(transformer.tokenizeBlock(content, eat.now()))
+    }
+  })
 }
