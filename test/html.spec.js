@@ -130,6 +130,23 @@ test.group('Markdown', () => {
     assert.equal(file.toString().trim(), html)
   })
 
+  test('call onImage callback with the relative path', async (assert) => {
+    assert.plan(1)
+
+    const markdown = dedent`
+    ![](../foo.jpg)
+    `
+
+    const md = new Markdown(markdown, {
+      cloudUrl: 'https://assets.dimerapp.com/edge',
+      onImage: function (url) {
+        assert.equal(url, '../foo.jpg')
+      }
+    })
+
+    await md.toHTML()
+  })
+
   test('use h1 as dimertitle', async (assert) => {
     const markdown = dedent`
     # Hello

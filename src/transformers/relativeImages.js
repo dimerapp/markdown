@@ -44,14 +44,14 @@ module.exports = function (cloudUrl, callback) {
         return
       }
 
-      const nonRelativeChunks = img.url.split('/').filter((part) => part !== '.' && part !== '..')
-      img.url = `${cloudUrl}/${nonRelativeChunks.join('/')}`
-
       /**
        * Passing url to the callback, so that they can pull this file and work
        * with it.
        */
       callback(img.url)
+
+      const nonRelativeChunks = img.url.split('/').filter((part) => part !== '.' && part !== '..')
+      img.url = `${cloudUrl}/${nonRelativeChunks.join('/')}`
     }
   }
 }
