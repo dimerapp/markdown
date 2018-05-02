@@ -11,6 +11,15 @@
 
 const urlParser = require('url')
 
+/**
+ * Returns the embed node for an iframe. The URL and others
+ * props are set via `props` parameter.
+ *
+ * @method getEmbedNode
+ *
+ * @param {String} className
+ * @param {Object} props
+ */
 function getEmbedNode (className, props) {
   return {
     type: 'EmbedNode',
@@ -32,6 +41,14 @@ function getEmbedNode (className, props) {
   }
 }
 
+/**
+ * Returns the alert node for showing alerts
+ *
+ * @method getAlertNode
+ *
+ * @param {String} className
+ * @param {Array} children
+ */
 function getAlertNode (className, children) {
   return {
     type: 'NoteNode',
@@ -45,6 +62,16 @@ function getAlertNode (className, children) {
   }
 }
 
+/**
+ * Returns an an error when url is not part of any give
+ * domains.
+ *
+ * @method ensureDomainUrl
+ *
+ * @param {String} url
+ * @param {String} macroName
+ * @param {Array|String} fromDomains
+ */
 function ensureDomainUrl (url, macroName, fromDomains) {
   if (!url) {
     return `Url missing for ${macroName} macro`

@@ -176,4 +176,30 @@ test.group('Markdown', () => {
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })
+
+  test('return error when youtube url is valid but querystring is not defined', async (assert) => {
+    const markdown = dedent`
+    [youtube url="https://www.youtube.com/watch"]
+    `
+
+    const html = dedent`<div>The youtube macro needs a youtube/watch or youtu.be URL</div>`
+
+    const md = new Markdown(markdown)
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('return error when youtube url is valid but link is not defined', async (assert) => {
+    const markdown = dedent`
+    [youtube url="https://www.youtube.com/watch?v="]
+    `
+
+    const html = dedent`<div>The youtube macro needs a youtube/watch or youtu.be URL</div>`
+
+    const md = new Markdown(markdown)
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
 })
