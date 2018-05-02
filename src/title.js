@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-module.exports = function () {
+module.exports = function (title) {
   return function transformer (root) {
     const first = root.children[0]
     if (first && first.type === 'heading' && first.depth === 1) {
@@ -19,6 +19,14 @@ module.exports = function () {
           hName: 'dimertitle'
         },
         children: [{ type: 'text', value: first.children[0].value }]
+      })
+    } else if (title) {
+      root.children.unshift({
+        type: 'heading',
+        depth: 1,
+        children: [{
+          type: 'text', value: title
+        }]
       })
     }
   }

@@ -30,11 +30,12 @@ require('./src/macros')(macro)
  * @class MarkdownProcessor
  */
 class MarkdownProcessor {
-  constructor (markdown, options) {
+  constructor (markdown, metadata) {
     this.markdown = markdown
     this.options = {
       sanitize: require('./github.json')
     }
+    this.metadata = metadata || {}
   }
 
   /**
@@ -47,7 +48,7 @@ class MarkdownProcessor {
   getStream () {
     return unified()
       .use(markdown)
-      .use(setTitle)
+      .use(setTitle, this.metadata.title)
       .use(slug)
       .use(headings)
       .use(macro.transformer)
