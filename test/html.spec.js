@@ -129,4 +129,34 @@ test.group('Markdown', () => {
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })
+
+  test('use h1 as dimertitle', async (assert) => {
+    const markdown = dedent`
+    # Hello
+    `
+    const html = dedent`
+    <dimertitle>Hello</dimertitle>
+    <h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>
+    `
+
+    const md = new Markdown(markdown)
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('use h1 as dimertitle when it is an anchor too', async (assert) => {
+    const markdown = dedent`
+    # [Hello](#hello)
+    `
+    const html = dedent`
+    <dimertitle>Hello</dimertitle>
+    <h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a><a href="#hello">Hello</a></h1>
+    `
+
+    const md = new Markdown(markdown)
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
 })
