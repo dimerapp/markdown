@@ -1,4 +1,4 @@
-# Dimer syntax file
+# Dimer syntax file 
 <details>
 <summary>paragraphs</summary>
 <h3>Markdown</h3>
@@ -60,8 +60,10 @@ With some text here
 <ul>
     <li>
         <p>item 1 This is nested p</p>
-        <pre><code class="line-numbers">var a = require('a')
+        <div class="dimer-highlight">
+            <pre class="line-numbers"><code>var a = require('a')
 </code></pre>
+        </div>
     </li>
     <li>
         <p>item 2</p>
@@ -110,9 +112,11 @@ a.run()
 <h3>Html</h3>
 
 ```
-<pre><code class="language-js line-numbers">var a = require('a')
+<div class="dimer-highlight">
+    <pre class="language-js line-numbers"><code>var a = require('a')
 a.run()
 </code></pre>
+</div>
 ```
 
 </details>
@@ -275,8 +279,10 @@ var a = require('a')
 ```
 <blockquote>
     <p>Blockquote start</p>
-    <pre><code class="line-numbers">var a = require('a')
+    <div class="dimer-highlight">
+        <pre class="line-numbers"><code>var a = require('a')
 </code></pre>
+    </div>
 </blockquote>
 ```
 
@@ -455,7 +461,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
-<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&#x26;theme-id=dark&#x26;default-tab=result&#x26;embed-version=2" height="410" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="410" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
 ```
 
 </details>
@@ -470,7 +476,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```
-<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&#x26;theme-id=dark&#x26;default-tab=result&#x26;embed-version=2" height="200" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="200" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
 ```
 
 </details>
@@ -583,6 +589,50 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 
 ```
 <div>Make sure to give a title to the collapse macro</div>
+```
+
+</details>
+<details>
+<summary>codeblocks-linehighlights</summary>
+<h3>Markdown</h3>
+
+````
+```js{2,4}
+var a = require('a')
+return a.foo()
+```
+````
+
+<h3>Html</h3>
+
+```
+<div class="dimer-highlight">
+    <pre class="language-js line-numbers" data-line="2,4"><code>var a = require('a')
+return a.foo()
+</code></pre>
+</div>
+```
+
+</details>
+<details>
+<summary>codeblocks-filename</summary>
+<h3>Markdown</h3>
+
+````
+```js{}{index.js}
+var a = require('a')
+return a.foo()
+```
+````
+
+<h3>Html</h3>
+
+```
+<div class="dimer-highlight"><span class="filename">index.js</span>
+    <pre class="language-js line-numbers"><code>var a = require('a')
+return a.foo()
+</code></pre>
+</div>
 ```
 
 </details>
