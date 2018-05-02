@@ -39,7 +39,9 @@ const fixtures = [
   'youtube-missing-url',
   'youtube-invalid-url',
   'details',
-  'details-missing-title'
+  'details-missing-title',
+  'codeblocks-linehighlights',
+  'codeblocks-filename'
 ]
 
 module.exports = fixtures.reduce((result, name) => {

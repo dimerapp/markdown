@@ -17,7 +17,6 @@ const headings = require('remark-autolink-headings')
 const squeezeParagraphs = require('remark-squeeze-paragraphs')
 
 const setTitle = require('./src/title')
-const preCode = require('./src/preCode')
 const checkList = require('./src/checkList')
 
 const macro = require('remark-macro')()
@@ -33,7 +32,8 @@ class MarkdownProcessor {
   constructor (markdown, metadata) {
     this.markdown = markdown
     this.options = {
-      sanitize: require('./github.json')
+      sanitize: require('./github.json'),
+      handlers: require('./src/handlers')
     }
     this.metadata = metadata || {}
   }
@@ -53,7 +53,6 @@ class MarkdownProcessor {
       .use(headings)
       .use(macro.transformer)
       .use(squeezeParagraphs)
-      .use(preCode)
       .use(checkList)
       .use(html, this.options)
   }
