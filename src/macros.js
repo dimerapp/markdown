@@ -125,6 +125,7 @@ module.exports = function (macro) {
    */
   macro.addMacro('codepen', function (props, { transformer, eat, badNode }) {
     const url = props.url || null
+    const theme = props.theme || 'light'
 
     const errorMessage = ensureDomainUrl(url, 'codepen', 'codepen.io')
     if (errorMessage) {
@@ -136,7 +137,7 @@ module.exports = function (macro) {
     const username = urlSegments[1]
     const penId = urlSegments[urlSegments.length - 1]
 
-    const embedUrl = `//codepen.io/${username}/embed/preview/${penId}?height=${height}&theme-id=dark&default-tab=result&embed-version=2`
+    const embedUrl = `//codepen.io/${username}/embed/preview/${penId}?height=${height}&theme-id=${theme}&default-tab=result&embed-version=2`
 
     return getEmbedNode('codepen', {
       src: embedUrl,
