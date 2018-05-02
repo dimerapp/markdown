@@ -11,6 +11,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "detab": "^2.0.1",
+    "mdast-util-definitions": "^1.2.2",
     "remark-autolink-headings": "git+https://github.com/thetutlage/remark-autolink-headings.git",
     "remark-html": "^7.0.0",
     "remark-macro": "^1.0.3",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "dedent": "^0.7.0",
+    "fs-extra": "^6.0.0",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
     "js-beautify": "^1.7.5"

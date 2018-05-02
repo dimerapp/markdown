@@ -1,4 +1,4 @@
-# Dimer syntax file 
+# Dimer syntax file
 <details>
 <summary>paragraphs</summary>
 <h3>Markdown</h3>
