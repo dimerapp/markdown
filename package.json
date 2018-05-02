@@ -4,6 +4,8 @@
   "description": "Markdown package to be used by client and server both",
   "main": "index.js",
   "scripts": {
+    "lint": "standard",
+    "pretest": "npm run lint",
     "test": "japa"
   },
   "private": true,
@@ -27,6 +29,7 @@
     "fs-extra": "^6.0.0",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
-    "js-beautify": "^1.7.5"
+    "js-beautify": "^1.7.5",
+    "standard": "^11.0.1"
   }
 }
