@@ -55,11 +55,14 @@ module.exports = function (h, node) {
     props.dataLine = lineHighlights
   }
 
+  const childs = []
   if (fileName) {
-    props.dataFile = fileName
+    childs.push(h(node, 'span', { className: 'filename' }, [u('text', fileName)]))
   }
 
-  return h(node.position, 'pre', props, [
+  childs.push(h(node, 'pre', props, [
     h(node, 'code', [u('text', value)])
-  ])
+  ]))
+
+  return h(node.position, 'div', { className: 'dimer-highlight' }, childs)
 }
