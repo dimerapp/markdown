@@ -629,7 +629,7 @@ return a.foo()
 
 ```
 <div class="dimer-highlight"><span class="filename">index.js</span>
-    <pre class="language-js line-numbers"><code>var a = require('a')
+    <pre class="language-js line-numbers" data-title="index.js"><code>var a = require('a')
 return a.foo()
 </code></pre>
 </div>

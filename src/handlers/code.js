@@ -26,10 +26,16 @@ const defaultNode = {
  * @param {String} lang
  */
 function parseThematicBlock (lang) {
+  /**
+   * Language property on node is missing
+   */
   if (!lang) {
     return defaultNode
   }
 
+  /**
+   * No language is defined
+   */
   const match = lang.match(/^[^ \t]+(?=[ \t]|$)/)
   if (!match || !match.length) {
     return defaultNode
@@ -56,10 +62,19 @@ module.exports = function (h, node) {
   }
 
   const childs = []
+
+  /**
+   * If filename, then set the data-title property on
+   * pre and set span as a first child
+   */
   if (fileName) {
+    props.dataTitle = fileName
     childs.push(h(node, 'span', { className: 'filename' }, [u('text', fileName)]))
   }
 
+  /**
+   * Set pre as a child
+   */
   childs.push(h(node, 'pre', props, [
     h(node, 'code', [u('text', value)])
   ]))
