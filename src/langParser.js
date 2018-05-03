@@ -30,17 +30,11 @@ module.exports = function parseThematicBlock (lang) {
     return defaultNode
   }
 
-  /**
-   * No language is defined
-   */
-  const match = lang.match(/^[^ \t]+(?=[ \t]|$)/)
-  if (!match || !match.length) {
-    return defaultNode
-  }
+  const tokens = lang.split('{')
+  const language = tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)
 
-  const tokens = match[0].split('{')
   return {
-    lang: `language-${tokens[0]}`,
+    lang: language ? `language-${tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)}` : null,
     lineHighlights: tokens[1] ? tokens[1].replace('}', '') : null,
     fileName: tokens[2] ? tokens[2].replace('}', '') : null
   }
