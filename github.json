@@ -137,9 +137,11 @@
     "q": [
       "cite"
     ],
-    "pre": [
-      "dataLine",
+    "li": [
       "dataTitle"
+    ],
+    "pre": [
+      "dataLine"
     ],
     "*": [
       "abbr",

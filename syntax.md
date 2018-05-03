@@ -629,9 +629,199 @@ return a.foo()
 
 ```
 <div class="dimer-highlight"><span class="filename">index.js</span>
-    <pre class="language-js line-numbers" data-title="index.js"><code>var a = require('a')
+    <pre class="language-js line-numbers"><code>var a = require('a')
 return a.foo()
 </code></pre>
+</div>
+```
+
+</details>
+<details>
+<summary>codegroup</summary>
+<h3>Markdown</h3>
+
+````
+[codegroup]
+```js
+var a = require('a')
+```
+
+```js
+var b = require('b')
+```
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```
+<div class="tabs">
+    <div class="tab-head">
+        <ul>
+            <li data-title="tab-1">
+                Tab 1
+            </li>
+            <li data-title="tab-2">
+                Tab 2
+            </li>
+        </ul>
+    </div>
+    <div class="tab-body">
+        <div class="tab-item" id="tab-1">
+            <div class="dimer-highlight">
+                <pre class="language-js line-numbers"><code>var a = require('a')
+</code></pre>
+            </div>
+        </div>
+        <div class="tab-item" id="tab-2">
+            <div class="dimer-highlight">
+                <pre class="language-js line-numbers"><code>var b = require('b')
+</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</details>
+<details>
+<summary>codegroup-with-names</summary>
+<h3>Markdown</h3>
+
+````
+[codegroup]
+```js{}{a.js}
+var a = require('a')
+```
+
+```js{}{b.js}
+var b = require('b')
+```
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```
+<div class="tabs">
+    <div class="tab-head">
+        <ul>
+            <li data-title="tab-1">
+                a.js
+            </li>
+            <li data-title="tab-2">
+                b.js
+            </li>
+        </ul>
+    </div>
+    <div class="tab-body">
+        <div class="tab-item" id="tab-1">
+            <div class="dimer-highlight"><span class="filename">a.js</span>
+                <pre class="language-js line-numbers"><code>var a = require('a')
+</code></pre>
+            </div>
+        </div>
+        <div class="tab-item" id="tab-2">
+            <div class="dimer-highlight"><span class="filename">b.js</span>
+                <pre class="language-js line-numbers"><code>var b = require('b')
+</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</details>
+<details>
+<summary>codegroup-one-block</summary>
+<h3>Markdown</h3>
+
+````
+[codegroup]
+```
+var a = require('a')
+```
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```
+<div class="tabs">
+    <div class="tab-head">
+        <ul>
+            <li data-title="tab-1">
+                Tab 1
+            </li>
+        </ul>
+    </div>
+    <div class="tab-body">
+        <div class="tab-item" id="tab-1">
+            <div class="dimer-highlight">
+                <pre class="line-numbers"><code>var a = require('a')
+</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</details>
+<details>
+<summary>codegroup-empty</summary>
+<h3>Markdown</h3>
+
+````
+[codegroup]
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```
+
+```
+
+</details>
+<details>
+<summary>codegroup-with-text</summary>
+<h3>Markdown</h3>
+
+````
+[codegroup]
+Hello this is the first block guys
+
+1. It will be named after the filename
+
+```js{}{index.js}
+var a = require('a')
+```
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```
+<div class="tabs">
+    <div class="tab-head">
+        <ul>
+            <li data-title="tab-1">
+                index.js
+            </li>
+        </ul>
+    </div>
+    <div class="tab-body">
+        <div class="tab-item" id="tab-1">
+            <p>Hello this is the first block guys</p>
+            <ol>
+                <li>It will be named after the filename</li>
+            </ol>
+            <div class="dimer-highlight"><span class="filename">index.js</span>
+                <pre class="language-js line-numbers"><code>var a = require('a')
+</code></pre>
+            </div>
+        </div>
+    </div>
 </div>
 ```
 

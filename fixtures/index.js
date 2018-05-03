@@ -41,7 +41,12 @@ const fixtures = [
   'details',
   'details-missing-title',
   'codeblocks-linehighlights',
-  'codeblocks-filename'
+  'codeblocks-filename',
+  'codegroup',
+  'codegroup-with-names',
+  'codegroup-one-block',
+  'codegroup-empty',
+  'codegroup-with-text'
 ]
 
 module.exports = fixtures.reduce((result, name) => {
