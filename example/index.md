@@ -98,3 +98,9 @@ So I start by creating a simple para that explains the following code.
 var a = require('a')
 ```
 [/codegroup]
+
+## Wait wait wait!
+Check `checkboxes` too
+
+- [ ] Todo 1
+- [x] Todo completed

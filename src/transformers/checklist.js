@@ -19,7 +19,7 @@ module.exports = function () {
 
     function visitor (node) {
       if (node.checked === null) {
-        return false
+        return
       }
 
       node.children.forEach((child) => {
