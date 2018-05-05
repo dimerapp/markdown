@@ -21,7 +21,7 @@ test.group('Markdown', () => {
     test(`assert ${name}`, async (assert) => {
       const md = new Markdown(fixture.in)
       const file = await md.toHTML()
-      assert.equal(file.toString(), fixture.out)
+      assert.equal(file.toString(), fixture.out.trim())
     })
   }
 
@@ -31,10 +31,7 @@ test.group('Markdown', () => {
 
     ![](../foo/bar)
     `
-    const html = dedent`
-    <p>Hello</p>
-    <p><img src="https://assets.dimerapp.com/edge/foo/bar"></p>
-    `
+    const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo/bar"></p>'
 
     const md = new Markdown(markdown, {
       onImage: function (relativeUrl) {
@@ -52,10 +49,7 @@ test.group('Markdown', () => {
 
     ![]()
     `
-    const html = dedent`
-    <p>Hello</p>
-    <p><img src=""></p>
-    `
+    const html = '<p>Hello</p><p><img src=""></p>'
 
     const md = new Markdown(markdown, {
       cloudUrl: 'https://assets.dimerapp.com/edge',
@@ -72,10 +66,7 @@ test.group('Markdown', () => {
 
     ![](https://foo.com)
     `
-    const html = dedent`
-    <p>Hello</p>
-    <p><img src="https://foo.com"></p>
-    `
+    const html = '<p>Hello</p><p><img src="https://foo.com"></p>'
 
     const md = new Markdown(markdown, {
       cloudUrl: 'https://assets.dimerapp.com/edge',
@@ -94,10 +85,7 @@ test.group('Markdown', () => {
 
     [logo]:../images/logo.png
     `
-    const html = dedent`
-    <p>Hello</p>
-    <p><img src="https://assets.dimerapp.com/edge/images/logo.png"></p>
-    `
+    const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/images/logo.png"></p>'
 
     const md = new Markdown(markdown, {
       onImage: function (relativeUrl) {
@@ -117,11 +105,7 @@ test.group('Markdown', () => {
 
     [logo]:
     `
-    const html = dedent`
-    <p>Hello</p>
-    <p><img src=""></p>
-    <p>[logo]:</p>
-    `
+    const html = '<p>Hello</p><p><img src=""></p><p>[logo]:</p>'
 
     const md = new Markdown(markdown, {
       cloudUrl: 'https://assets.dimerapp.com/edge',
@@ -153,10 +137,7 @@ test.group('Markdown', () => {
     const markdown = dedent`
     # Hello
     `
-    const html = dedent`
-    <dimertitle>Hello</dimertitle>
-    <h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>
-    `
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
 
     const md = new Markdown(markdown)
 
@@ -168,10 +149,7 @@ test.group('Markdown', () => {
     const markdown = dedent`
     # [Hello](#hello)
     `
-    const html = dedent`
-    <dimertitle>Hello</dimertitle>
-    <h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a><a href="#hello">Hello</a></h1>
-    `
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a><a href="#hello">Hello</a></h1>'
 
     const md = new Markdown(markdown)
 

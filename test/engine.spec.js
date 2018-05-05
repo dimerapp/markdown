@@ -20,6 +20,6 @@ test.group('Engine', () => {
     `
     const md = new Markdown(content, { title: 'Hello world' })
     const html = await md.toHTML()
-    assert.equal(html.contents.trim(), '<h1 id="hello-world"><a href="#hello-world" aria-hidden="true"><span class="icon icon-link"></span></a>Hello world</h1>\n<p>Hello world, this is something awesome</p>')
+    assert.equal(html.contents.trim(), '<h1 id="hello-world"><a href="#hello-world" aria-hidden="true"><span class="icon icon-link"></span></a>Hello world</h1><p>Hello world, this is something awesome</p>')
   })
 })

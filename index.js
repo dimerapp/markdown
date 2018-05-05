@@ -11,10 +11,15 @@
 
 const unified = require('unified')
 const markdown = require('remark-parse')
-const html = require('remark-html')
 const slug = require('remark-slug')
 const headings = require('remark-autolink-headings')
 const squeezeParagraphs = require('remark-squeeze-paragraphs')
+const minifyWhiteSpace = require('rehype-minify-whitespace')
+const remark2rehype = require('remark-rehype')
+const html = require('rehype-stringify')
+const sanitize = require('rehype-sanitize')
+const sortValues = require('rehype-sort-attribute-values')
+const sortAttrs = require('rehype-sort-attributes')
 
 const setTitle = require('./src/transformers/title')
 const checkList = require('./src/transformers/checkList')
@@ -56,7 +61,12 @@ class MarkdownProcessor {
       .use(macro.transformer)
       .use(squeezeParagraphs)
       .use(checkList)
-      .use(html, this.options)
+      .use(remark2rehype, { handlers: this.options.handlers })
+      .use(minifyWhiteSpace)
+      .use(sortValues)
+      .use(sortAttrs)
+      .use(sanitize, this.options.sanitize)
+      .use(html)
   }
 
   /**
