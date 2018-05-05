@@ -16,8 +16,38 @@ This is a note
 Also you know what, we can add code with filenames in it
 
 ```js{}{index.js}
-var a = require('a')
-a.run()
+var user = require('a')
+user.profile.fetch()
+
+2 + 2 = 4
+
+window.location.reload()
+
+console.log(window)
+```
+
+```css
+body {
+  color: #fff !important;
+  background: url('../images');
+}
+```
+
+```scss
+$blue: #222;
+
+a {
+  color: $blue;
+}
+```
+
+
+```js
+class User extends Model {
+  profile () {
+    return this.hasOne('App/Models/Profile')
+  }
+}
 ```
 
 And you can we also highlight some lines
