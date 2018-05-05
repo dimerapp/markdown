@@ -25,7 +25,7 @@ test.group('Markdown', () => {
     })
   }
 
-  test('replace relative image url with the cloudUrl', async (assert) => {
+  test('replace relative image url with the result of callback url', async (assert) => {
     const markdown = dedent`
     Hello
 
@@ -37,8 +37,9 @@ test.group('Markdown', () => {
     `
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function () {}
+      onImage: function (relativeUrl) {
+        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+      }
     })
 
     const file = await md.toHTML()
@@ -99,8 +100,9 @@ test.group('Markdown', () => {
     `
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function () {}
+      onImage: function (relativeUrl) {
+        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+      }
     })
 
     const file = await md.toHTML()

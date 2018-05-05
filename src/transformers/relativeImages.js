@@ -12,9 +12,9 @@
 const visit = require('unist-util-visit')
 const definitions = require('mdast-util-definitions')
 
-module.exports = function (cloudUrl, callback) {
+module.exports = function (callback) {
   return function transformer (tree) {
-    if (!cloudUrl || typeof (callback) !== 'function') {
+    if (typeof (callback) !== 'function') {
       return
     }
 
@@ -46,12 +46,15 @@ module.exports = function (cloudUrl, callback) {
 
       /**
        * Passing url to the callback, so that they can pull this file and work
-       * with it.
+       * with it and returns the absolute url. If the abs value is null, then
+       * we don't touch the image.
        */
-      callback(img.url)
+      const absUrl = callback(img.url)
+      if (!absUrl) {
+        return
+      }
 
-      const nonRelativeChunks = img.url.split('/').filter((part) => part !== '.' && part !== '..')
-      img.url = `${cloudUrl}/${nonRelativeChunks.join('/')}`
+      img.url = absUrl
     }
   }
 }

@@ -50,7 +50,7 @@ class MarkdownProcessor {
     return unified()
       .use(markdown)
       .use(setTitle, this.metadata.title)
-      .use(relativeImages, this.metadata.cloudUrl, this.metadata.onImage)
+      .use(relativeImages, this.metadata.onImage)
       .use(slug)
       .use(headings)
       .use(macro.transformer)
