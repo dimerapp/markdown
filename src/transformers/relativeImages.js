@@ -12,10 +12,32 @@
 const visit = require('unist-util-visit')
 const definitions = require('mdast-util-definitions')
 
+/**
+ * Updates the url of the image node by calling the
+ * callback promise
+ *
+ * @method updateUrl
+ *
+ * @param  {Function} cb
+ * @param  {Object}   img
+ *
+ * @return {Promise}
+ */
+function updateUrl (cb, img) {
+  return cb(img.url)
+    .then((absUrl) => {
+      if (absUrl) {
+        img.url = absUrl
+      }
+    })
+    .catch(() => {
+    })
+}
+
 module.exports = function (callback) {
-  return function transformer (tree) {
+  return function transformer (tree, file, next) {
     if (typeof (callback) !== 'function') {
-      return
+      return next()
     }
 
     /**
@@ -23,38 +45,28 @@ module.exports = function (callback) {
      * definitions later
      */
     const defination = definitions(tree)
+    const images = []
 
-    /**
-     * Bind visitor for image
-     */
     visit(tree, 'image', visitor)
-
-    /**
-     * Bind visitor for image reference
-     */
     visit(tree, 'imageReference', visitor)
 
     function visitor (node) {
       const img = node.type === 'imageReference' ? defination(node.identifier) : node
-
-      /**
-       * Ignore when url is not relative or url doesn't exists
-       */
       if (!img || !img.url.trim() || (!img.url.startsWith('.') && !img.url.startsWith('/'))) {
         return
       }
 
-      /**
-       * Passing url to the callback, so that they can pull this file and work
-       * with it and returns the absolute url. If the abs value is null, then
-       * we don't touch the image.
-       */
-      const absUrl = callback(img.url)
-      if (!absUrl) {
-        return
-      }
-
-      img.url = absUrl
+      images.push(img)
     }
+
+    /**
+     * Since visitor function is sync, we can expect it to collect all images
+     * before we reach here
+     */
+    Promise
+      .all(images.map((image) => updateUrl(callback, image)))
+      .then(() => {
+        next()
+      })
   }
 }

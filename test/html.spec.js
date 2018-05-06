@@ -34,7 +34,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo/bar"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: function (relativeUrl) {
+      onImage: async function (relativeUrl) {
         return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
       }
     })
@@ -52,8 +52,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src=""></p>'
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function () {}
+      onImage: async function () {}
     })
 
     const file = await md.toHTML()
@@ -69,8 +68,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://foo.com"></p>'
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function () {}
+      onImage: async function () {}
     })
 
     const file = await md.toHTML()
@@ -88,7 +86,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/images/logo.png"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: function (relativeUrl) {
+      onImage: async function (relativeUrl) {
         return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
       }
     })
@@ -108,8 +106,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src=""></p><p>[logo]:</p>'
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function () {}
+      onImage: async function () {}
     })
 
     const file = await md.toHTML()
@@ -124,8 +121,7 @@ test.group('Markdown', () => {
     `
 
     const md = new Markdown(markdown, {
-      cloudUrl: 'https://assets.dimerapp.com/edge',
-      onImage: function (url) {
+      onImage: async function (url) {
         assert.equal(url, '../foo.jpg')
       }
     })
@@ -178,6 +174,30 @@ test.group('Markdown', () => {
     const html = dedent`<div>The youtube macro needs a youtube/watch or youtu.be URL</div>`
 
     const md = new Markdown(markdown)
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('work fine with mutiple images', async (assert) => {
+    const markdown = dedent`
+    Hello
+
+    ![][logo]
+
+    Hello dude
+
+    ![](../bar.jpg)
+
+    [logo]: ../foo.jpg
+    `
+    const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo.jpg"></p><p>Hello dude</p><p><img src="https://assets.dimerapp.com/edge/bar.jpg"></p>'
+
+    const md = new Markdown(markdown, {
+      onImage: async function (relativeUrl) {
+        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+      }
+    })
 
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
