@@ -46,7 +46,11 @@ const fixtures = [
   'codegroup-with-names',
   'codegroup-one-block',
   'codegroup-empty',
-  'codegroup-with-text'
+  'codegroup-with-text',
+  'toc',
+  'toc-shifted-paragraph',
+  'toc-missing-paragraph',
+  'toc-no-title'
 ]
 
 module.exports = fixtures.reduce((result, name) => {

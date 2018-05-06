@@ -18,7 +18,7 @@ module.exports = function () {
     visit(tree, 'listItem', visitor)
 
     function visitor (node) {
-      if (node.checked === null) {
+      if (node.checked === null || node.checked === undefined) {
         return
       }
 

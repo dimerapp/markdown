@@ -153,6 +153,36 @@ test.group('Markdown', () => {
     assert.equal(file.toString().trim(), html)
   })
 
+  test('set title from metaData title', async (assert) => {
+    const markdown = dedent`
+    `
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
+
+    const md = new Markdown(markdown, { title: 'Hello' })
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('set title from metaData when processing parellely', async (assert) => {
+    const markdown = dedent`
+    `
+
+    const markdown1 = dedent`
+    `
+
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
+
+    const html1 = '<dimertitle>Hi</dimertitle><h1 id="hi"><a href="#hi" aria-hidden="true"><span class="icon icon-link"></span></a>Hi</h1>'
+
+    const md = new Markdown(markdown, { title: 'Hello' })
+    const md1 = new Markdown(markdown1, { title: 'Hi' })
+
+    const files = await Promise.all([md.toHTML(), md1.toHTML()])
+    assert.equal(files[0].toString().trim(), html)
+    assert.equal(files[1].toString().trim(), html1)
+  })
+
   test('return error when youtube url is valid but querystring is not defined', async (assert) => {
     const markdown = dedent`
     [youtube url="https://www.youtube.com/watch"]
@@ -199,6 +229,51 @@ test.group('Markdown', () => {
       }
     })
 
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('add toc when title is added as yaml front matter', async (assert) => {
+    const markdown = dedent`
+    I expect toc after this paragraph
+
+    ## This is heading2
+
+    ## This is header 2 again
+    `
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><div class="toc-container"><h2>Table of contents</h2><ul><li><a href="#this-is-heading2">This is heading2</a></li><li><a href="#this-is-header-2-again">This is header 2 again</a></li></ul></div><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>'
+
+    const md = new Markdown(markdown, { title: 'This is a title' })
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('skip toc when there are no h2', async (assert) => {
+    const markdown = dedent`
+    # This is a title
+
+    I expect toc after this paragraph
+    `
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p>'
+
+    const md = new Markdown(markdown, { title: 'This is a title' })
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('do not add toc when skip toc is true', async (assert) => {
+    const markdown = dedent`
+    I expect toc after this paragraph
+
+    ## This is heading2
+
+    ## This is header 2 again
+    `
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>'
+
+    const md = new Markdown(markdown, { title: 'This is a title', skipToc: true })
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })

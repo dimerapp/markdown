@@ -15,6 +15,7 @@
     "detab": "^2.0.1",
     "mdast-util-definitions": "^1.2.2",
     "mdast-util-to-string": "^1.0.4",
+    "mdast-util-toc": "^2.0.1",
     "rehype-minify-whitespace": "^2.0.3",
     "rehype-sanitize": "^2.0.1",
     "rehype-sort-attribute-values": "^1.0.1",

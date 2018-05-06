@@ -34,7 +34,7 @@ function updateUrl (cb, img) {
     })
 }
 
-module.exports = function (callback) {
+module.exports = function ({ onImage: callback }) {
   return function transformer (tree, file, next) {
     if (typeof (callback) !== 'function') {
       return next()
@@ -55,7 +55,6 @@ module.exports = function (callback) {
       if (!img || !img.url.trim() || (!img.url.startsWith('.') && !img.url.startsWith('/'))) {
         return
       }
-
       images.push(img)
     }
 

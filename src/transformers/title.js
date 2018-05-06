@@ -11,19 +11,16 @@
 
 const toString = require('mdast-util-to-string')
 
-module.exports = function (title) {
+module.exports = function ({ title }) {
   return function transformer (root) {
     const first = root.children[0]
 
-    if (first && first.type === 'heading' && first.depth === 1) {
-      root.children.unshift({
-        type: 'TitleNode',
-        data: {
-          hName: 'dimertitle'
-        },
-        children: [{ type: 'text', value: toString(first) }]
-      })
-    } else if (title) {
+    const isFirtH1 = first && first.type === 'heading' && first.depth === 1
+    if (!isFirtH1 && !title) {
+      return
+    }
+
+    if (!isFirtH1) {
       root.children.unshift({
         type: 'heading',
         depth: 1,
@@ -31,6 +28,16 @@ module.exports = function (title) {
           type: 'text', value: title
         }]
       })
+    } else {
+      title = toString(first)
     }
+
+    root.children.unshift({
+      type: 'TitleNode',
+      data: {
+        hName: 'dimertitle'
+      },
+      children: [{ type: 'text', value: title }]
+    })
   }
 }
