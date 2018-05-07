@@ -34,7 +34,25 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo/bar"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function (relativeUrl) {
+      onUrl: async function (relativeUrl) {
+        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+      }
+    })
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('replace relative anchor url with the result of callback url', async (assert) => {
+    const markdown = dedent`
+    Hello
+
+    [![](../foo/bar)](../foo/bar)
+    `
+    const html = '<p>Hello</p><p><a href="https://assets.dimerapp.com/edge/foo/bar"><img src="https://assets.dimerapp.com/edge/foo/bar"></a></p>'
+
+    const md = new Markdown(markdown, {
+      onUrl: async function (relativeUrl) {
         return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
       }
     })
@@ -52,7 +70,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src=""></p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function () {}
+      onUrl: async function () {}
     })
 
     const file = await md.toHTML()
@@ -68,7 +86,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://foo.com"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function () {}
+      onUrl: async function () {}
     })
 
     const file = await md.toHTML()
@@ -86,7 +104,28 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/images/logo.png"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function (relativeUrl) {
+      onUrl: async function (relativeUrl) {
+        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+      }
+    })
+
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('replace relative anchor url when using reference urls', async (assert) => {
+    const markdown = dedent`
+    Hello
+
+    [![][logo]][logo]
+
+    [logo]:../images/logo.png
+    `
+
+    const html = '<p>Hello</p><p><a href="https://assets.dimerapp.com/edge/images/logo.png"><img src="https://assets.dimerapp.com/edge/images/logo.png"></a></p>'
+
+    const md = new Markdown(markdown, {
+      onUrl: async function (relativeUrl) {
         return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
       }
     })
@@ -106,14 +145,14 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src=""></p><p>[logo]:</p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function () {}
+      onUrl: async function () {}
     })
 
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })
 
-  test('call onImage callback with the relative path', async (assert) => {
+  test('call onUrl callback with the relative path', async (assert) => {
     assert.plan(1)
 
     const markdown = dedent`
@@ -121,7 +160,7 @@ test.group('Markdown', () => {
     `
 
     const md = new Markdown(markdown, {
-      onImage: async function (url) {
+      onUrl: async function (url) {
         assert.equal(url, '../foo.jpg')
       }
     })
@@ -224,7 +263,7 @@ test.group('Markdown', () => {
     const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo.jpg"></p><p>Hello dude</p><p><img src="https://assets.dimerapp.com/edge/bar.jpg"></p>'
 
     const md = new Markdown(markdown, {
-      onImage: async function (relativeUrl) {
+      onUrl: async function (relativeUrl) {
         return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
       }
     })

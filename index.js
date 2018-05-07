@@ -23,7 +23,7 @@ const sortAttrs = require('rehype-sort-attributes')
 
 const setTitle = require('./src/transformers/title')
 const checkList = require('./src/transformers/checkList')
-const relativeImages = require('./src/transformers/relativeImages')
+const relativeLinks = require('./src/transformers/relativeLinks')
 const toc = require('./src/transformers/toc')
 
 const macro = require('remark-macro')()
@@ -57,7 +57,7 @@ class MarkdownProcessor {
       .use(markdown)
       .use(setTitle, this.metadata)
       .use(toc, this.metadata)
-      .use(relativeImages, this.metadata)
+      .use(relativeLinks, this.metadata)
       .use(slug)
       .use(headings)
       .use(macro.transformer)

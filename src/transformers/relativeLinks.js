@@ -13,28 +13,28 @@ const visit = require('unist-util-visit')
 const definitions = require('mdast-util-definitions')
 
 /**
- * Updates the url of the image node by calling the
+ * Updates the url of the image or link node by calling the
  * callback promise
  *
  * @method updateUrl
  *
  * @param  {Function} cb
- * @param  {Object}   img
+ * @param  {Object}   urlNode
  *
  * @return {Promise}
  */
-function updateUrl (cb, img) {
-  return cb(img.url)
+function updateUrl (cb, urlNode) {
+  return cb(urlNode.url)
     .then((absUrl) => {
       if (absUrl) {
-        img.url = absUrl
+        urlNode.url = absUrl
       }
     })
     .catch(() => {
     })
 }
 
-module.exports = function ({ onImage: callback }) {
+module.exports = function ({ onUrl: callback }) {
   return function transformer (tree, file, next) {
     if (typeof (callback) !== 'function') {
       return next()
@@ -45,25 +45,27 @@ module.exports = function ({ onImage: callback }) {
      * definitions later
      */
     const defination = definitions(tree)
-    const images = []
+    const urls = []
 
     visit(tree, 'image', visitor)
     visit(tree, 'imageReference', visitor)
+    visit(tree, 'link', visitor)
+    visit(tree, 'linkReference', visitor)
 
     function visitor (node) {
-      const img = node.type === 'imageReference' ? defination(node.identifier) : node
-      if (!img || !img.url.trim() || (!img.url.startsWith('.') && !img.url.startsWith('/'))) {
+      const urlNode = ['imageReference', 'linkReference'].indexOf(node.type) > -1 ? defination(node.identifier) : node
+      if (!urlNode || !urlNode.url.trim() || (!urlNode.url.startsWith('.') && !urlNode.url.startsWith('/'))) {
         return
       }
-      images.push(img)
+      urls.push(urlNode)
     }
 
     /**
-     * Since visitor function is sync, we can expect it to collect all images
+     * Since visitor function is sync, we can expect it to collect all urls
      * before we reach here
      */
     Promise
-      .all(images.map((image) => updateUrl(callback, image)))
+      .all(urls.map((url) => updateUrl(callback, url)))
       .then(() => {
         next()
       })
