@@ -36,6 +36,12 @@ With some text here
 <dimertitle>Heading 1</dimertitle>
 <h1 id="heading-1"><a href="#heading-1" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 1</h1>
 <p>With some text here</p>
+<div class="toc-container">
+    <h2>Table of contents</h2>
+    <ul>
+        <li><a href="#heading-2">Heading 2</a></li>
+    </ul>
+</div>
 <h2 id="heading-2"><a href="#heading-2" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 2</h2>
 ```
 
@@ -91,7 +97,7 @@ With some text here
     <li class="task-list-item"><input type="checkbox" disabled>
         <p>Todo 1</p>
     </li>
-    <li class="task-list-item"><input type="checkbox" checked disabled>
+    <li class="task-list-item"><input type="checkbox" disabled checked>
         <p>Todo completed</p>
     </li>
 </ul>
@@ -243,20 +249,15 @@ bar
 <table>
     <thead>
         <tr>
-            <th>f | oo
-            </th>
+            <th>f | oo</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>b
-                <code>|</code> az
-            </td>
+            <td>b <code>|</code> az</td>
         </tr>
         <tr>
-            <td>b
-                <strong>|</strong> im
-            </td>
+            <td>b <strong>|</strong> im</td>
         </tr>
     </tbody>
 </table>
@@ -658,12 +659,8 @@ var b = require('b')
 <div class="tabs">
     <div class="tab-head">
         <ul>
-            <li data-title="tab-1">
-                Tab 1
-            </li>
-            <li data-title="tab-2">
-                Tab 2
-            </li>
+            <li data-title="tab-1">Tab 1</li>
+            <li data-title="tab-2">Tab 2</li>
         </ul>
     </div>
     <div class="tab-body">
@@ -706,12 +703,8 @@ var b = require('b')
 <div class="tabs">
     <div class="tab-head">
         <ul>
-            <li data-title="tab-1">
-                a.js
-            </li>
-            <li data-title="tab-2">
-                b.js
-            </li>
+            <li data-title="tab-1">a.js</li>
+            <li data-title="tab-2">b.js</li>
         </ul>
     </div>
     <div class="tab-body">
@@ -750,9 +743,7 @@ var a = require('a')
 <div class="tabs">
     <div class="tab-head">
         <ul>
-            <li data-title="tab-1">
-                Tab 1
-            </li>
+            <li data-title="tab-1">Tab 1</li>
         </ul>
     </div>
     <div class="tab-body">
@@ -805,9 +796,7 @@ var a = require('a')
 <div class="tabs">
     <div class="tab-head">
         <ul>
-            <li data-title="tab-1">
-                index.js
-            </li>
+            <li data-title="tab-1">index.js</li>
         </ul>
     </div>
     <div class="tab-body">
@@ -823,6 +812,123 @@ var a = require('a')
         </div>
     </div>
 </div>
+```
+
+</details>
+<details>
+<summary>toc</summary>
+<h3>Markdown</h3>
+
+````
+# This is a title
+
+I expect toc after this paragraph
+
+## This is heading2
+
+## This is header 2 again
+````
+
+<h3>Html</h3>
+
+```
+<dimertitle>This is a title</dimertitle>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<p>I expect toc after this paragraph</p>
+<div class="toc-container">
+    <h2>Table of contents</h2>
+    <ul>
+        <li><a href="#this-is-heading2">This is heading2</a></li>
+        <li><a href="#this-is-header-2-again">This is header 2 again</a></li>
+    </ul>
+</div>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+```
+
+</details>
+<details>
+<summary>toc-shifted-paragraph</summary>
+<h3>Markdown</h3>
+
+````
+# This is a title
+
+[note]
+This is a note
+[/note]
+
+I expect toc before this paragraph
+
+## This is heading2
+
+## This is header 2 again
+````
+
+<h3>Html</h3>
+
+```
+<dimertitle>This is a title</dimertitle>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<div class="alert alert-note">
+    <p>This is a note</p>
+</div>
+<div class="toc-container">
+    <h2>Table of contents</h2>
+    <ul>
+        <li><a href="#this-is-heading2">This is heading2</a></li>
+        <li><a href="#this-is-header-2-again">This is header 2 again</a></li>
+    </ul>
+</div>
+<p>I expect toc before this paragraph</p>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+```
+
+</details>
+<details>
+<summary>toc-missing-paragraph</summary>
+<h3>Markdown</h3>
+
+````
+# This is a title
+
+## This is heading2
+
+## This is header 2 again
+````
+
+<h3>Html</h3>
+
+```
+<dimertitle>This is a title</dimertitle>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<div class="toc-container">
+    <h2>Table of contents</h2>
+    <ul>
+        <li><a href="#this-is-heading2">This is heading2</a></li>
+        <li><a href="#this-is-header-2-again">This is header 2 again</a></li>
+    </ul>
+</div>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+```
+
+</details>
+<details>
+<summary>toc-no-title</summary>
+<h3>Markdown</h3>
+
+````
+## Starting from h2
+Some content here
+````
+
+<h3>Html</h3>
+
+```
+<h2 id="starting-from-h2"><a href="#starting-from-h2" aria-hidden="true"><span class="icon icon-link"></span></a>Starting from h2</h2>
+<p>Some content here</p>
 ```
 
 </details>
