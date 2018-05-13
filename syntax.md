@@ -569,10 +569,12 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 <h3>Html</h3>
 
 ```
-<details>
-    <summary>cname</summary>
-    <p>Cname is the custom domain that you want to point to <code>subdomain.dimerapp.com</code>. Learn more about cnames <a href="cnames">here</a>.</p>
-</details>
+<div class="collapsible">
+    <div class="collapsible-toggle">cname</div>
+    <div class="collapsible-content">
+        <p>Cname is the custom domain that you want to point to <code>subdomain.dimerapp.com</code>. Learn more about cnames <a href="cnames">here</a>.</p>
+    </div>
+</div>
 ```
 
 </details>
