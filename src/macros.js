@@ -210,22 +210,38 @@ module.exports = function (macro) {
     }
 
     return {
-      type: 'DetailsNode',
+      type: 'CollapaseNode',
       data: {
-        hName: 'details'
+        hName: 'div',
+        hProperties: {
+          className: 'collapsible'
+        }
       },
       children: [
         {
-          type: 'SummaryNode',
+          type: 'CollpaseToogleNode',
           data: {
-            hName: 'summary'
+            hName: 'div',
+            hProperties: {
+              className: 'collapsible-toggle'
+            }
           },
           children: [{
             type: 'text',
             value: props.title
           }]
+        },
+        {
+          type: 'CollapaseBodyNode',
+          data: {
+            hName: 'div',
+            hProperties: {
+              className: 'collapsible-content'
+            }
+          },
+          children: transformer.tokenizeBlock(content, eat.now())
         }
-      ].concat(transformer.tokenizeBlock(content, eat.now()))
+      ]
     }
   })
 
