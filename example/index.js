@@ -21,20 +21,10 @@ http.createServer((req, res) => {
     onImage: function (url) {
       console.log('relative Url is ' + url)
     }})
-    .toHTML()
+    .toJSON()
     .then((file) => {
-      res.writeHead(200, { 'content-type': 'text/html' })
-      res.write(`
-        <head>
-          <link rel="stylesheet" href="https://assets.dimerapp.com/themes/default/css/style.css?v=23" />
-        </head>
-        <body style="width: 770px; margin: auto; padding: 100px 0;">
-          <div class="wysiwyg">
-            ${file.toString()}
-          </div>
-        </body>
-        <script src="https://assets.dimerapp.com/themes/default/js/app.js?v=23"></script>
-      `)
+      res.writeHead(200, { 'content-type': 'application/json' })
+      res.write(JSON.stringify(file.contents))
       res.end()
     })
     .catch((error) => {

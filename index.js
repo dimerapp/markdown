@@ -25,6 +25,7 @@ const setTitle = require('./src/transformers/title')
 const checkList = require('./src/transformers/checkList')
 const relativeLinks = require('./src/transformers/relativeLinks')
 const toc = require('./src/transformers/toc')
+const parseAsJSON = require('./src/parseAsJSON')
 
 const macro = require('remark-macro')()
 require('./src/macros')(macro)
@@ -68,7 +69,6 @@ class MarkdownProcessor {
       .use(sortValues)
       .use(sortAttrs)
       .use(sanitize, this.options.sanitize)
-      .use(html)
   }
 
   /**
@@ -81,6 +81,35 @@ class MarkdownProcessor {
   toHTML () {
     return new Promise((resolve, reject) => {
       this.getStream()
+        .use(html)
+        .process(this.markdown, (error, file) => {
+          if (error) {
+            return reject(error)
+          }
+          resolve(file)
+        })
+    })
+  }
+
+  /**
+   * Converts the markdown document to it's JSON structure. Super
+   * helpful for JSON API's
+   *
+   * @method toJSON
+   *
+   * @return {Promise<Object>}
+   */
+  toJSON () {
+    return new Promise((resolve, reject) => {
+      this.getStream()
+        .use(function () {
+          this.Compiler = function (root) {
+            return {
+              type: 'root',
+              children: root.children.map(parseAsJSON)
+            }
+          }
+        })
         .process(this.markdown, (error, file) => {
           if (error) {
             return reject(error)

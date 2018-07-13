@@ -22,7 +22,7 @@ Apollo Server is actually a family of npm packages, one for each Node.js HTTP se
 
 Pick the one below that suits your needs:
 
-```bash
+```bash{1,2}{foo.js}
 # Pick the one that matches your server framework
 npm install graphql apollo-server-express  # for Express or Connect
 npm install graphql apollo-server-hapi
