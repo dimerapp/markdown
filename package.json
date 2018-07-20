@@ -4,9 +4,11 @@
   "description": "Markdown package to be used by client and server both",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
+    "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
-    "test": "japa"
+    "test": "japa",
+    "commit": "git-cz",
+    "lint": "standard"
   },
   "private": true,
   "author": "virk",
@@ -32,11 +34,27 @@
     "unist-util-visit": "^1.3.1"
   },
   "devDependencies": {
+    "@adonisjs/mrm-preset": "^1.0.9",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
     "dedent": "^0.7.0",
     "fs-extra": "^6.0.1",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
     "js-beautify": "^1.7.5",
+    "mrm": "^1.2.1",
+    "pkg-ok": "^2.2.0",
     "standard": "^11.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "test",
+      "japaFile.js"
+    ]
   }
 }
