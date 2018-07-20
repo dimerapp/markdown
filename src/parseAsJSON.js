@@ -21,17 +21,17 @@
 module.exports = function parseAsJSON (node) {
   if (node.type === 'element') {
     return {
-      t: 'el',
+      type: 'element',
       tag: node.tagName,
       props: node.properties,
-      child: node.children.map(parseAsJSON)
+      children: node.children.map(parseAsJSON)
     }
   }
 
   if (node.type === 'text') {
     return {
-      t: 'text',
-      val: node.value
+      type: 'text',
+      value: node.value
     }
   }
 
