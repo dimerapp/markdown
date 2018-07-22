@@ -22,7 +22,7 @@ const sortValues = require('rehype-sort-attribute-values')
 const sortAttrs = require('rehype-sort-attributes')
 
 const setTitle = require('./src/transformers/title')
-const checkList = require('./src/transformers/checkList')
+const checkList = require('./src/transformers/checklist')
 const relativeLinks = require('./src/transformers/relativeLinks')
 const toc = require('./src/transformers/toc')
 const parseAsJSON = require('./src/parseAsJSON')

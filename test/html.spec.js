@@ -174,7 +174,7 @@ test.group('Markdown', () => {
     const markdown = dedent`
     # Hello
     `
-    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden><span class="icon icon-link"></span></a>Hello</h1>'
 
     const md = new Markdown(markdown)
 
@@ -186,7 +186,7 @@ test.group('Markdown', () => {
     const markdown = dedent`
     # [Hello](#hello)
     `
-    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a><a href="#hello">Hello</a></h1>'
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden><span class="icon icon-link"></span></a><a href="#hello">Hello</a></h1>'
 
     const md = new Markdown(markdown)
 
@@ -197,7 +197,7 @@ test.group('Markdown', () => {
   test('set title from metaData title', async (assert) => {
     const markdown = dedent`
     `
-    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden><span class="icon icon-link"></span></a>Hello</h1>'
 
     const md = new Markdown(markdown, { title: 'Hello' })
 
@@ -212,9 +212,9 @@ test.group('Markdown', () => {
     const markdown1 = dedent`
     `
 
-    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden="true"><span class="icon icon-link"></span></a>Hello</h1>'
+    const html = '<dimertitle>Hello</dimertitle><h1 id="hello"><a href="#hello" aria-hidden><span class="icon icon-link"></span></a>Hello</h1>'
 
-    const html1 = '<dimertitle>Hi</dimertitle><h1 id="hi"><a href="#hi" aria-hidden="true"><span class="icon icon-link"></span></a>Hi</h1>'
+    const html1 = '<dimertitle>Hi</dimertitle><h1 id="hi"><a href="#hi" aria-hidden><span class="icon icon-link"></span></a>Hi</h1>'
 
     const md = new Markdown(markdown, { title: 'Hello' })
     const md1 = new Markdown(markdown1, { title: 'Hi' })
@@ -282,7 +282,7 @@ test.group('Markdown', () => {
 
     ## This is header 2 again
     `
-    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><div class="toc-container"><h2>Table of contents</h2><ul><li><a href="#this-is-heading2">This is heading2</a></li><li><a href="#this-is-header-2-again">This is header 2 again</a></li></ul></div><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>'
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><div class="toc-container"><h2>Table of contents</h2><ul><li><a href="#this-is-heading2">This is heading2</a></li><li><a href="#this-is-header-2-again">This is header 2 again</a></li></ul></div><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>'
 
     const md = new Markdown(markdown, { title: 'This is a title' })
 
@@ -296,7 +296,7 @@ test.group('Markdown', () => {
 
     I expect toc after this paragraph
     `
-    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p>'
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p>'
 
     const md = new Markdown(markdown, { title: 'This is a title' })
 
@@ -312,7 +312,7 @@ test.group('Markdown', () => {
 
     ## This is header 2 again
     `
-    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>'
+    const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>'
 
     const md = new Markdown(markdown, { title: 'This is a title', skipToc: true })
     const file = await md.toHTML()
