@@ -1,7 +1,7 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "1.0.1",
-  "description": "Markdown package to be used by client and server both",
+  "version": "1.0.2",
+  "description": "Convert Markdown to HTML and JSON",
   "main": "index.js",
   "files": [
     "src",
