@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Markdown package to be used by client and server both",
   "main": "index.js",
   "files": [
