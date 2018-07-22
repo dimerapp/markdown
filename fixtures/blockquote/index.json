@@ -1,0 +1,52 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a single line blockquote"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a blockquote in multiple lines"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Another line"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

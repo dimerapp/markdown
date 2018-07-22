@@ -1,0 +1,68 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": "not emphasized* "
+        },
+        {
+          "type": "text",
+          "value": "["
+        },
+        {
+          "type": "text",
+          "value": "not a link](/foo) "
+        },
+        {
+          "type": "text",
+          "value": "`"
+        },
+        {
+          "type": "text",
+          "value": "not code` 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        },
+        {
+          "type": "text",
+          "value": " not a list "
+        },
+        {
+          "type": "text",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": " not a list "
+        },
+        {
+          "type": "text",
+          "value": "#"
+        },
+        {
+          "type": "text",
+          "value": " not a heading "
+        },
+        {
+          "type": "text",
+          "value": "["
+        },
+        {
+          "type": "text",
+          "value": "foo]: /url \"not a reference\""
+        }
+      ]
+    }
+  ]
+}

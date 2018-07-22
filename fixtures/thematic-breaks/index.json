@@ -1,0 +1,33 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Foo"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "hr",
+      "props": {},
+      "children": []
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "bar"
+        }
+      ]
+    }
+  ]
+}

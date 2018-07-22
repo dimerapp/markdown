@@ -56,7 +56,8 @@ const fixtures = [
 module.exports = fixtures.reduce((result, name) => {
   result[name] = {
     in: fs.readFileSync(path.join(__dirname, name, 'index.md'), 'utf-8'),
-    out: fs.readFileSync(path.join(__dirname, name, 'index.html'), 'utf-8')
+    out: fs.readFileSync(path.join(__dirname, name, 'index.html'), 'utf-8'),
+    json: JSON.parse(fs.readFileSync(path.join(__dirname, name, 'index.json'), 'utf-8'))
   }
   return result
 }, {})

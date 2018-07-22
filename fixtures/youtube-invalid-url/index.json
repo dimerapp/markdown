@@ -1,0 +1,16 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "The youtube macro needs a youtube/watch or youtu.be URL"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "collapsible"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "collapsible-toggle"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "cname"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "collapsible-content"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Cname is the custom domain that you want to point to "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "subdomain.dimerapp.com"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ". Learn more about cnames "
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "cnames"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "here"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

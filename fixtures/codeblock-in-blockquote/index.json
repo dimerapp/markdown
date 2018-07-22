@@ -1,0 +1,54 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Blockquote start"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "dimer-highlight"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "pre",
+              "props": {
+                "className": [
+                  "line-numbers"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "var a = require('a')\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

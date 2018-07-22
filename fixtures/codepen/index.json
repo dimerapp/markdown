@@ -1,0 +1,31 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed codepen"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "iframe",
+          "props": {
+            "src": "//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&theme-id=light&default-tab=result&embed-version=2",
+            "height": 410,
+            "scrolling": "no",
+            "title": "vRJyVG",
+            "frameborder": "none",
+            "allowtransparency": "true",
+            "allowfullscreen": "true",
+            "style": "width: 100%;"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}

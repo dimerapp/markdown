@@ -1,0 +1,75 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {
+            "className": [
+              "task-list-item"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "input",
+              "props": {
+                "type": "checkbox",
+                "disabled": true
+              },
+              "children": []
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Todo 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {
+            "className": [
+              "task-list-item"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "input",
+              "props": {
+                "type": "checkbox",
+                "disabled": true,
+                "checked": true
+              },
+              "children": []
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Todo completed"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

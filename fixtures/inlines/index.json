@@ -1,0 +1,76 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Cozy "
+        },
+        {
+          "type": "element",
+          "tag": "em",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "lummox"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " gives "
+        },
+        {
+          "type": "element",
+          "tag": "strong",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "smart"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " "
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "squid who"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " asks for "
+        },
+        {
+          "type": "element",
+          "tag": "del",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "job"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " pen."
+        }
+      ]
+    }
+  ]
+}

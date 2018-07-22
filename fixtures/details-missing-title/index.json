@@ -1,0 +1,16 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Make sure to give a title to the collapse macro"
+        }
+      ]
+    }
+  ]
+}

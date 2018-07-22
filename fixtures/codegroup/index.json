@@ -1,0 +1,149 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "tabs"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-head"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Tab 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Tab 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-body"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var a = require('a')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-2"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var b = require('b')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
