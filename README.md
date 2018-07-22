@@ -63,12 +63,12 @@ Here's the list of available options.
 
 
 ## Macros
-Dimer extends the markdown using Macro's. All macros shares the same syntax structure (to keep it easier to consume) and new one's be added to this library.
+Dimer extends the markdown using Macro's. All macros shares the same syntax structure (to keep it easier to consume) and new one's can be added to this library.
 
 **A macro can be an inline macro or a block level macro.**
 
-#### note
-The note macros creates a `div` with `className=alert-note` and can be used as follows.
+#### note (block)
+The note macro creates a `div` with `className=alert-note` and can be used as follows.
 
 ```md
 [note]
@@ -83,21 +83,21 @@ Following are the alert style macros and creates a div like the `note` macro.
 | warn | alert-warning |
 | tip | alert-tip |
 
-#### codepen
+#### codepen (inline)
 Adds a codepen embed to the document.
 
 ```md
 [codepen url="https://codepen.io/ge1doot/pen/vRJyVG", theme="light"]
 ```
 
-#### youtube
+#### youtube (inline)
 Adds a youtube embed
 
 ```md
 [youtube url="", height="", width=""]
 ```
 
-#### collapse
+#### collapse (block)
 
 ```md
 [collapse title=""]
@@ -114,11 +114,11 @@ Output
 </div>
 ```
 
-#### codegroup
+#### codegroup (block)
 
 Creates a tabbed group of multiple codeblocks.
 
-```md
+``````md
 [codegroup]
 
 ```js
@@ -130,7 +130,7 @@ Tab two
 ```
 
 [/codegroup]
-```
+``````
 
 ## JSON AST
 The biggest feature of this module is the ability to output the JSON AST for your markdown. AST makes it super easy compose custom layouts, whereas the concrete HTML is harder to modify and customise.
@@ -166,11 +166,16 @@ Following the nodes structure of the AST.
 }
 ```
 
+## Assets detection
+Dimer has a feature, where it will detect the relative images inside markdown and uploads them to the CDN. Also it will transparently replace the relative links with the uploaded file URL.
+
+You do need the infrastructure and code around adding this feature when using this module. However, this module does let you define a custom callback, which can be used for detecting image URL's and returning a different URL to be replaced with.
+
 ## Syntax guide
 The syntax guide is available [here](syntax.md). It shows the Markdown code with the output in HTML and JSON.
 
 ## Development
-1. Fork and clone the repo
+1. Fork and clone the repo.
 2. Make your changes with good commit messages.
 3. Once done, share a PR.
 

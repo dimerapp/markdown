@@ -3,7 +3,7 @@
 <summary>paragraphs</summary>
 <h3>Markdown</h3>
 
-````
+````md
 This is a paragraph
 and in same line
 
@@ -12,9 +12,40 @@ Another paragraph
 
 <h3>Html</h3>
 
-```
+```html
 <p>This is a paragraph and in same line</p>
 <p>Another paragraph</p>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph and in same line"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Another paragraph"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -22,7 +53,7 @@ Another paragraph
 <summary>headings</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # Heading 1
 
 With some text here
@@ -32,7 +63,7 @@ With some text here
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>Heading 1</dimertitle>
 <h1 id="heading-1"><a href="#heading-1" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 1</h1>
 <p>With some text here</p>
@@ -45,12 +76,158 @@ With some text here
 <h2 id="heading-2"><a href="#heading-2" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 2</h2>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Heading 1"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "heading-1"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#heading-1",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Heading 1"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "With some text here"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "toc-container"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Table of contents"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#heading-2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Heading 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "heading-2"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#heading-2",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Heading 2"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>nested-list</summary>
 <h3>Markdown</h3>
 
-````
+````md
 - item 1
     This is nested p
     ```
@@ -62,7 +239,7 @@ With some text here
 
 <h3>Html</h3>
 
-```
+```html
 <ul>
     <li>
         <p>item 1 This is nested p</p>
@@ -80,19 +257,120 @@ With some text here
 </ul>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "item 1 This is nested p"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "dimer-highlight"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "pre",
+                  "props": {
+                    "className": [
+                      "line-numbers"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "var a = require('a')\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "item 2"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "nested item 2.1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>checkbox</summary>
 <h3>Markdown</h3>
 
-````
+````md
 - [ ] Todo 1
 - [x] Todo completed
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <ul>
     <li class="task-list-item"><input type="checkbox" disabled>
         <p>Todo 1</p>
@@ -103,12 +381,91 @@ With some text here
 </ul>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {
+            "className": [
+              "task-list-item"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "input",
+              "props": {
+                "type": "checkbox",
+                "disabled": true
+              },
+              "children": []
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Todo 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {
+            "className": [
+              "task-list-item"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "input",
+              "props": {
+                "type": "checkbox",
+                "disabled": true,
+                "checked": true
+              },
+              "children": []
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Todo completed"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codeblocks</summary>
 <h3>Markdown</h3>
 
-````
+````md
 ```js
 var a = require('a')
 a.run()
@@ -117,7 +474,7 @@ a.run()
 
 <h3>Html</h3>
 
-```
+```html
 <div class="dimer-highlight">
     <pre class="language-js line-numbers"><code>var a = require('a')
 a.run()
@@ -125,12 +482,53 @@ a.run()
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "dimer-highlight"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-js",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "var a = require('a')\na.run()\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>thematic-breaks</summary>
 <h3>Markdown</h3>
 
-````
+````md
 Foo
 ***
 bar
@@ -138,10 +536,47 @@ bar
 
 <h3>Html</h3>
 
-```
+```html
 <p>Foo</p>
 <hr>
 <p>bar</p>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Foo"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "hr",
+      "props": {},
+      "children": []
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "bar"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -149,7 +584,7 @@ bar
 <summary>blockquote</summary>
 <h3>Markdown</h3>
 
-````
+````md
 > This is a single line blockquote
 
 <!-- -->
@@ -161,7 +596,7 @@ bar
 
 <h3>Html</h3>
 
-```
+```html
 <blockquote>
     <p>This is a single line blockquote</p>
 </blockquote>
@@ -171,12 +606,68 @@ bar
 </blockquote>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a single line blockquote"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a blockquote in multiple lines"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Another line"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>simple-tables</summary>
 <h3>Markdown</h3>
 
-````
+````md
 | th 1  | th 2 |
 |-------|------|
 | td 1 | td 2 |
@@ -184,7 +675,7 @@ bar
 
 <h3>Html</h3>
 
-```
+```html
 <table>
     <thead>
         <tr>
@@ -201,12 +692,100 @@ bar
 </table>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "table",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "thead",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "th 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "th 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "tbody",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "td 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "td 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>aligned-tables</summary>
 <h3>Markdown</h3>
 
-````
+````md
 | th 1  | th 2 |
 |:-------:|------:|
 | td 1 | td 2 |
@@ -214,7 +793,7 @@ bar
 
 <h3>Html</h3>
 
-```
+```html
 <table>
     <thead>
         <tr>
@@ -231,12 +810,108 @@ bar
 </table>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "table",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "thead",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "props": {
+                    "align": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "th 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "props": {
+                    "align": "right"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "th 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "tbody",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {
+                    "align": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "td 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {
+                    "align": "right"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "td 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>table-escaped-pipes</summary>
 <h3>Markdown</h3>
 
-````
+````md
 | f\|oo  |
 | ------ |
 | b`|` az |
@@ -245,7 +920,7 @@ bar
 
 <h3>Html</h3>
 
-```
+```html
 <table>
     <thead>
         <tr>
@@ -263,12 +938,158 @@ bar
 </table>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "table",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "thead",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "f"
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "text",
+                      "value": "|"
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "text",
+                      "value": "oo"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "tbody",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "b"
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "|"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "text",
+                      "value": " az"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "b"
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "|"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "text",
+                      "value": " im"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codeblock-in-blockquote</summary>
 <h3>Markdown</h3>
 
-````
+````md
 > Blockquote start
 ```
 var a = require('a')
@@ -277,7 +1098,7 @@ var a = require('a')
 
 <h3>Html</h3>
 
-```
+```html
 <blockquote>
     <p>Blockquote start</p>
     <div class="dimer-highlight">
@@ -287,12 +1108,70 @@ var a = require('a')
 </blockquote>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "blockquote",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Blockquote start"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "dimer-highlight"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "pre",
+              "props": {
+                "className": [
+                  "line-numbers"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "var a = require('a')\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>break-list</summary>
 <h3>Markdown</h3>
 
-````
+````md
 - foo
 - bar
 + baz
@@ -300,7 +1179,7 @@ var a = require('a')
 
 <h3>Html</h3>
 
-```
+```html
 <ul>
     <li>foo</li>
     <li>bar</li>
@@ -310,19 +1189,155 @@ var a = require('a')
 </ul>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "foo"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "bar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "baz"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>inlines</summary>
 <h3>Markdown</h3>
 
-````
+````md
 Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <p>Cozy <em>lummox</em> gives <strong>smart</strong> <code>squid who</code> asks for <del>job</del> pen.</p>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Cozy "
+        },
+        {
+          "type": "element",
+          "tag": "em",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "lummox"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " gives "
+        },
+        {
+          "type": "element",
+          "tag": "strong",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "smart"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " "
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "squid who"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " asks for "
+        },
+        {
+          "type": "element",
+          "tag": "del",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "job"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " pen."
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -330,7 +1345,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 <summary>escaped-inlines</summary>
 <h3>Markdown</h3>
 
-````
+````md
 \*not emphasized*
 \[not a link](/foo)
 \`not code`
@@ -342,8 +1357,80 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 
 <h3>Html</h3>
 
-```
+```html
 <p>*not emphasized* [not a link](/foo) `not code` 1. not a list * not a list # not a heading [foo]: /url "not a reference"</p>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": "not emphasized* "
+        },
+        {
+          "type": "text",
+          "value": "["
+        },
+        {
+          "type": "text",
+          "value": "not a link](/foo) "
+        },
+        {
+          "type": "text",
+          "value": "`"
+        },
+        {
+          "type": "text",
+          "value": "not code` 1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        },
+        {
+          "type": "text",
+          "value": " not a list "
+        },
+        {
+          "type": "text",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": " not a list "
+        },
+        {
+          "type": "text",
+          "value": "#"
+        },
+        {
+          "type": "text",
+          "value": " not a heading "
+        },
+        {
+          "type": "text",
+          "value": "["
+        },
+        {
+          "type": "text",
+          "value": "foo]: /url \"not a reference\""
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -351,7 +1438,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 <summary>macro-note</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # Showing note
 
 [note]
@@ -363,7 +1450,7 @@ Some text afterwards too
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>Showing note</dimertitle>
 <h1 id="showing-note"><a href="#showing-note" aria-hidden="true"><span class="icon icon-link"></span></a>Showing note</h1>
 <div class="alert alert-note">
@@ -372,12 +1459,99 @@ Some text afterwards too
 <p>Some text afterwards too</p>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Showing note"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "showing-note"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#showing-note",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Showing note"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "alert alert-note"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a note"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Some text afterwards too"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>macro-tip</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # Showing tip
 
 [tip]
@@ -389,7 +1563,7 @@ Some text afterwards too
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>Showing tip</dimertitle>
 <h1 id="showing-tip"><a href="#showing-tip" aria-hidden="true"><span class="icon icon-link"></span></a>Showing tip</h1>
 <div class="alert alert-tip">
@@ -398,12 +1572,99 @@ Some text afterwards too
 <p>Some text afterwards too</p>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Showing tip"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "showing-tip"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#showing-tip",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Showing tip"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "alert alert-tip"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a tip"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Some text afterwards too"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>macro-warning</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # Showing warning
 
 [warn]
@@ -415,7 +1676,7 @@ Some text afterwards too
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>Showing warning</dimertitle>
 <h1 id="showing-warning"><a href="#showing-warning" aria-hidden="true"><span class="icon icon-link"></span></a>Showing warning</h1>
 <div class="alert alert-warning">
@@ -424,12 +1685,99 @@ Some text afterwards too
 <p>Some text afterwards too</p>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Showing warning"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "showing-warning"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#showing-warning",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Showing warning"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "alert alert-warning"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a warn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Some text afterwards too"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>nested-macros</summary>
 <h3>Markdown</h3>
 
-````
+````md
 - List item 1
 
   [note]
@@ -439,7 +1787,7 @@ Some text afterwards too
 
 <h3>Html</h3>
 
-```
+```html
 <ul>
     <li>
         <p>List item 1</p>
@@ -450,19 +1798,110 @@ Some text afterwards too
 </ul>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "ul",
+      "props": {},
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "List item 1"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "alert alert-note"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is a note"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codepen</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codepen url=https://codepen.io/ge1doot/pen/vRJyVG]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="410" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed codepen"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "iframe",
+          "props": {
+            "src": "//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&theme-id=light&default-tab=result&embed-version=2",
+            "height": 410,
+            "scrolling": "no",
+            "title": "vRJyVG",
+            "frameborder": "none",
+            "allowtransparency": "true",
+            "allowfullscreen": "true",
+            "style": "width: 100%;"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -470,14 +1909,49 @@ Some text afterwards too
 <summary>codepen-custom-height</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codepen url=https://codepen.io/ge1doot/pen/vRJyVG, height=200]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="200" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed codepen"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "iframe",
+          "props": {
+            "src": "//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&theme-id=light&default-tab=result&embed-version=2",
+            "height": "200",
+            "scrolling": "no",
+            "title": "vRJyVG",
+            "frameborder": "none",
+            "allowtransparency": "true",
+            "allowfullscreen": "true",
+            "style": "width: 100%;"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -485,14 +1959,34 @@ Some text afterwards too
 <summary>codepen-missing-url</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codepen]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div>Url missing for codepen macro</div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Url missing for codepen macro"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -500,14 +1994,46 @@ Some text afterwards too
 <summary>youtube</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [youtube url="https://www.youtube.com/watch?v=xKwHGewa9Fg"]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div class="embed youtube"><iframe src="https://www.youtube.com/embed/xKwHGewa9Fg" width="100%" height="400" frameborder="none" allowfullscreen></iframe></div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed youtube"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "iframe",
+          "props": {
+            "src": "https://www.youtube.com/embed/xKwHGewa9Fg",
+            "width": "100%",
+            "height": "400",
+            "frameborder": "none",
+            "allowfullscreen": true
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -515,14 +2041,46 @@ Some text afterwards too
 <summary>youtube-be-url</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [youtube url="https://youtu.be/xKwHGewa9Fg"]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div class="embed youtube"><iframe src="https://www.youtube.com/embed/xKwHGewa9Fg" width="100%" height="400" frameborder="none" allowfullscreen></iframe></div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed youtube"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "iframe",
+          "props": {
+            "src": "https://www.youtube.com/embed/xKwHGewa9Fg",
+            "width": "100%",
+            "height": "400",
+            "frameborder": "none",
+            "allowfullscreen": true
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -530,14 +2088,34 @@ Some text afterwards too
 <summary>youtube-missing-url</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [youtube url=""]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div>Url missing for youtube macro</div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Url missing for youtube macro"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -545,14 +2123,34 @@ Some text afterwards too
 <summary>youtube-invalid-url</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [youtube url="http://youtube.com/watch"]
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <div>The youtube macro needs a youtube/watch or youtu.be URL</div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "The youtube macro needs a youtube/watch or youtu.be URL"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -560,7 +2158,7 @@ Some text afterwards too
 <summary>details</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [collapse title="cname"]
 Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. Learn more about cnames [here](cnames).
 [/collapse]
@@ -568,7 +2166,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 
 <h3>Html</h3>
 
-```
+```html
 <div class="collapsible">
     <div class="collapsible-toggle">cname</div>
     <div class="collapsible-content">
@@ -577,12 +2175,95 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "collapsible"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "collapsible-toggle"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "cname"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "collapsible-content"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Cname is the custom domain that you want to point to "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "subdomain.dimerapp.com"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ". Learn more about cnames "
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "cnames"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "here"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>details-missing-title</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [collapse]
 Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. Learn more about cnames [here](cnames).
 [/collapse]
@@ -590,8 +2271,28 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 
 <h3>Html</h3>
 
-```
+```html
 <div>Make sure to give a title to the collapse macro</div>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Make sure to give a title to the collapse macro"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
@@ -599,7 +2300,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 <summary>codeblocks-linehighlights</summary>
 <h3>Markdown</h3>
 
-````
+````md
 ```js{2,4}
 var a = require('a')
 return a.foo()
@@ -608,7 +2309,7 @@ return a.foo()
 
 <h3>Html</h3>
 
-```
+```html
 <div class="dimer-highlight">
     <pre class="language-js line-numbers" data-line="2,4"><code>var a = require('a')
 return a.foo()
@@ -616,12 +2317,54 @@ return a.foo()
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "dimer-highlight"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-js",
+              "line-numbers"
+            ],
+            "dataLine": "2,4"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "var a = require('a')\nreturn a.foo()\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codeblocks-filename</summary>
 <h3>Markdown</h3>
 
-````
+````md
 ```js{}{index.js}
 var a = require('a')
 return a.foo()
@@ -630,7 +2373,7 @@ return a.foo()
 
 <h3>Html</h3>
 
-```
+```html
 <div class="dimer-highlight"><span class="filename">index.js</span>
     <pre class="language-js line-numbers"><code>var a = require('a')
 return a.foo()
@@ -638,12 +2381,66 @@ return a.foo()
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "dimer-highlight"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "props": {
+            "className": "filename"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "index.js"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-js",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "var a = require('a')\nreturn a.foo()\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codegroup</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codegroup]
 ```js
 var a = require('a')
@@ -657,7 +2454,7 @@ var b = require('b')
 
 <h3>Html</h3>
 
-```
+```html
 <div class="tabs">
     <div class="tab-head">
         <ul>
@@ -682,12 +2479,165 @@ var b = require('b')
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "tabs"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-head"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Tab 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Tab 2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-body"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var a = require('a')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-2"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var b = require('b')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codegroup-with-names</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codegroup]
 ```js{}{a.js}
 var a = require('a')
@@ -701,7 +2651,7 @@ var b = require('b')
 
 <h3>Html</h3>
 
-```
+```html
 <div class="tabs">
     <div class="tab-head">
         <ul>
@@ -726,12 +2676,191 @@ var b = require('b')
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "tabs"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-head"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "a.js"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "b.js"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-body"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": "filename"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "a.js"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var a = require('a')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-2"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": "filename"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "b.js"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var b = require('b')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codegroup-one-block</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codegroup]
 ```
 var a = require('a')
@@ -741,7 +2870,7 @@ var a = require('a')
 
 <h3>Html</h3>
 
-```
+```html
 <div class="tabs">
     <div class="tab-head">
         <ul>
@@ -759,20 +2888,125 @@ var a = require('a')
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "tabs"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-head"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Tab 1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-body"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var a = require('a')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>codegroup-empty</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codegroup]
 [/codegroup]
 ````
 
 <h3>Html</h3>
 
+```html
+
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": []
+}
 ```
 
 </details>
@@ -780,7 +3014,7 @@ var a = require('a')
 <summary>codegroup-with-text</summary>
 <h3>Markdown</h3>
 
-````
+````md
 [codegroup]
 Hello this is the first block guys
 
@@ -794,7 +3028,7 @@ var a = require('a')
 
 <h3>Html</h3>
 
-```
+```html
 <div class="tabs">
     <div class="tab-head">
         <ul>
@@ -816,12 +3050,152 @@ var a = require('a')
 </div>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "tabs"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-head"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "index.js"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": "tab-body"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": "tab-item",
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Hello this is the first block guys"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "ol",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "li",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "It will be named after the filename"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": "dimer-highlight"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": "filename"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "index.js"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-js",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "var a = require('a')\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>toc</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # This is a title
 
 I expect toc after this paragraph
@@ -833,7 +3207,7 @@ I expect toc after this paragraph
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>This is a title</dimertitle>
 <h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
 <p>I expect toc after this paragraph</p>
@@ -848,12 +3222,212 @@ I expect toc after this paragraph
 <h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "this-is-a-title"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-a-title",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "I expect toc after this paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "toc-container"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Table of contents"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-heading2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is heading2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-header-2-again"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is header 2 again"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-heading2"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-heading2",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is heading2"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-header-2-again"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-header-2-again",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is header 2 again"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>toc-shifted-paragraph</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # This is a title
 
 [note]
@@ -869,7 +3443,7 @@ I expect toc before this paragraph
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>This is a title</dimertitle>
 <h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
 <div class="alert alert-note">
@@ -887,12 +3461,234 @@ I expect toc before this paragraph
 <h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "this-is-a-title"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-a-title",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "alert alert-note"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "This is a note"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "toc-container"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Table of contents"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-heading2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is heading2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-header-2-again"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is header 2 again"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "I expect toc before this paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-heading2"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-heading2",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is heading2"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-header-2-again"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-header-2-again",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is header 2 again"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>toc-missing-paragraph</summary>
 <h3>Markdown</h3>
 
-````
+````md
 # This is a title
 
 ## This is heading2
@@ -902,7 +3698,7 @@ I expect toc before this paragraph
 
 <h3>Html</h3>
 
-```
+```html
 <dimertitle>This is a title</dimertitle>
 <h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
 <div class="toc-container">
@@ -916,21 +3712,264 @@ I expect toc before this paragraph
 <h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "dimertitle",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h1",
+      "props": {
+        "id": "this-is-a-title"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-a-title",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is a title"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": "toc-container"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "Table of contents"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-heading2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is heading2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#this-is-header-2-again"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "This is header 2 again"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-heading2"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-heading2",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is heading2"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "this-is-header-2-again"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#this-is-header-2-again",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "This is header 2 again"
+        }
+      ]
+    }
+  ]
+}
+```
+
 </details>
 <details>
 <summary>toc-no-title</summary>
 <h3>Markdown</h3>
 
-````
+````md
 ## Starting from h2
 Some content here
 ````
 
 <h3>Html</h3>
 
-```
+```html
 <h2 id="starting-from-h2"><a href="#starting-from-h2" aria-hidden="true"><span class="icon icon-link"></span></a>Starting from h2</h2>
 <p>Some content here</p>
+```
+
+<h3>JSON</h3>
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "h2",
+      "props": {
+        "id": "starting-from-h2"
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "a",
+          "props": {
+            "href": "#starting-from-h2",
+            "aria-hidden": true
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "props": {
+                "className": [
+                  "icon",
+                  "icon-link"
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "Starting from h2"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Some content here"
+        }
+      ]
+    }
+  ]
+}
 ```
 
 </details>
