@@ -61,9 +61,6 @@
       "japaFile.js"
     ]
   },
-  "bin": {
-    "markdown": "syntax.js"
-  },
   "directories": {
     "example": "example",
     "test": "test"
