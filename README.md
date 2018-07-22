@@ -25,17 +25,17 @@ Dimer uses this inside it's CMS and the CLI to transform your Markdown files to 
 ## Installation
 
 ```js
-npm i @dimer/markdown
+npm i @dimerapp/markdown
 
 # Yarn
-yarn add @dimer/markdown
+yarn add @dimerapp/markdown
 ```
 
 ## Usage
 After installation, import the module and use it as follows.
 
 ```js
-const Markdown = require('@dimer/markdown')
+const Markdown = require('@dimerapp/markdown')
 
 const content = `
 # Hello world
