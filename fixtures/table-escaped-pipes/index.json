@@ -27,15 +27,7 @@
                     },
                     {
                       "type": "text",
-                      "value": " "
-                    },
-                    {
-                      "type": "text",
                       "value": "|"
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
@@ -67,10 +59,6 @@
                       "value": "b"
                     },
                     {
-                      "type": "text",
-                      "value": " "
-                    },
-                    {
                       "type": "element",
                       "tag": "code",
                       "props": {},
@@ -80,10 +68,6 @@
                           "value": "|"
                         }
                       ]
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
@@ -108,10 +92,6 @@
                       "value": "b"
                     },
                     {
-                      "type": "text",
-                      "value": " "
-                    },
-                    {
                       "type": "element",
                       "tag": "strong",
                       "props": {},
@@ -121,10 +101,6 @@
                           "value": "|"
                         }
                       ]
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
