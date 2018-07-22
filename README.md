@@ -1,6 +1,6 @@
 <div align="center">
   <div>
-    <img width="500" src="http://res.cloudinary.com/adonisjs/image/upload/q_100/v1532071072/Dimer_Readme_Banner_jm1jms.svg" alt="Dimer App">
+    <img width="500" src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1532274184/Dimer_Readme_Banner_lyy7wv.svg" alt="Dimer App">
   </div>
   <br>
   <p>
