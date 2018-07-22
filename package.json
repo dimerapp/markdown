@@ -1,8 +1,13 @@
 {
-  "name": "dimer-markdown",
+  "name": "@dimerapp/markdown",
   "version": "1.0.0",
   "description": "Markdown package to be used by client and server both",
   "main": "index.js",
+  "files": [
+    "src",
+    "index.js",
+    "github.json"
+  ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
@@ -10,9 +15,8 @@
     "commit": "git-cz",
     "lint": "standard"
   },
-  "private": true,
   "author": "virk",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "detab": "^2.0.1",
     "mdast-util-definitions": "^1.2.2",
@@ -56,5 +60,24 @@
       "test",
       "japaFile.js"
     ]
-  }
+  },
+  "bin": {
+    "markdown": "syntax.js"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimerapp/markdown.git"
+  },
+  "keywords": [
+    "markdown",
+    "dimer"
+  ],
+  "bugs": {
+    "url": "https://github.com/dimerapp/markdown/issues"
+  },
+  "homepage": "https://github.com/dimerapp/markdown#readme"
 }
