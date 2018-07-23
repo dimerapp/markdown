@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert Markdown to HTML and JSON",
   "main": "index.js",
   "files": [
