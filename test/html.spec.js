@@ -11,6 +11,7 @@
 
 const test = require('japa')
 const dedent = require('dedent')
+const { EOL } = require('os')
 
 const Markdown = require('..')
 const fixtures = require('../fixtures')
@@ -22,7 +23,7 @@ test.group('Markdown', () => {
       const md = new Markdown(fixture.in)
       const file = await md.toHTML()
       const jsonFile = await md.toJSON()
-      assert.equal(file.toString(), fixture.out.trim())
+      assert.equal(file.toString(), fixture.out.trim().split(EOL).join('\n'))
       assert.deepEqual(jsonFile.contents, fixture.json)
     })
   }
