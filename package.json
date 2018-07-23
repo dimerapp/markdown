@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert Markdown to HTML and JSON",
   "main": "index.js",
   "files": [
@@ -13,6 +13,7 @@
     "pretest": "npm run lint",
     "test": "japa",
     "commit": "git-cz",
+    "test:win": "node ./node_modules/japa-cli/index.js",
     "lint": "standard"
   },
   "author": "virk",

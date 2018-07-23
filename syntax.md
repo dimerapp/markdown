@@ -18,8 +18,7 @@ Another paragraph
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -45,8 +44,7 @@ Another paragraph
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -65,7 +63,7 @@ With some text here
 
 ```html
 <dimertitle>Heading 1</dimertitle>
-<h1 id="heading-1"><a href="#heading-1" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 1</h1>
+<h1 id="heading-1"><a href="#heading-1" aria-hidden><span class="icon icon-link"></span></a>Heading 1</h1>
 <p>With some text here</p>
 <div class="toc-container">
     <h2>Table of contents</h2>
@@ -73,12 +71,11 @@ With some text here
         <li><a href="#heading-2">Heading 2</a></li>
     </ul>
 </div>
-<h2 id="heading-2"><a href="#heading-2" aria-hidden="true"><span class="icon icon-link"></span></a>Heading 2</h2>
+<h2 id="heading-2"><a href="#heading-2" aria-hidden><span class="icon icon-link"></span></a>Heading 2</h2>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -219,8 +216,7 @@ With some text here
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -258,8 +254,7 @@ With some text here
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -355,8 +350,7 @@ With some text here
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -382,8 +376,7 @@ With some text here
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -457,8 +450,7 @@ With some text here
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -483,8 +475,7 @@ a.run()
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -520,8 +511,7 @@ a.run()
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -543,8 +533,7 @@ bar
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -576,8 +565,7 @@ bar
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -607,8 +595,7 @@ bar
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -659,8 +646,7 @@ bar
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -693,8 +679,7 @@ bar
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -777,8 +762,7 @@ bar
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -811,8 +795,7 @@ bar
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -903,8 +886,7 @@ bar
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -924,23 +906,22 @@ bar
 <table>
     <thead>
         <tr>
-            <th>f | oo</th>
+            <th>f|oo</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>b <code>|</code> az</td>
+            <td>b<code>|</code> az</td>
         </tr>
         <tr>
-            <td>b <strong>|</strong> im</td>
+            <td>b<strong>|</strong> im</td>
         </tr>
     </tbody>
 </table>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -969,15 +950,7 @@ bar
                     },
                     {
                       "type": "text",
-                      "value": " "
-                    },
-                    {
-                      "type": "text",
                       "value": "|"
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
@@ -1009,10 +982,6 @@ bar
                       "value": "b"
                     },
                     {
-                      "type": "text",
-                      "value": " "
-                    },
-                    {
                       "type": "element",
                       "tag": "code",
                       "props": {},
@@ -1022,10 +991,6 @@ bar
                           "value": "|"
                         }
                       ]
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
@@ -1050,10 +1015,6 @@ bar
                       "value": "b"
                     },
                     {
-                      "type": "text",
-                      "value": " "
-                    },
-                    {
                       "type": "element",
                       "tag": "strong",
                       "props": {},
@@ -1063,10 +1024,6 @@ bar
                           "value": "|"
                         }
                       ]
-                    },
-                    {
-                      "type": "text",
-                      "value": " "
                     },
                     {
                       "type": "text",
@@ -1081,8 +1038,7 @@ bar
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1109,8 +1065,7 @@ var a = require('a')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1163,8 +1118,7 @@ var a = require('a')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1190,8 +1144,7 @@ var a = require('a')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1242,8 +1195,7 @@ var a = require('a')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1261,8 +1213,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1337,8 +1288,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1362,8 +1312,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1430,8 +1379,7 @@ Cozy *lummox* gives **smart** `squid who` asks for ~~job~~ pen.
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1452,7 +1400,7 @@ Some text afterwards too
 
 ```html
 <dimertitle>Showing note</dimertitle>
-<h1 id="showing-note"><a href="#showing-note" aria-hidden="true"><span class="icon icon-link"></span></a>Showing note</h1>
+<h1 id="showing-note"><a href="#showing-note" aria-hidden><span class="icon icon-link"></span></a>Showing note</h1>
 <div class="alert alert-note">
     <p>This is a note</p>
 </div>
@@ -1460,8 +1408,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1543,8 +1490,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1565,7 +1511,7 @@ Some text afterwards too
 
 ```html
 <dimertitle>Showing tip</dimertitle>
-<h1 id="showing-tip"><a href="#showing-tip" aria-hidden="true"><span class="icon icon-link"></span></a>Showing tip</h1>
+<h1 id="showing-tip"><a href="#showing-tip" aria-hidden><span class="icon icon-link"></span></a>Showing tip</h1>
 <div class="alert alert-tip">
     <p>This is a tip</p>
 </div>
@@ -1573,8 +1519,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1656,8 +1601,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1678,7 +1622,7 @@ Some text afterwards too
 
 ```html
 <dimertitle>Showing warning</dimertitle>
-<h1 id="showing-warning"><a href="#showing-warning" aria-hidden="true"><span class="icon icon-link"></span></a>Showing warning</h1>
+<h1 id="showing-warning"><a href="#showing-warning" aria-hidden><span class="icon icon-link"></span></a>Showing warning</h1>
 <div class="alert alert-warning">
     <p>This is a warn</p>
 </div>
@@ -1686,8 +1630,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1769,8 +1712,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1799,8 +1741,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1851,8 +1792,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1870,8 +1810,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1901,8 +1840,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1920,8 +1858,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1951,8 +1888,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -1970,8 +1906,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -1986,8 +1921,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2005,8 +1939,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2033,8 +1966,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2052,8 +1984,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2080,8 +2011,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2099,8 +2029,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2115,8 +2044,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2134,8 +2062,7 @@ Some text afterwards too
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2150,8 +2077,7 @@ Some text afterwards too
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2176,8 +2102,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2255,8 +2180,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2276,8 +2200,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2292,8 +2215,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2318,8 +2240,7 @@ return a.foo()
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2356,8 +2277,7 @@ return a.foo()
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2382,8 +2302,7 @@ return a.foo()
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2432,8 +2351,7 @@ return a.foo()
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2480,8 +2398,7 @@ var b = require('b')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2629,8 +2546,7 @@ var b = require('b')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2677,8 +2593,7 @@ var b = require('b')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2852,8 +2767,7 @@ var b = require('b')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -2889,8 +2803,7 @@ var a = require('a')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -2982,8 +2895,7 @@ var a = require('a')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3002,12 +2914,10 @@ var a = require('a')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": []
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3051,8 +2961,7 @@ var a = require('a')
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -3187,8 +3096,7 @@ var a = require('a')
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3209,7 +3117,7 @@ I expect toc after this paragraph
 
 ```html
 <dimertitle>This is a title</dimertitle>
-<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1>
 <p>I expect toc after this paragraph</p>
 <div class="toc-container">
     <h2>Table of contents</h2>
@@ -3218,13 +3126,12 @@ I expect toc after this paragraph
         <li><a href="#this-is-header-2-again">This is header 2 again</a></li>
     </ul>
 </div>
-<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
-<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -3419,8 +3326,7 @@ I expect toc after this paragraph
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3445,7 +3351,7 @@ I expect toc before this paragraph
 
 ```html
 <dimertitle>This is a title</dimertitle>
-<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1>
 <div class="alert alert-note">
     <p>This is a note</p>
 </div>
@@ -3457,13 +3363,12 @@ I expect toc before this paragraph
     </ul>
 </div>
 <p>I expect toc before this paragraph</p>
-<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
-<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -3680,8 +3585,7 @@ I expect toc before this paragraph
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3700,7 +3604,7 @@ I expect toc before this paragraph
 
 ```html
 <dimertitle>This is a title</dimertitle>
-<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden="true"><span class="icon icon-link"></span></a>This is a title</h1>
+<h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1>
 <div class="toc-container">
     <h2>Table of contents</h2>
     <ul>
@@ -3708,13 +3612,12 @@ I expect toc before this paragraph
         <li><a href="#this-is-header-2-again">This is header 2 again</a></li>
     </ul>
 </div>
-<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden="true"><span class="icon icon-link"></span></a>This is heading2</h2>
-<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden="true"><span class="icon icon-link"></span></a>This is header 2 again</h2>
+<h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2>
+<h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -3898,8 +3801,7 @@ I expect toc before this paragraph
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>
 <details>
@@ -3914,13 +3816,12 @@ Some content here
 <h3>Html</h3>
 
 ```html
-<h2 id="starting-from-h2"><a href="#starting-from-h2" aria-hidden="true"><span class="icon icon-link"></span></a>Starting from h2</h2>
+<h2 id="starting-from-h2"><a href="#starting-from-h2" aria-hidden><span class="icon icon-link"></span></a>Starting from h2</h2>
 <p>Some content here</p>
 ```
 
 <h3>JSON</h3>
-```json
-{
+<pre><code>{
   "type": "root",
   "children": [
     {
@@ -3969,7 +3870,6 @@ Some content here
       ]
     }
   ]
-}
-```
+}</code></pre>
 
 </details>

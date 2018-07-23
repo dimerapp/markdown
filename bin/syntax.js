@@ -30,9 +30,7 @@ ${beautifyHtml(outCode)}
 \`\`\`
 
 <h3>JSON</h3>
-\`\`\`json
-${JSON.stringify(jsonCode, null, 2)}
-\`\`\`
+<pre><code>${JSON.stringify(jsonCode, null, 2)}</code></pre>
 
 </details>`
 }
