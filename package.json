@@ -13,6 +13,7 @@
     "pretest": "npm run lint",
     "test": "japa",
     "commit": "git-cz",
+    "test:win": "node ./node_modules/japa-cli/index.js",
     "lint": "standard"
   },
   "author": "virk",
