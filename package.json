@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Convert Markdown to HTML and JSON",
   "main": "index.js",
   "files": [
@@ -77,5 +77,8 @@
   "bugs": {
     "url": "https://github.com/dimerapp/markdown/issues"
   },
-  "homepage": "https://github.com/dimerapp/markdown#readme"
+  "homepage": "https://github.com/dimerapp/markdown#readme",
+  "bin": {
+    "markdown": "syntax.js"
+  }
 }
