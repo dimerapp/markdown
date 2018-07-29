@@ -1902,7 +1902,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```html
-<div>Url missing for codepen macro</div>
+<div>define url prop on codepen macro</div>
 ```
 
 <h3>JSON</h3>
@@ -1916,7 +1916,7 @@ Some text afterwards too
       "children": [
         {
           "type": "text",
-          "value": "Url missing for codepen macro"
+          "value": "define url prop on codepen macro"
         }
       ]
     }
@@ -2025,7 +2025,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```html
-<div>Url missing for youtube macro</div>
+<div>define url prop on youtube macro</div>
 ```
 
 <h3>JSON</h3>
@@ -2039,7 +2039,7 @@ Some text afterwards too
       "children": [
         {
           "type": "text",
-          "value": "Url missing for youtube macro"
+          "value": "define url prop on youtube macro"
         }
       ]
     }
@@ -2058,7 +2058,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```html
-<div>The youtube macro needs a youtube/watch or youtu.be URL</div>
+<div>define valid youtube video url</div>
 ```
 
 <h3>JSON</h3>
@@ -2072,7 +2072,7 @@ Some text afterwards too
       "children": [
         {
           "type": "text",
-          "value": "The youtube macro needs a youtube/watch or youtu.be URL"
+          "value": "define valid youtube video url"
         }
       ]
     }
@@ -2196,7 +2196,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
 <h3>Html</h3>
 
 ```html
-<div>Make sure to give a title to the collapse macro</div>
+<div>define collapse title</div>
 ```
 
 <h3>JSON</h3>
@@ -2210,7 +2210,7 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
       "children": [
         {
           "type": "text",
-          "value": "Make sure to give a title to the collapse macro"
+          "value": "define collapse title"
         }
       ]
     }
