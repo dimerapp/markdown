@@ -9,6 +9,7 @@
     "github.json"
   ],
   "scripts": {
+    "prepublishOnly": "pkg-ok",
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
     "test": "japa",
