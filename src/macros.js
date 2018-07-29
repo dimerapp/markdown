@@ -75,13 +75,13 @@ function getAlertNode (className, children) {
  */
 function ensureDomainUrl (url, macroName, fromDomains) {
   if (!url) {
-    return `Url missing for ${macroName} macro`
+    return `define url prop on ${macroName} macro`
   }
 
   fromDomains = Array.isArray(fromDomains) ? fromDomains : [fromDomains]
   const matched = fromDomains.find((domain) => url.indexOf(domain) > -1)
   if (!matched) {
-    return `The ${macroName} macro needs a complete http URL`
+    return `invalid url domain`
   }
 }
 
@@ -130,7 +130,7 @@ module.exports = function (macro) {
 
     const errorMessage = ensureDomainUrl(url, 'codepen', 'codepen.io')
     if (errorMessage) {
-      return badNode(errorMessage)
+      return badNode(errorMessage, 'invalid-codepen-domain')
     }
 
     const height = props.height || 410
@@ -163,7 +163,7 @@ module.exports = function (macro) {
     const errorMessage = ensureDomainUrl(url, 'youtube', ['youtube.com/watch', 'youtu.be'])
 
     if (errorMessage) {
-      return badNode(errorMessage)
+      return badNode(errorMessage, 'invalid-yt-domain')
     }
 
     /**
@@ -180,7 +180,7 @@ module.exports = function (macro) {
     }
 
     if (!videoId) {
-      return badNode('The youtube macro needs a youtube/watch or youtu.be URL')
+      return badNode('define valid youtube video url', 'invalid-yt-url')
     }
 
     const embedUrl = `https://www.youtube.com/embed/${videoId}`
@@ -206,7 +206,7 @@ module.exports = function (macro) {
    */
   macro.addMacro('collapse', function (content, props, { transformer, eat, badNode }) {
     if (!props.title) {
-      return badNode('Make sure to give a title to the collapse macro')
+      return badNode('define collapse title', 'missing-collapse-title')
     }
 
     return {

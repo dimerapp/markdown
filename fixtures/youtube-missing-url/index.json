@@ -8,7 +8,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Url missing for youtube macro"
+          "value": "define url prop on youtube macro"
         }
       ]
     }

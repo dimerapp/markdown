@@ -8,7 +8,7 @@
       "children": [
         {
           "type": "text",
-          "value": "The youtube macro needs a youtube/watch or youtu.be URL"
+          "value": "define valid youtube video url"
         }
       ]
     }
