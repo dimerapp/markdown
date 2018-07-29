@@ -8,7 +8,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Url missing for codepen macro"
+          "value": "define url prop on codepen macro"
         }
       ]
     }

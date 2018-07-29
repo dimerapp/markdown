@@ -230,7 +230,7 @@ test.group('Markdown', () => {
     [youtube url="https://www.youtube.com/watch"]
     `
 
-    const html = dedent`<div>The youtube macro needs a youtube/watch or youtu.be URL</div>`
+    const html = dedent`<div>define valid youtube video url</div>`
 
     const md = new Markdown(markdown)
 
@@ -243,7 +243,7 @@ test.group('Markdown', () => {
     [youtube url="https://www.youtube.com/watch?v="]
     `
 
-    const html = dedent`<div>The youtube macro needs a youtube/watch or youtu.be URL</div>`
+    const html = dedent`<div>define valid youtube video url</div>`
 
     const md = new Markdown(markdown)
 
