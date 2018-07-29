@@ -9,6 +9,7 @@
     "github.json"
   ],
   "scripts": {
+    "prepublishOnly": "pkg-ok",
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
     "test": "japa",
@@ -77,8 +78,5 @@
   "bugs": {
     "url": "https://github.com/dimerapp/markdown/issues"
   },
-  "homepage": "https://github.com/dimerapp/markdown#readme",
-  "bin": {
-    "markdown": "syntax.js"
-  }
+  "homepage": "https://github.com/dimerapp/markdown#readme"
 }
