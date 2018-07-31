@@ -1,3 +1,18 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/dimerapp/markdown/compare/v1.0.5...v2.0.0) (2018-07-31)
+
+
+### Features
+
+* **assetsDetection:** allow passing more properties for image node ([b701a38](https://github.com/dimerapp/markdown/commit/b701a38))
+
+
+### BREAKING CHANGES
+
+* **assetsDetection:** onUrl return value now accepts an object vs string
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/dimerapp/markdown/compare/v1.0.5...v1.0.6) (2018-07-29)
 
