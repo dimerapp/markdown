@@ -171,6 +171,25 @@ Dimer has a feature, where it will detect the relative images inside markdown an
 
 You do need the infrastructure and code around adding this feature when using this module. However, this module does let you define a custom callback, which can be used for detecting image URL's and returning a different URL to be replaced with.
 
+Here's an example of same
+
+```js
+const markdown = new Markdown({
+  onUrl: async function (relativeUrl) {
+    await fs.copyFile('DEST_PATH')
+    return {
+      url: NEW_URL,
+      data: {
+        hProperties: {
+          dataSrc: '',
+          rel: ''
+        }
+      } // optional
+    }
+  }
+})
+```
+
 ## Syntax guide
 The syntax guide is available [here](syntax.md). It shows the Markdown code with the output in HTML and JSON.
 

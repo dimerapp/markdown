@@ -110,6 +110,7 @@
     ],
     "img": [
       "src",
+      "dataSrc",
       "longDesc"
     ],
     "iframe": [
