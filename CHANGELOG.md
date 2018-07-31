@@ -1,3 +1,8 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/dimerapp/markdown/compare/v2.0.0...v2.0.1) (2018-07-31)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/dimerapp/markdown/compare/v1.0.5...v2.0.0) (2018-07-31)
 

@@ -20,11 +20,12 @@ const definitions = require('mdast-util-definitions')
  *
  * @param  {Function} cb
  * @param  {Object}   urlNode
+ * @param  {Object}   options
  *
  * @return {Promise}
  */
-function updateUrl (cb, urlNode) {
-  return cb(urlNode.url)
+function updateUrl (cb, urlNode, options) {
+  return cb(urlNode.url, options)
     .then((response) => {
       if (response) {
         Object.assign(urlNode, response)
@@ -34,8 +35,9 @@ function updateUrl (cb, urlNode) {
     })
 }
 
-module.exports = function ({ onUrl: callback }) {
+module.exports = function (options) {
   return function transformer (tree, file, next) {
+    const callback = options.onUrl
     if (typeof (callback) !== 'function') {
       return next()
     }
@@ -65,7 +67,7 @@ module.exports = function ({ onUrl: callback }) {
      * before we reach here
      */
     Promise
-      .all(urls.map((url) => updateUrl(callback, url)))
+      .all(urls.map((url) => updateUrl(callback, url, options)))
       .then(() => {
         next()
       })
