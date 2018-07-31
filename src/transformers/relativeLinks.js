@@ -25,9 +25,9 @@ const definitions = require('mdast-util-definitions')
  */
 function updateUrl (cb, urlNode) {
   return cb(urlNode.url)
-    .then((absUrl) => {
-      if (absUrl) {
-        urlNode.url = absUrl
+    .then((response) => {
+      if (response) {
+        Object.assign(urlNode, response)
       }
     })
     .catch(() => {

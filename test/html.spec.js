@@ -38,7 +38,9 @@ test.group('Markdown', () => {
 
     const md = new Markdown(markdown, {
       onUrl: async function (relativeUrl) {
-        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        }
       }
     })
 
@@ -56,7 +58,9 @@ test.group('Markdown', () => {
 
     const md = new Markdown(markdown, {
       onUrl: async function (relativeUrl) {
-        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        }
       }
     })
 
@@ -108,7 +112,9 @@ test.group('Markdown', () => {
 
     const md = new Markdown(markdown, {
       onUrl: async function (relativeUrl) {
-        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        }
       }
     })
 
@@ -129,7 +135,9 @@ test.group('Markdown', () => {
 
     const md = new Markdown(markdown, {
       onUrl: async function (relativeUrl) {
-        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        }
       }
     })
 
@@ -267,7 +275,9 @@ test.group('Markdown', () => {
 
     const md = new Markdown(markdown, {
       onUrl: async function (relativeUrl) {
-        return relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+        }
       }
     })
 
@@ -316,6 +326,31 @@ test.group('Markdown', () => {
     const html = '<dimertitle>This is a title</dimertitle><h1 id="this-is-a-title"><a href="#this-is-a-title" aria-hidden><span class="icon icon-link"></span></a>This is a title</h1><p>I expect toc after this paragraph</p><h2 id="this-is-heading2"><a href="#this-is-heading2" aria-hidden><span class="icon icon-link"></span></a>This is heading2</h2><h2 id="this-is-header-2-again"><a href="#this-is-header-2-again" aria-hidden><span class="icon icon-link"></span></a>This is header 2 again</h2>'
 
     const md = new Markdown(markdown, { title: 'This is a title', skipToc: true })
+    const file = await md.toHTML()
+    assert.equal(file.toString().trim(), html)
+  })
+
+  test('set image node props', async (assert) => {
+    const markdown = dedent`
+    Hello
+
+    ![](../foo/bar)
+    `
+    const html = '<p>Hello</p><p><img src="https://assets.dimerapp.com/edge/foo/bar" data-src="https://assets.dimerapp.com/edge/foo/bar"></p>'
+
+    const md = new Markdown(markdown, {
+      onUrl: async function (relativeUrl) {
+        return {
+          url: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/'),
+          data: {
+            hProperties: {
+              dataSrc: relativeUrl.replace('../', 'https://assets.dimerapp.com/edge/')
+            }
+          }
+        }
+      }
+    })
+
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })
