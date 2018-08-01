@@ -354,4 +354,22 @@ test.group('Markdown', () => {
     const file = await md.toHTML()
     assert.equal(file.toString().trim(), html)
   })
+
+  test('pass file reference to onUrl callback', async (assert) => {
+    assert.plan(1)
+
+    const markdown = dedent`
+    Hello
+
+    ![](../foo/bar)
+    `
+
+    const md = new Markdown(markdown, {
+      onUrl: async function (relativeUrl, file) {
+        assert.deepEqual(md, file)
+      }
+    })
+
+    await md.toHTML()
+  })
 })
