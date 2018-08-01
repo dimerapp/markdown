@@ -1,3 +1,13 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/dimerapp/markdown/compare/v2.0.1...v3.0.0) (2018-08-01)
+
+
+### Features
+
+* **assets-detection:** pass file as 2nd param to onUrl callback ([06ed4cb](https://github.com/dimerapp/markdown/commit/06ed4cb))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/dimerapp/markdown/compare/v2.0.0...v2.0.1) (2018-07-31)
 
