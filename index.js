@@ -20,10 +20,7 @@ const sanitize = require('rehype-sanitize')
 const sortValues = require('rehype-sort-attribute-values')
 const sortAttrs = require('rehype-sort-attributes')
 
-const setTitle = require('./src/transformers/title')
-const checkList = require('./src/transformers/checklist')
-const relativeLinks = require('./src/transformers/relativeLinks')
-const toc = require('./src/transformers/toc')
+const { title, checklist, relativeLinks, toc } = require('./src/transformers')
 const macro = require('./src/macros')
 
 /**
@@ -33,13 +30,15 @@ const macro = require('./src/macros')
  * @class MarkdownProcessor
  */
 class MarkdownProcessor {
-  constructor (markdown, metadata) {
+  constructor (markdown, options) {
     this.markdown = markdown
-    this.options = {
+
+    this.settings = {
       sanitize: require('./github.json'),
       handlers: require('./src/handlers')
     }
-    this.metadata = metadata || {}
+
+    this.options = options || {}
   }
 
   /**
@@ -52,19 +51,19 @@ class MarkdownProcessor {
   getStream () {
     return unified()
       .use(markdown)
-      .use(setTitle, this.metadata)
-      .use(toc, this.metadata)
-      .use(relativeLinks, this.metadata)
+      .use(title, this.options)
+      .use(toc, this.options)
+      .use(relativeLinks, this.options)
       .use(slug)
       .use(headings)
       .use(macro.transformer)
       .use(squeezeParagraphs)
-      .use(checkList)
-      .use(remark2rehype, { handlers: this.options.handlers })
+      .use(checklist, this.options)
+      .use(remark2rehype, { handlers: this.settings.handlers })
       .use(minifyWhiteSpace)
       .use(sortValues)
       .use(sortAttrs)
-      .use(sanitize, this.options.sanitize)
+      .use(sanitize, this.settings.sanitize)
   }
 
   /**
