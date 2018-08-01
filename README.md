@@ -175,7 +175,7 @@ Here's an example of same
 
 ```js
 const markdown = new Markdown({
-  onUrl: async function (relativeUrl, markdownOptions) {
+  onUrl: async function (relativeUrl, file) {
     await fs.copyFile('DEST_PATH')
     return {
       url: NEW_URL,
