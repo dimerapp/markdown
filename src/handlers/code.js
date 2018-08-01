@@ -11,11 +11,11 @@
 
 const detab = require('detab')
 const u = require('unist-builder')
-const langParser = require('../langParser')
+const { parseThematicBlock } = require('../utils/index')
 
 module.exports = function (h, node) {
   const value = node.value ? detab(node.value + '\n') : ''
-  const { lang, lineHighlights, fileName } = langParser(node.lang)
+  const { lang, lineHighlights, fileName } = parseThematicBlock(node.lang)
 
   const props = {
     className: lang ? [lang, 'line-numbers'] : ['line-numbers']

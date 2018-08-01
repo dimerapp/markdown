@@ -1,5 +1,5 @@
 /*
-* dimer-markdown
+* markdown
 *
 * (c) Harminder Virk <virk@adonisjs.com>
 *
@@ -9,16 +9,9 @@
 
 /**
  * Parses nodes for JSON structure. Attempts to drop
- * unwanted properties and shorten names to save
- * space.
- *
- * @method exports
- *
- * @param  {Object} node
- *
- * @return {Object}
+ * unwanted properties.
  */
-module.exports = function parseAsJSON (node) {
+function parseAsJSON (node) {
   if (node.type === 'element') {
     return {
       type: 'element',
@@ -36,4 +29,16 @@ module.exports = function parseAsJSON (node) {
   }
 
   console.log('node missed', node.type)
+}
+
+/**
+ * JSON compiler
+ */
+module.exports = function () {
+  this.Compiler = function (root) {
+    return {
+      type: 'root',
+      children: root.children.map(parseAsJSON)
+    }
+  }
 }
