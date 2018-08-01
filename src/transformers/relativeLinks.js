@@ -35,9 +35,8 @@ function updateUrl (cb, urlNode, options) {
     })
 }
 
-module.exports = function (options) {
+module.exports = function ({ onUrl: callback }) {
   return function transformer (tree, file, next) {
-    const callback = options.onUrl
     if (typeof (callback) !== 'function') {
       return next()
     }
@@ -67,7 +66,7 @@ module.exports = function (options) {
      * before we reach here
      */
     Promise
-      .all(urls.map((url) => updateUrl(callback, url, options)))
+      .all(urls.map((url) => updateUrl(callback, url, file)))
       .then(() => {
         next()
       })

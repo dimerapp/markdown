@@ -16,7 +16,6 @@ const headings = require('remark-autolink-headings')
 const squeezeParagraphs = require('remark-squeeze-paragraphs')
 const minifyWhiteSpace = require('rehype-minify-whitespace')
 const remark2rehype = require('remark-rehype')
-const html = require('rehype-stringify')
 const sanitize = require('rehype-sanitize')
 const sortValues = require('rehype-sort-attribute-values')
 const sortAttrs = require('rehype-sort-attributes')
@@ -25,10 +24,7 @@ const setTitle = require('./src/transformers/title')
 const checkList = require('./src/transformers/checklist')
 const relativeLinks = require('./src/transformers/relativeLinks')
 const toc = require('./src/transformers/toc')
-const parseAsJSON = require('./src/parseAsJSON')
-
-const macro = require('remark-macro')()
-require('./src/macros')(macro)
+const macro = require('./src/macros')
 
 /**
  * Proceses the markdown and output it to
@@ -81,7 +77,7 @@ class MarkdownProcessor {
   toHTML () {
     return new Promise((resolve, reject) => {
       this.getStream()
-        .use(html)
+        .use(require('./src/compilers/html'))
         .process(this.markdown, (error, file) => {
           if (error) {
             return reject(error)
@@ -102,14 +98,7 @@ class MarkdownProcessor {
   toJSON () {
     return new Promise((resolve, reject) => {
       this.getStream()
-        .use(function () {
-          this.Compiler = function (root) {
-            return {
-              type: 'root',
-              children: root.children.map(parseAsJSON)
-            }
-          }
-        })
+        .use(require('./src/compilers/json'))
         .process(this.markdown, (error, file) => {
           if (error) {
             return reject(error)
