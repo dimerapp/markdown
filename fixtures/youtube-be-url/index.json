@@ -6,7 +6,8 @@
       "tag": "div",
       "props": {
         "className": [
-          "embed youtube"
+          "embed",
+          "youtube"
         ]
       },
       "children": [

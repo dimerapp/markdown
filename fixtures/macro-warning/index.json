@@ -51,7 +51,8 @@
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-warning"
+          "alert",
+          "alert-warning"
         ]
       },
       "children": [

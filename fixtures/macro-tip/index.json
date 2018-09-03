@@ -51,7 +51,8 @@
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-tip"
+          "alert",
+          "alert-tip"
         ]
       },
       "children": [

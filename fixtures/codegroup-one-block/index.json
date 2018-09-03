@@ -5,14 +5,14 @@
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "tabs"
+        "className": ["tabs"]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-head"
+            "className": ["tab-head"]
           },
           "children": [
             {
@@ -41,14 +41,14 @@
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-body"
+            "className": ["tab-body"]
           },
           "children": [
             {
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": ["tab-item"],
                 "id": "tab-1"
               },
               "children": [
@@ -56,7 +56,7 @@
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": ["dimer-highlight"]
                   },
                   "children": [
                     {

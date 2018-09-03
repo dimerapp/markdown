@@ -61,7 +61,7 @@
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "toc-container"
+        "className": ["toc-container"]
       },
       "children": [
         {

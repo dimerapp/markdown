@@ -6,7 +6,8 @@
       "tag": "div",
       "props": {
         "className": [
-          "embed codepen"
+          "codepen",
+          "embed"
         ]
       },
       "children": [

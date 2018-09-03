@@ -32,7 +32,7 @@ function getTocNode (tree) {
     data: {
       hName: 'div',
       hProperties: {
-        className: 'toc-container'
+        className: ['toc-container']
       }
     },
     children: [

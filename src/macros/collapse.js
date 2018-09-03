@@ -18,7 +18,7 @@ module.exports = function (macro) {
       data: {
         hName: 'div',
         hProperties: {
-          className: 'collapsible'
+          className: ['collapsible']
         }
       },
       children: [
@@ -27,7 +27,7 @@ module.exports = function (macro) {
           data: {
             hName: 'div',
             hProperties: {
-              className: 'collapsible-toggle'
+              className: ['collapsible-toggle']
             }
           },
           children: [{
@@ -40,7 +40,7 @@ module.exports = function (macro) {
           data: {
             hName: 'div',
             hProperties: {
-              className: 'collapsible-content'
+              className: ['collapsible-content']
             }
           },
           children: transformer.tokenizeBlock(content, eat.now())

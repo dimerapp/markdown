@@ -27,7 +27,8 @@
               "tag": "div",
               "props": {
                 "className": [
-                  "alert alert-note"
+                  "alert",
+                  "alert-note"
                 ]
               },
               "children": [

@@ -5,14 +5,14 @@
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "dimer-highlight"
+        "className": ["dimer-highlight"]
       },
       "children": [
         {
           "type": "element",
           "tag": "span",
           "props": {
-            "className": "filename"
+            "className": ["filename"]
           },
           "children": [
             {

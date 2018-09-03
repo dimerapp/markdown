@@ -56,7 +56,7 @@ utils.getAlertNode = function getAlertNode (className, children) {
     data: {
       hName: 'div',
       hProperties: {
-        className: [`alert ${className}`]
+        className: ['alert', className]
       }
     },
     children: children
@@ -101,7 +101,7 @@ utils.getEmbedNode = function getEmbedNode (className, props) {
     data: {
       hName: 'div',
       hProperties: {
-        className: [`embed ${className}`]
+        className: ['embed', className]
       }
     },
     children: [

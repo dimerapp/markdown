@@ -31,7 +31,7 @@ module.exports = function (h, node) {
    * If filename, then set span as a first child
    */
   if (fileName) {
-    childs.push(h(node, 'span', { className: 'filename' }, [u('text', fileName)]))
+    childs.push(h(node, 'span', { className: ['filename'] }, [u('text', fileName)]))
   }
 
   /**
@@ -41,5 +41,5 @@ module.exports = function (h, node) {
     h(node, 'code', [u('text', value)])
   ]))
 
-  return h(node.position, 'div', { className: 'dimer-highlight' }, childs)
+  return h(node.position, 'div', { className: ['dimer-highlight'] }, childs)
 }

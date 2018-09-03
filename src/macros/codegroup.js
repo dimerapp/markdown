@@ -30,7 +30,7 @@ module.exports = function (macro) {
       data: {
         hName: 'div',
         hProperties: {
-          className: 'tab-head'
+          className: ['tab-head']
         }
       },
       children: [
@@ -57,7 +57,7 @@ module.exports = function (macro) {
       data: {
         hName: 'div',
         hProperties: {
-          className: 'tab-body'
+          className: ['tab-body']
         }
       },
       children: []
@@ -77,7 +77,7 @@ module.exports = function (macro) {
         data: {
           hName: 'div',
           hProperties: {
-            className: 'tab-item'
+            className: ['tab-item']
           }
         },
         children: []
@@ -149,7 +149,7 @@ module.exports = function (macro) {
       data: {
         hName: 'div',
         hProperties: {
-          className: 'tabs'
+          className: ['tabs']
         }
       },
       children: [tabNavNode, tabBodyNode]
