@@ -1,3 +1,13 @@
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/dimerapp/markdown/compare/v3.1.0...v3.1.1) (2018-09-03)
+
+
+### Features
+
+* **code:** add language-text class when codeblock has no lang ([6a4a027](https://github.com/dimerapp/markdown/commit/6a4a027))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/dimerapp/markdown/compare/v3.0.0...v3.1.0) (2018-09-03)
 
