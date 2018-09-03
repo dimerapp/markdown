@@ -29,6 +29,7 @@
               "tag": "pre",
               "props": {
                 "className": [
+                  "language-text",
                   "line-numbers"
                 ]
               },
