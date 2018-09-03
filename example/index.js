@@ -20,7 +20,8 @@ http.createServer((req, res) => {
     cloudUrl: 'https://assets.dimerapp.com/site',
     onImage: function (url) {
       console.log('relative Url is ' + url)
-    }})
+    }
+  })
     .toJSON()
     .then((file) => {
       res.writeHead(200, { 'content-type': 'application/json' })

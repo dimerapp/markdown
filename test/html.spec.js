@@ -145,24 +145,6 @@ test.group('Markdown', () => {
     assert.equal(file.toString().trim(), html)
   })
 
-  test('work fine when reference urls are empty', async (assert) => {
-    const markdown = dedent`
-    Hello
-
-    ![][logo]
-
-    [logo]:
-    `
-    const html = '<p>Hello</p><p><img src=""></p><p>[logo]:</p>'
-
-    const md = new Markdown(markdown, {
-      onUrl: async function () {}
-    })
-
-    const file = await md.toHTML()
-    assert.equal(file.toString().trim(), html)
-  })
-
   test('call onUrl callback with the relative path', async (assert) => {
     assert.plan(1)
 

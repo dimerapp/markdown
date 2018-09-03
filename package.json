@@ -21,9 +21,9 @@
   "license": "MIT",
   "dependencies": {
     "detab": "^2.0.1",
-    "mdast-util-definitions": "^1.2.2",
-    "mdast-util-to-string": "^1.0.4",
-    "mdast-util-toc": "^2.0.1",
+    "mdast-util-definitions": "^1.2.3",
+    "mdast-util-to-string": "^1.0.5",
+    "mdast-util-toc": "^2.1.0",
     "rehype-minify-whitespace": "^2.0.3",
     "rehype-sanitize": "^2.0.1",
     "rehype-sort-attribute-values": "^1.0.1",
@@ -32,25 +32,25 @@
     "remark-autolink-headings": "git+https://github.com/thetutlage/remark-autolink-headings.git",
     "remark-macro": "^1.0.5",
     "remark-parse": "^5.0.0",
-    "remark-rehype": "^3.0.0",
-    "remark-slug": "^5.0.0",
-    "remark-squeeze-paragraphs": "^3.0.1",
+    "remark-rehype": "^3.0.1",
+    "remark-slug": "^5.1.0",
+    "remark-squeeze-paragraphs": "^3.0.2",
     "unified": "^7.0.0",
-    "unist-builder": "^1.0.2",
+    "unist-builder": "^1.0.3",
     "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
-    "@adonisjs/mrm-preset": "^1.0.10",
+    "@adonisjs/mrm-preset": "^1.0.11",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "dedent": "^0.7.0",
     "fs-extra": "^7.0.0",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
-    "js-beautify": "^1.7.5",
+    "js-beautify": "^1.8.1",
     "mrm": "^1.2.1",
     "pkg-ok": "^2.2.0",
-    "standard": "^11.0.1"
+    "standard": "^12.0.1"
   },
   "config": {
     "commitizen": {
