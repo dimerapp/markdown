@@ -1,3 +1,19 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/dimerapp/markdown/compare/v3.0.0...v3.1.0) (2018-09-03)
+
+
+### Bug Fixes
+
+* make classNames an array of strings to be consistent ([db25f59](https://github.com/dimerapp/markdown/commit/db25f59))
+
+
+### BREAKING CHANGES
+
+* Earlier some classNames were string and some as array. Now we return a consistent
+array of strings
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/dimerapp/markdown/compare/v2.0.1...v3.0.0) (2018-08-01)
 
