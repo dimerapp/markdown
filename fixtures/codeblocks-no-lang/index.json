@@ -1,0 +1,37 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": ["dimer-highlight"]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-text",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "var a = require('a')\na.run()\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

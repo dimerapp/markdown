@@ -18,7 +18,7 @@ module.exports = function (h, node) {
   const { lang, lineHighlights, fileName } = parseThematicBlock(node.lang)
 
   const props = {
-    className: lang ? [lang, 'line-numbers'] : ['line-numbers']
+    className: lang ? [lang, 'line-numbers'] : ['language-text', 'line-numbers']
   }
 
   if (lineHighlights) {

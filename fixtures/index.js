@@ -18,6 +18,7 @@ const fixtures = [
   'nested-list',
   'checkbox',
   'codeblocks',
+  'codeblocks-no-lang',
   'thematic-breaks',
   'blockquote',
   'simple-tables',
