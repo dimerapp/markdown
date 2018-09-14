@@ -19,6 +19,7 @@ const fixtures = require('../fixtures')
 test.group('Markdown', () => {
   for (let name in fixtures) {
     const fixture = fixtures[name]
+
     test(`assert ${name}`, async (assert) => {
       const md = new Markdown(fixture.in)
       const file = await md.toHTML()
