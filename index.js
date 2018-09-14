@@ -19,9 +19,10 @@ const remark2rehype = require('remark-rehype')
 const sanitize = require('rehype-sanitize')
 const sortValues = require('rehype-sort-attribute-values')
 const sortAttrs = require('rehype-sort-attributes')
+const macroEngine = require('remark-macro')()
 
 const { title, checklist, relativeLinks, toc } = require('./src/transformers')
-const macro = require('./src/macros')
+require('./src/macros')(macroEngine)
 
 /**
  * Proceses the markdown and output it to
@@ -42,6 +43,20 @@ class MarkdownProcessor {
   }
 
   /**
+   * Register a custom macro with the markdown engine
+   *
+   * @method addMacro
+   * @static
+   *
+   * @param  {String}   name
+   * @param  {Function} callback
+   * @param  {Boolean}  inline
+   */
+  static addMacro (name, callback, inline) {
+    macroEngine.addMacro(name, callback, inline)
+  }
+
+  /**
    * Returns the stream of mdast
    *
    * @method getStream
@@ -56,7 +71,7 @@ class MarkdownProcessor {
       .use(relativeLinks, this.options)
       .use(slug)
       .use(headings)
-      .use(macro.transformer)
+      .use(macroEngine.transformer)
       .use(squeezeParagraphs)
       .use(checklist, this.options)
       .use(remark2rehype, { handlers: this.settings.handlers })
