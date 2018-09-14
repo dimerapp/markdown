@@ -132,6 +132,37 @@ Tab two
 [/codegroup]
 ``````
 
+## Adding new macro
+You can also add your own macros as follows. 
+
+> **NOTE**: Macros are added at the global level and not per instance level.
+
+#### addMacro(name, callback, [inline = false])
+```js
+Markdown.addMacro('button', function (props) {
+  return {
+    type: 'ButtonNode',
+    data: {
+      hName: 'button',
+      hProperties: {
+        className: ['button']
+      }
+    },
+    children: [{
+      type: 'text',
+      value: props.text
+    }]
+  }
+}, false)
+
+const md = new Markdown(`
+[button text="Click here to login"]
+`)
+
+await md.toHTML()
+// returns: <button class="button">Click here to login</button>
+```
+
 ## JSON AST
 The biggest feature of this module is the ability to output the JSON AST for your markdown. AST makes it super easy compose custom layouts, whereas the concrete HTML is harder to modify and customise.
 

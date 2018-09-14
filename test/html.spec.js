@@ -355,4 +355,30 @@ test.group('Markdown', () => {
 
     await md.toHTML()
   })
+
+  test('add custom macro to the class', async (assert) => {
+    const markdown = dedent`
+    [button text="I am a button"]
+    `
+
+    Markdown.addMacro('button', function (props) {
+      return {
+        type: 'ButtonNode',
+        data: {
+          hName: 'button',
+          hProperties: {
+            className: ['button']
+          }
+        },
+        children: [{
+          type: 'text',
+          value: props.text
+        }]
+      }
+    }, true)
+
+    const md = new Markdown(markdown, {})
+    const html = await md.toHTML()
+    assert.equal(html.contents, '<button class="button">I am a button</button>')
+  })
 })
