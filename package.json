@@ -9,12 +9,10 @@
     "github.json"
   ],
   "scripts": {
-    "prepublishOnly": "pkg-ok",
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
-    "test": "japa",
+    "test": "node japaFile.js",
     "commit": "git-cz",
-    "test:win": "node ./node_modules/japa-cli/index.js",
     "lint": "standard"
   },
   "author": "virk",
@@ -30,7 +28,7 @@
     "rehype-sort-attributes": "^1.0.1",
     "rehype-stringify": "^4.0.0",
     "remark-autolink-headings": "git+https://github.com/thetutlage/remark-autolink-headings.git",
-    "remark-macro": "^1.0.5",
+    "remark-macro": "^1.0.6",
     "remark-parse": "^5.0.0",
     "remark-rehype": "^3.0.1",
     "remark-slug": "^5.1.0",
@@ -40,17 +38,18 @@
     "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
-    "@adonisjs/mrm-preset": "^1.0.11",
-    "commitizen": "^2.10.1",
+    "@adonisjs/mrm-preset": "^1.0.14",
+    "commitizen": "^3.0.2",
     "cz-conventional-changelog": "^2.1.0",
     "dedent": "^0.7.0",
     "fs-extra": "^7.0.0",
-    "japa": "^1.0.6",
+    "japa": "^2.0.4",
     "japa-cli": "^1.0.1",
     "js-beautify": "^1.8.6",
     "mrm": "^1.2.1",
-    "pkg-ok": "^2.2.0",
-    "standard": "^12.0.1"
+    "pkg-ok": "^2.3.1",
+    "standard": "^12.0.1",
+    "yorkie": "^2.0.0"
   },
   "config": {
     "commitizen": {
@@ -59,8 +58,7 @@
   },
   "nyc": {
     "exclude": [
-      "test",
-      "japaFile.js"
+      "test"
     ]
   },
   "directories": {
@@ -78,5 +76,8 @@
   "bugs": {
     "url": "https://github.com/dimerapp/markdown/issues"
   },
-  "homepage": "https://github.com/dimerapp/markdown#readme"
+  "homepage": "https://github.com/dimerapp/markdown#readme",
+  "gitHooks": {
+    "commit-msg": "node ./node_modules/@adonisjs/mrm-preset/validateCommit/conventional/validate.js"
+  }
 }
