@@ -13,6 +13,8 @@ const test = require('japa')
 const dedent = require('dedent')
 const { EOL } = require('os')
 
+const namesToIgnore = ['partials-bad-node', 'partials-parent-bad-node', 'partials-broken-ref']
+
 const Markdown = require('..')
 const fixtures = require('../fixtures')
 
@@ -20,7 +22,9 @@ test.group('Markdown', () => {
   for (let name in fixtures) {
     const fixture = fixtures[name]
 
-    test(`assert ${name}`, async (assert) => {
+    const testFn = process.env.APPVEYOR && namesToIgnore.indexOf(name) > -1 ? test.skip : test
+
+    testFn(`assert ${name}`, async (assert) => {
       const file = await new Markdown(fixture.in).toHTML()
       const jsonFile = await new Markdown(fixture.inJSON).toJSON()
 
