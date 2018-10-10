@@ -20,7 +20,7 @@ const block = (name, inCode, outCode, jsonCode) => {
 <h3>Markdown</h3>
 
 \`\`\`\`md
-${inCode.trim()}
+${inCode.contents.trim()}
 \`\`\`\`
 
 <h3>Html</h3>

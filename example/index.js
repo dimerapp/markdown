@@ -9,28 +9,24 @@
  * file that was distributed with this source code.
 */
 
-const http = require('http')
 const Markdown = require('../index')
 const path = require('path')
+const vfile = require('vfile')
 
-http.createServer((req, res) => {
-  const content = require('fs').readFileSync(path.join(__dirname, './index.md'), 'utf-8')
-  new Markdown(content, {
-    title: 'Hello word',
-    cloudUrl: 'https://assets.dimerapp.com/site',
-    onImage: function (url) {
-      console.log('relative Url is ' + url)
-    }
+const file = vfile({
+  path: path.join(__dirname, './index.md'),
+  contents: require('fs').readFileSync(path.join(__dirname, './index.md'), 'utf-8')
+})
+
+new Markdown(file, {
+  title: 'Hello word',
+  cloudUrl: 'https://assets.dimerapp.com/site',
+  onImage: function (url) {
+    console.log('relative Url is ' + url)
+  }
+})
+  .toHTML()
+  .then((file) => {
+    console.log(file.contents)
   })
-    .toJSON()
-    .then((file) => {
-      res.writeHead(200, { 'content-type': 'application/json' })
-      res.write(JSON.stringify(file.contents))
-      res.end()
-    })
-    .catch((error) => {
-      res.writeHead(500, { 'content-type': 'application/json' })
-      res.write(JSON.stringify(error))
-      res.end()
-    })
-}).listen(3000)
+  .catch(console.log)

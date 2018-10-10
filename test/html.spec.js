@@ -21,11 +21,28 @@ test.group('Markdown', () => {
     const fixture = fixtures[name]
 
     test(`assert ${name}`, async (assert) => {
-      const md = new Markdown(fixture.in)
-      const file = await md.toHTML()
-      const jsonFile = await md.toJSON()
+      const file = await new Markdown(fixture.in).toHTML()
+      const jsonFile = await new Markdown(fixture.inJSON).toJSON()
+
       assert.equal(file.toString(), fixture.out.trim().split(EOL).join('\n'))
       assert.deepEqual(jsonFile.contents, fixture.json)
+
+      if (fixture.messages) {
+        assert.deepEqual(fixture.messages, file.messages.map((message) => {
+          return {
+            name: message.name,
+            reason: message.reason,
+            line: message.line,
+            column: message.column,
+            ruleId: message.ruleId,
+            fatal: message.fatal,
+            message: message.message,
+            location: message.location,
+            file: message.file,
+            source: message.source
+          }
+        }))
+      }
     })
   }
 

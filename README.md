@@ -132,6 +132,26 @@ Tab two
 [/codegroup]
 ``````
 
+#### include(inline)
+Include other markdown files as partials.
+
+```md
+[include path="./relative-path.md"]
+```
+
+Also, you can tell the include block to include the file inside `codeblocks`. This is helpful, when you want to lint the source file using some external linter and include it inside the markdown.
+
+```md
+[include path="./relative-path.json", codeblock="true", language="json", lineHighlight="1-4,8-10", displayName="users.json"]
+```
+
+- **path** is the relative path to the file to include.
+- **codeblock** with the value of true will wrap the content inside the `codeblocks`.
+- **language (valid when codeblock=true)** the source language to highlight the code.
+- **lineHighlight (valid when codeblock=true)** The lines to highlight inside the source block.
+- **displayName (valid when codeblock=true)** The name of the tab when include is inside a `codegroup`.
+
+
 ## Adding new macro
 You can also add your own macros as follows. 
 

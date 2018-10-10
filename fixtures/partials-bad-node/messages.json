@@ -1,0 +1,17 @@
+[
+  {
+    "name": "partial.md:3:1",
+    "reason": "Unclosed macro: note",
+    "line": 3,
+    "column": 1,
+    "ruleId": "unclosed-macro",
+    "fatal": true,
+    "message": "Unclosed macro: note",
+    "location": {
+      "start": { "line": 3, "column": 1, "offset": 21 },
+      "end": { "line": null, "column": null }
+    },
+   "file": "partial.md",
+   "source": null
+  }
+]

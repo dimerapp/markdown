@@ -98,12 +98,18 @@ module.exports = function (macro) {
     contentNodes.forEach((node, index) => {
       recentNavItem.children.push(node)
 
-      if (node.type === 'code') {
+      /**
+       * We parse the codeblocks or root node, whose first child is the code. This is to
+       * support the include blocks inside codegroup
+       */
+      if (node.type === 'code' || (node.type === 'root' && node.children[0] && node.children[0].type === 'code')) {
+        const codeNode = node.type === 'root' ? node.children[0] : node
+
         /**
          * Get lang and fileName from the code language. Chances
          * are both will be null.
          */
-        const { fileName } = parseThematicBlock(node.lang)
+        const { fileName } = parseThematicBlock(codeNode.lang)
 
         /**
          * When lang and fileName both are null, then only option is

@@ -1,0 +1,43 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": ["dimer-highlight"]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": ["language-json", "line-numbers"]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [{
+                "type": "text",
+                "value": "{\n  \"username\": \"virk\"\n}\n"
+              }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
