@@ -34,7 +34,6 @@ utils.parseThematicBlock = function parseThematicBlock (lang) {
 
   const tokens = lang.split('{')
   const language = tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)
-  console.log(tokens)
 
   return {
     lang: language ? `language-${tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)}` : null,

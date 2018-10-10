@@ -43,7 +43,7 @@
               "props": {},
               "children": [{
                 "type": "text",
-                "value": "{\n  \"username\": \"virk\"\n}\n"
+                "value": "{ \"username\": \"virk\" }\n"
               }]
             }
           ]
