@@ -1,3 +1,13 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/dimerapp/markdown/compare/v3.1.2...v3.2.0) (2018-10-10)
+
+
+### Features
+
+* **include:** add support for partials ([5d209bf](https://github.com/dimerapp/markdown/commit/5d209bf))
+
+
+
 <a name="3.1.1"></a>
 ## [3.1.1](https://github.com/dimerapp/markdown/compare/v3.1.0...v3.1.1) (2018-09-03)
 
