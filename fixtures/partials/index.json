@@ -1,0 +1,25 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [{
+        "type": "text",
+        "value": "This is paragraph from partial"
+      }]
+    }
+  ]
+}

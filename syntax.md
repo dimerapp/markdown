@@ -138,7 +138,9 @@ With some text here
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "toc-container"
+        "className": [
+          "toc-container"
+        ]
       },
       "children": [
         {
@@ -240,7 +242,7 @@ With some text here
     <li>
         <p>item 1 This is nested p</p>
         <div class="dimer-highlight">
-            <pre class="line-numbers"><code>var a = require('a')
+            <pre class="language-text line-numbers"><code>var a = require('a')
 </code></pre>
         </div>
     </li>
@@ -282,7 +284,9 @@ With some text here
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "dimer-highlight"
+                "className": [
+                  "dimer-highlight"
+                ]
               },
               "children": [
                 {
@@ -290,6 +294,7 @@ With some text here
                   "tag": "pre",
                   "props": {
                     "className": [
+                      "language-text",
                       "line-numbers"
                     ]
                   },
@@ -482,7 +487,9 @@ a.run()
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "dimer-highlight"
+        "className": [
+          "dimer-highlight"
+        ]
       },
       "children": [
         {
@@ -491,6 +498,69 @@ a.run()
           "props": {
             "className": [
               "language-js",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "var a = require('a')\na.run()\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>codeblocks-no-lang</summary>
+<h3>Markdown</h3>
+
+````md
+```
+var a = require('a')
+a.run()
+```
+````
+
+<h3>Html</h3>
+
+```html
+<div class="dimer-highlight">
+    <pre class="language-text line-numbers"><code>var a = require('a')
+a.run()
+</code></pre>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "dimer-highlight"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-text",
               "line-numbers"
             ]
           },
@@ -1058,7 +1128,7 @@ var a = require('a')
 <blockquote>
     <p>Blockquote start</p>
     <div class="dimer-highlight">
-        <pre class="line-numbers"><code>var a = require('a')
+        <pre class="language-text line-numbers"><code>var a = require('a')
 </code></pre>
     </div>
 </blockquote>
@@ -1088,7 +1158,9 @@ var a = require('a')
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "dimer-highlight"
+            "className": [
+              "dimer-highlight"
+            ]
           },
           "children": [
             {
@@ -1096,6 +1168,7 @@ var a = require('a')
               "tag": "pre",
               "props": {
                 "className": [
+                  "language-text",
                   "line-numbers"
                 ]
               },
@@ -1461,7 +1534,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-note"
+          "alert",
+          "alert-note"
         ]
       },
       "children": [
@@ -1572,7 +1646,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-tip"
+          "alert",
+          "alert-tip"
         ]
       },
       "children": [
@@ -1683,7 +1758,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-warning"
+          "alert",
+          "alert-warning"
         ]
       },
       "children": [
@@ -1770,7 +1846,8 @@ Some text afterwards too
               "tag": "div",
               "props": {
                 "className": [
-                  "alert alert-note"
+                  "alert",
+                  "alert-note"
                 ]
               },
               "children": [
@@ -1806,7 +1883,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```html
-<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="410" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+<div class="codepen embed"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=410&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="410" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
 ```
 
 <h3>JSON</h3>
@@ -1818,7 +1895,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "embed codepen"
+          "codepen",
+          "embed"
         ]
       },
       "children": [
@@ -1854,7 +1932,7 @@ Some text afterwards too
 <h3>Html</h3>
 
 ```html
-<div class="embed codepen"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="200" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
+<div class="codepen embed"><iframe src="//codepen.io/ge1doot/embed/preview/vRJyVG?height=200&#x26;theme-id=light&#x26;default-tab=result&#x26;embed-version=2" height="200" scrolling="no" title="vRJyVG" frameborder="none" allowtransparency="true" allowfullscreen style="width: 100%;"></iframe></div>
 ```
 
 <h3>JSON</h3>
@@ -1866,7 +1944,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "embed codepen"
+          "codepen",
+          "embed"
         ]
       },
       "children": [
@@ -1947,7 +2026,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "embed youtube"
+          "embed",
+          "youtube"
         ]
       },
       "children": [
@@ -1992,7 +2072,8 @@ Some text afterwards too
       "tag": "div",
       "props": {
         "className": [
-          "embed youtube"
+          "embed",
+          "youtube"
         ]
       },
       "children": [
@@ -2109,14 +2190,18 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "collapsible"
+        "className": [
+          "collapsible"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "collapsible-toggle"
+            "className": [
+              "collapsible-toggle"
+            ]
           },
           "children": [
             {
@@ -2129,7 +2214,9 @@ Cname is the custom domain that you want to point to `subdomain.dimerapp.com`. L
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "collapsible-content"
+            "className": [
+              "collapsible-content"
+            ]
           },
           "children": [
             {
@@ -2247,7 +2334,9 @@ return a.foo()
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "dimer-highlight"
+        "className": [
+          "dimer-highlight"
+        ]
       },
       "children": [
         {
@@ -2309,14 +2398,18 @@ return a.foo()
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "dimer-highlight"
+        "className": [
+          "dimer-highlight"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "span",
           "props": {
-            "className": "filename"
+            "className": [
+              "filename"
+            ]
           },
           "children": [
             {
@@ -2405,14 +2498,18 @@ var b = require('b')
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "tabs"
+        "className": [
+          "tabs"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-head"
+            "className": [
+              "tab-head"
+            ]
           },
           "children": [
             {
@@ -2454,14 +2551,18 @@ var b = require('b')
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-body"
+            "className": [
+              "tab-body"
+            ]
           },
           "children": [
             {
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-1"
               },
               "children": [
@@ -2469,7 +2570,9 @@ var b = require('b')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
@@ -2503,7 +2606,9 @@ var b = require('b')
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-2"
               },
               "children": [
@@ -2511,7 +2616,9 @@ var b = require('b')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
@@ -2600,14 +2707,18 @@ var b = require('b')
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "tabs"
+        "className": [
+          "tabs"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-head"
+            "className": [
+              "tab-head"
+            ]
           },
           "children": [
             {
@@ -2649,14 +2760,18 @@ var b = require('b')
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-body"
+            "className": [
+              "tab-body"
+            ]
           },
           "children": [
             {
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-1"
               },
               "children": [
@@ -2664,14 +2779,18 @@ var b = require('b')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
                       "type": "element",
                       "tag": "span",
                       "props": {
-                        "className": "filename"
+                        "className": [
+                          "filename"
+                        ]
                       },
                       "children": [
                         {
@@ -2711,7 +2830,9 @@ var b = require('b')
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-2"
               },
               "children": [
@@ -2719,14 +2840,18 @@ var b = require('b')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
                       "type": "element",
                       "tag": "span",
                       "props": {
-                        "className": "filename"
+                        "className": [
+                          "filename"
+                        ]
                       },
                       "children": [
                         {
@@ -2794,7 +2919,7 @@ var a = require('a')
     <div class="tab-body">
         <div class="tab-item" id="tab-1">
             <div class="dimer-highlight">
-                <pre class="line-numbers"><code>var a = require('a')
+                <pre class="language-text line-numbers"><code>var a = require('a')
 </code></pre>
             </div>
         </div>
@@ -2810,14 +2935,18 @@ var a = require('a')
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "tabs"
+        "className": [
+          "tabs"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-head"
+            "className": [
+              "tab-head"
+            ]
           },
           "children": [
             {
@@ -2846,14 +2975,18 @@ var a = require('a')
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-body"
+            "className": [
+              "tab-body"
+            ]
           },
           "children": [
             {
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-1"
               },
               "children": [
@@ -2861,7 +2994,9 @@ var a = require('a')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
@@ -2869,6 +3004,7 @@ var a = require('a')
                       "tag": "pre",
                       "props": {
                         "className": [
+                          "language-text",
                           "line-numbers"
                         ]
                       },
@@ -2968,14 +3104,18 @@ var a = require('a')
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "tabs"
+        "className": [
+          "tabs"
+        ]
       },
       "children": [
         {
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-head"
+            "className": [
+              "tab-head"
+            ]
           },
           "children": [
             {
@@ -3004,14 +3144,18 @@ var a = require('a')
           "type": "element",
           "tag": "div",
           "props": {
-            "className": "tab-body"
+            "className": [
+              "tab-body"
+            ]
           },
           "children": [
             {
               "type": "element",
               "tag": "div",
               "props": {
-                "className": "tab-item",
+                "className": [
+                  "tab-item"
+                ],
                 "id": "tab-1"
               },
               "children": [
@@ -3048,14 +3192,18 @@ var a = require('a')
                   "type": "element",
                   "tag": "div",
                   "props": {
-                    "className": "dimer-highlight"
+                    "className": [
+                      "dimer-highlight"
+                    ]
                   },
                   "children": [
                     {
                       "type": "element",
                       "tag": "span",
                       "props": {
-                        "className": "filename"
+                        "className": [
+                          "filename"
+                        ]
                       },
                       "children": [
                         {
@@ -3194,7 +3342,9 @@ I expect toc after this paragraph
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "toc-container"
+        "className": [
+          "toc-container"
+        ]
       },
       "children": [
         {
@@ -3421,7 +3571,8 @@ I expect toc before this paragraph
       "tag": "div",
       "props": {
         "className": [
-          "alert alert-note"
+          "alert",
+          "alert-note"
         ]
       },
       "children": [
@@ -3442,7 +3593,9 @@ I expect toc before this paragraph
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "toc-container"
+        "className": [
+          "toc-container"
+        ]
       },
       "children": [
         {
@@ -3669,7 +3822,9 @@ I expect toc before this paragraph
       "type": "element",
       "tag": "div",
       "props": {
-        "className": "toc-container"
+        "className": [
+          "toc-container"
+        ]
       },
       "children": [
         {
@@ -3866,6 +4021,765 @@ Some content here
         {
           "type": "text",
           "value": "Some content here"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./partial.md"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<p>This is paragraph from partial</p>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is paragraph from partial"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>recursive-partials</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./partial.md"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<p>This is paragraph from partial</p>
+<p>This is paragraph from partial1</p>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is paragraph from partial"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is paragraph from partial1"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-bad-node</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./partial.md"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<p>Hello</p>
+<div>Unclosed macro: note</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Unclosed macro: note"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-parent-bad-node</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./partial.md"]
+
+[note]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<p>This is paragraph from partial</p>
+<div>Unclosed macro: note</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is paragraph from partial"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Unclosed macro: note"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-broken-ref</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./partial.md"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div>Broken partial reference ./partial.md</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "Broken partial reference ./partial.md"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-codeblock</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./user.json", codeblock="true"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div class="dimer-highlight">
+    <pre class="language-json line-numbers"><code>{
+  "username": "virk"
+}
+</code></pre>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "dimer-highlight"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-json",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-codeblock-language</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./user.json", codeblock="true", language="jsonb"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div class="dimer-highlight">
+    <pre class="language-jsonb line-numbers"><code>{
+  "username": "virk"
+}
+</code></pre>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "dimer-highlight"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-jsonb",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-codeblock-linehighlight</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./user.json", codeblock="true", lineHighlight="1-3"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div class="dimer-highlight">
+    <pre class="language-json line-numbers" data-line="1-3"><code>{
+  "username": "virk"
+}
+</code></pre>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "dimer-highlight"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-json",
+              "line-numbers"
+            ],
+            "dataLine": "1-3"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-codeblock-displayname</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[include path="./user.json", codeblock="true", displayName="response"]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div class="dimer-highlight"><span class="filename">response</span>
+    <pre class="language-json line-numbers"><code>{
+  "username": "virk"
+}
+</code></pre>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "dimer-highlight"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "props": {
+            "className": [
+              "filename"
+            ]
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "response"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "pre",
+          "props": {
+            "className": [
+              "language-json",
+              "line-numbers"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "code",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>partials-codeblock-codegroup</summary>
+<h3>Markdown</h3>
+
+````md
+This is a paragraph
+
+[codegroup]
+
+[include path="./user.json", codeblock="true", displayName="response"]
+
+[/codegroup]
+````
+
+<h3>Html</h3>
+
+```html
+<p>This is a paragraph</p>
+<div class="tabs">
+    <div class="tab-head">
+        <ul>
+            <li data-title="tab-1">response</li>
+        </ul>
+    </div>
+    <div class="tab-body">
+        <div class="tab-item" id="tab-1">
+            <div class="dimer-highlight"><span class="filename">response</span>
+                <pre class="language-json line-numbers"><code>{
+  "username": "virk"
+}
+</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "p",
+      "props": {},
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "tabs"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": [
+              "tab-head"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "dataTitle": "tab-1"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "response"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "props": {
+            "className": [
+              "tab-body"
+            ]
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "tab-item"
+                ],
+                "id": "tab-1"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "dimer-highlight"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "filename"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "response"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "language-json",
+                          "line-numbers"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "{\n  \"username\": \"virk\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

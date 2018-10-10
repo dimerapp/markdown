@@ -15,4 +15,5 @@ module.exports = function (macro) {
   require('./tip')(macro)
   require('./warn')(macro)
   require('./youtube')(macro)
+  require('./include')(macro)
 }

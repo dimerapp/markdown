@@ -13,6 +13,8 @@ const test = require('japa')
 const dedent = require('dedent')
 const { EOL } = require('os')
 
+const namesToIgnore = ['partials-bad-node', 'partials-parent-bad-node', 'partials-broken-ref']
+
 const Markdown = require('..')
 const fixtures = require('../fixtures')
 
@@ -20,12 +22,31 @@ test.group('Markdown', () => {
   for (let name in fixtures) {
     const fixture = fixtures[name]
 
-    test(`assert ${name}`, async (assert) => {
-      const md = new Markdown(fixture.in)
-      const file = await md.toHTML()
-      const jsonFile = await md.toJSON()
-      assert.equal(file.toString(), fixture.out.trim().split(EOL).join('\n'))
+    const testFn = process.env.APPVEYOR && namesToIgnore.indexOf(name) > -1 ? test.skip : test
+
+    testFn(`assert ${name}`, async (assert) => {
+      const file = await new Markdown(fixture.in).toHTML()
+      const jsonFile = await new Markdown(fixture.inJSON).toJSON()
+
+      assert.equal(file.toString().trim().split(EOL).join('\n'), fixture.out.trim().split(EOL).join('\n'))
       assert.deepEqual(jsonFile.contents, fixture.json)
+
+      if (fixture.messages) {
+        assert.deepEqual(fixture.messages, file.messages.map((message) => {
+          return {
+            name: message.name,
+            reason: message.reason,
+            line: message.line,
+            column: message.column,
+            ruleId: message.ruleId,
+            fatal: message.fatal,
+            message: message.message,
+            location: message.location,
+            file: message.file,
+            source: message.source
+          }
+        }))
+      }
     })
   }
 

@@ -11,6 +11,7 @@
 
 const path = require('path')
 const fs = require('fs')
+const vfile = require('vfile')
 
 const fixtures = [
   'paragraphs',
@@ -51,14 +52,41 @@ const fixtures = [
   'toc',
   'toc-shifted-paragraph',
   'toc-missing-paragraph',
-  'toc-no-title'
+  'toc-no-title',
+  'partials',
+  'recursive-partials',
+  'partials-bad-node',
+  'partials-parent-bad-node',
+  'partials-broken-ref',
+  'partials-codeblock',
+  'partials-codeblock-language',
+  'partials-codeblock-linehighlight',
+  'partials-codeblock-displayname',
+  'partials-codeblock-codegroup'
 ]
 
 module.exports = fixtures.reduce((result, name) => {
+  let messages = null
+  try {
+    messages = JSON.parse(fs.readFileSync(path.join(__dirname, name, 'messages.json'), 'utf-8')).map((message) => {
+      message.name = `${path.join(__dirname, name)}/${message.name}`
+      message.file = `${path.join(__dirname, name)}/${message.file}`
+      return message
+    })
+  } catch (error) {}
+
   result[name] = {
-    in: fs.readFileSync(path.join(__dirname, name, 'index.md'), 'utf-8'),
+    in: vfile({
+      path: path.join(__dirname, name, 'index.md'),
+      contents: fs.readFileSync(path.join(__dirname, name, 'index.md'), 'utf-8')
+    }),
+    inJSON: vfile({
+      path: path.join(__dirname, name, 'index.md'),
+      contents: fs.readFileSync(path.join(__dirname, name, 'index.md'), 'utf-8')
+    }),
     out: fs.readFileSync(path.join(__dirname, name, 'index.html'), 'utf-8'),
-    json: JSON.parse(fs.readFileSync(path.join(__dirname, name, 'index.json'), 'utf-8'))
+    json: JSON.parse(fs.readFileSync(path.join(__dirname, name, 'index.json'), 'utf-8')),
+    messages: messages
   }
   return result
 }, {})
