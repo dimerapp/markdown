@@ -24,7 +24,7 @@ test.group('Markdown', () => {
       const file = await new Markdown(fixture.in).toHTML()
       const jsonFile = await new Markdown(fixture.inJSON).toJSON()
 
-      assert.equal(file.toString(), fixture.out.trim().split(EOL).join('\n'))
+      assert.equal(file.toString().trim().split(EOL).join('\n'), fixture.out.trim().split(EOL).join('\n'))
       assert.deepEqual(jsonFile.contents, fixture.json)
 
       if (fixture.messages) {
