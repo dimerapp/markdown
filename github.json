@@ -102,7 +102,9 @@
     "span",
     "strike",
     "summary",
-    "details"
+    "details",
+    "video",
+    "source"
   ],
   "attributes": {
     "a": [
@@ -144,6 +146,17 @@
     ],
     "pre": [
       "dataLine"
+    ],
+    "video": [
+      "controls",
+      "autoplay",
+      "loop",
+      "poster",
+      "preload"
+    ],
+    "source": [
+      "src",
+      "type"
     ],
     "*": [
       "abbr",

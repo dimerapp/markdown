@@ -62,7 +62,9 @@ const fixtures = [
   'partials-codeblock-language',
   'partials-codeblock-linehighlight',
   'partials-codeblock-displayname',
-  'partials-codeblock-codegroup'
+  'partials-codeblock-codegroup',
+  'video',
+  'video-attributes'
 ]
 
 module.exports = fixtures.reduce((result, name) => {
