@@ -1,3 +1,13 @@
+## [3.2.1](https://github.com/dimerapp/markdown/compare/v3.2.0...v3.2.1) (2020-01-27)
+
+
+### Features
+
+* add support for defining pre-callback urls ([17eba43](https://github.com/dimerapp/markdown/commit/17eba4318b1429091fdd9fe847eca55b3e135c10))
+* add support for vide macro ([1717bb9](https://github.com/dimerapp/markdown/commit/1717bb9432e8de4cdefe5a0ed41abf7db128dc12))
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/dimerapp/markdown/compare/v3.1.2...v3.2.0) (2018-10-10)
 
