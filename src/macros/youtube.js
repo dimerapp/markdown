@@ -28,7 +28,7 @@ module.exports = function (macro) {
 
     let videoId = null
 
-    const parsedUrl = urlParser.parse(url)
+    const parsedUrl = new urlParser.parse(url)
 
     if (parsedUrl.hostname === 'youtu.be') {
       videoId = parsedUrl.pathname.replace(/^\//, '')

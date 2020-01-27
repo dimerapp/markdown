@@ -19,7 +19,7 @@ const Markdown = require('..')
 const fixtures = require('../fixtures')
 
 test.group('Markdown', () => {
-  for (let name in fixtures) {
+  for (const name in fixtures) {
     const fixture = fixtures[name]
 
     const testFn = process.env.APPVEYOR && namesToIgnore.indexOf(name) > -1 ? test.skip : test
@@ -401,5 +401,18 @@ test.group('Markdown', () => {
     const md = new Markdown(markdown, {})
     const html = await md.toHTML()
     assert.equal(html.contents, '<button class="button">I am a button</button>')
+  })
+
+  test('call beforeCompile callbacks', async (assert) => {
+    const markdown = dedent`
+    [button text="I am a button"]
+    `
+
+    const md = new Markdown(markdown, {})
+    Markdown.beforeCompile((__md) => {
+      assert.instanceOf(__md, Markdown)
+      assert.deepEqual(md, __md)
+    })
+    await md.toHTML()
   })
 })

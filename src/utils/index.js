@@ -82,7 +82,7 @@ utils.ensureDomainUrl = function ensureDomainUrl (url, macroName, fromDomains) {
   const matched = fromDomains.find((domain) => url.indexOf(domain) > -1)
 
   if (!matched) {
-    return `invalid url domain`
+    return 'invalid url domain'
   }
 }
 
