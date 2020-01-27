@@ -4316,9 +4316,7 @@ This is a paragraph
 ```html
 <p>This is a paragraph</p>
 <div class="dimer-highlight">
-    <pre class="language-json line-numbers"><code>{
-  "username": "virk"
-}
+    <pre class="language-json line-numbers"><code>{ "username": "virk" }
 </code></pre>
 </div>
 ```
@@ -4364,7 +4362,7 @@ This is a paragraph
               "children": [
                 {
                   "type": "text",
-                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                  "value": "{ \"username\": \"virk\" }\n"
                 }
               ]
             }
@@ -4391,9 +4389,7 @@ This is a paragraph
 ```html
 <p>This is a paragraph</p>
 <div class="dimer-highlight">
-    <pre class="language-jsonb line-numbers"><code>{
-  "username": "virk"
-}
+    <pre class="language-jsonb line-numbers"><code>{ "username": "virk" }
 </code></pre>
 </div>
 ```
@@ -4439,7 +4435,7 @@ This is a paragraph
               "children": [
                 {
                   "type": "text",
-                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                  "value": "{ \"username\": \"virk\" }\n"
                 }
               ]
             }
@@ -4466,9 +4462,7 @@ This is a paragraph
 ```html
 <p>This is a paragraph</p>
 <div class="dimer-highlight">
-    <pre class="language-json line-numbers" data-line="1-3"><code>{
-  "username": "virk"
-}
+    <pre class="language-json line-numbers" data-line="1-3"><code>{ "username": "virk" }
 </code></pre>
 </div>
 ```
@@ -4515,7 +4509,7 @@ This is a paragraph
               "children": [
                 {
                   "type": "text",
-                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                  "value": "{ \"username\": \"virk\" }\n"
                 }
               ]
             }
@@ -4542,9 +4536,7 @@ This is a paragraph
 ```html
 <p>This is a paragraph</p>
 <div class="dimer-highlight"><span class="filename">response</span>
-    <pre class="language-json line-numbers"><code>{
-  "username": "virk"
-}
+    <pre class="language-json line-numbers"><code>{ "username": "virk" }
 </code></pre>
 </div>
 ```
@@ -4605,7 +4597,7 @@ This is a paragraph
               "children": [
                 {
                   "type": "text",
-                  "value": "{\n  \"username\": \"virk\"\n}\n"
+                  "value": "{ \"username\": \"virk\" }\n"
                 }
               ]
             }
@@ -4644,9 +4636,7 @@ This is a paragraph
     <div class="tab-body">
         <div class="tab-item" id="tab-1">
             <div class="dimer-highlight"><span class="filename">response</span>
-                <pre class="language-json line-numbers"><code>{
-  "username": "virk"
-}
+                <pre class="language-json line-numbers"><code>{ "username": "virk" }
 </code></pre>
             </div>
         </div>
@@ -4769,7 +4759,7 @@ This is a paragraph
                           "children": [
                             {
                               "type": "text",
-                              "value": "{\n  \"username\": \"virk\"\n}\n"
+                              "value": "{ \"username\": \"virk\" }\n"
                             }
                           ]
                         }
@@ -4778,6 +4768,111 @@ This is a paragraph
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>video</summary>
+<h3>Markdown</h3>
+
+````md
+[video url="https://www.youtube.com/watch?v=xKwHGewa9Fg"]
+````
+
+<h3>Html</h3>
+
+```html
+<div class="embed video"><video>
+        <source src="https://www.youtube.com/watch?v=xKwHGewa9Fg" type="video/mp4"></video></div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed",
+          "video"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "video",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "source",
+              "props": {
+                "src": "https://www.youtube.com/watch?v=xKwHGewa9Fg",
+                "type": "video/mp4"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+</details>
+<details>
+<summary>video-attributes</summary>
+<h3>Markdown</h3>
+
+````md
+[video url="https://www.youtube.com/watch?v=xKwHGewa9Fg", autoplay, poster="foo.jpg"]
+````
+
+<h3>Html</h3>
+
+```html
+<div class="embed video"><video poster="foo.jpg" autoplay>
+        <source src="https://www.youtube.com/watch?v=xKwHGewa9Fg" type="video/mp4"></video></div>
+```
+
+<h3>JSON</h3>
+<pre><code>{
+  "type": "root",
+  "children": [
+    {
+      "type": "element",
+      "tag": "div",
+      "props": {
+        "className": [
+          "embed",
+          "video"
+        ]
+      },
+      "children": [
+        {
+          "type": "element",
+          "tag": "video",
+          "props": {
+            "autoplay": true,
+            "poster": "foo.jpg"
+          },
+          "children": [
+            {
+              "type": "element",
+              "tag": "source",
+              "props": {
+                "src": "https://www.youtube.com/watch?v=xKwHGewa9Fg",
+                "type": "video/mp4"
+              },
+              "children": []
             }
           ]
         }

@@ -31,6 +31,8 @@ require('./src/macros')(macroEngine)
  * @class MarkdownProcessor
  */
 class MarkdownProcessor {
+  static compileHooks = []
+
   constructor (markdown, options) {
     this.markdown = markdown
 
@@ -40,6 +42,14 @@ class MarkdownProcessor {
     }
 
     this.options = options || {}
+  }
+
+  /**
+   * Define callbacks to be invoked before the markdown
+   * document is compiled
+   */
+  static beforeCompile (callback) {
+    this.compileHooks.push(callback)
   }
 
   /**
@@ -64,6 +74,12 @@ class MarkdownProcessor {
    * @return {Object}
    */
   getStream () {
+    this.constructor.compileHooks.forEach((callback) => {
+      if (typeof (callback) === 'function') {
+        callback(this)
+      }
+    })
+
     return unified()
       .use(markdown)
       .use(title, this.options)

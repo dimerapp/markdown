@@ -37,7 +37,7 @@ ${beautifyHtml(outCode)}
 
 let syntaxFile = '# Dimer syntax file \n'
 
-for (let name in fixtures) {
+for (const name in fixtures) {
   const fixture = fixtures[name]
   syntaxFile += `${block(name, fixture.in, fixture.out, fixture.json)}\n`
 }

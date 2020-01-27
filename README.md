@@ -151,6 +151,13 @@ Also, you can tell the include block to include the file inside `codeblocks`. Th
 - **lineHighlight (valid when codeblock=true)** The lines to highlight inside the source block.
 - **displayName (valid when codeblock=true)** The name of the tab when include is inside a `codegroup`.
 
+#### video (inline)
+Embed a video using the source url. Do not, videos are not part of assets detection.
+
+```md
+[video url="https://somevideo.mp4", autoplay, controls]
+```
+
 
 ## Adding new macro
 You can also add your own macros as follows. 

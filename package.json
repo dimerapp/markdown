@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Convert Markdown to HTML and JSON",
   "main": "index.js",
   "files": [
@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
-    "pretest": "npm run lint",
     "test": "node japaFile.js",
     "commit": "git-cz",
     "lint": "standard"
@@ -48,7 +47,7 @@
     "js-beautify": "^1.8.6",
     "mrm": "^1.2.1",
     "pkg-ok": "^2.3.1",
-    "standard": "^12.0.1",
+    "standard": "^14.3.1",
     "vfile": "^3.0.0",
     "yorkie": "^2.0.0"
   },

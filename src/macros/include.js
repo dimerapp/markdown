@@ -25,12 +25,12 @@ function wrapAsCodeBlock (props, content, partialPath) {
   /**
    * Add the lineHighlight when exists
    */
-  prefix += props.lineHighlight ? `{${props.lineHighlight}}` : `{}`
+  prefix += props.lineHighlight ? `{${props.lineHighlight}}` : '{}'
 
   /**
    * Add the displayName when exists
    */
-  prefix += props.displayName ? `{${props.displayName}}` : `{}`
+  prefix += props.displayName ? `{${props.displayName}}` : '{}'
 
   /**
    * Wrap content inside prefix and end with the codeblock

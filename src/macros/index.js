@@ -16,4 +16,5 @@ module.exports = function (macro) {
   require('./warn')(macro)
   require('./youtube')(macro)
   require('./include')(macro)
+  require('./video')(macro)
 }
