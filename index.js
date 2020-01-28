@@ -31,8 +31,6 @@ require('./src/macros')(macroEngine)
  * @class MarkdownProcessor
  */
 class MarkdownProcessor {
-  static compileHooks = []
-
   constructor (markdown, options) {
     this.markdown = markdown
 
@@ -139,4 +137,5 @@ class MarkdownProcessor {
   }
 }
 
+MarkdownProcessor.compileHooks = []
 module.exports = MarkdownProcessor
