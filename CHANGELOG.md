@@ -1,3 +1,12 @@
+## [3.2.2](https://github.com/dimerapp/markdown/compare/v3.2.1...v3.2.2) (2020-01-28)
+
+
+### Bug Fixes
+
+* remove static property from class to be backward compatible ([ee7ac80](https://github.com/dimerapp/markdown/commit/ee7ac80d0402b2e468b5139868a10deba69055a4))
+
+
+
 ## [3.2.1](https://github.com/dimerapp/markdown/compare/v3.2.0...v3.2.1) (2020-01-27)
 
 
