@@ -7,12 +7,14 @@
  * file that was distributed with this source code.
  */
 
-import type { Content } from 'mdast'
+import type * as hastTypes from 'hast'
+import type * as mdastTypes from 'mdast'
 import { VFileMessage } from 'vfile-message'
 import type { Node, Position, Point } from 'unist'
-import type { Root, Parent, Element, Text } from 'hast'
 
-export { Node, Position, Point, Root, Parent, Element, Text }
+export { Node, Position, Point }
+export { hastTypes }
+export { mdastTypes }
 
 /**
  * Shape of the collected reference
@@ -44,7 +46,7 @@ export interface TextDirective extends Node {
 	name: string
 	type: 'textDirective'
 	attributes: { [key: string]: string }
-	children: (Content | Directives)[]
+	children: (mdastTypes.Content | Directives)[]
 }
 
 /**
@@ -54,7 +56,7 @@ export interface LeafDirective extends Node {
 	name: string
 	type: 'leafDirective'
 	attributes: { [key: string]: string }
-	children: (Content | Directives)[]
+	children: (mdastTypes.Content | Directives)[]
 }
 
 /**
@@ -64,7 +66,7 @@ export interface ContainerDirective extends Node {
 	name: string
 	type: 'containerDirective'
 	attributes: { [key: string]: string }
-	children: (Content | Directives)[]
+	children: (mdastTypes.Content | Directives)[]
 }
 
 /**
@@ -85,13 +87,13 @@ export interface MarkdownFileOptions {
 export interface MarkdownFileJson {
 	state: 'idle' | 'processing' | 'processed'
 	stats: StatsNode
-	ast?: Root
-	summary?: Root
+	ast?: hastTypes.Root
+	summary?: hastTypes.Root
 	excerpt?: string
 	frontmatter: { [key: string]: any }
 	messages: VFileMessage[]
 	filePath?: string
 	dirname?: string
 	basename?: string
-	toc?: Parent
+	toc?: hastTypes.Parent
 }

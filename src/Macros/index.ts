@@ -56,7 +56,7 @@ export class Macros {
 				 * Execute macro function if defined
 				 */
 				const macroFn = this.macros.get(node.name)
-				if (typeof macroFn !== 'function') {
+				if (typeof macroFn !== 'function' || node.data?.isMacro === false) {
 					const hastNode = this.file.hastFactory(node.name, node.attributes)
 					node.data = node.data || {}
 					node.data.hName = hastNode.tagName

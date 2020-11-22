@@ -60,3 +60,38 @@ export function toHtml(file: MarkdownFile) {
 
 	return output
 }
+
+/**
+ * Validates the url property accepted by macros
+ */
+export function ensureDomainUrl(url: string | null, macroName: string, fromDomains: string[]) {
+	if (!url) {
+		return `"${macroName}" needs a url prop to be functional`
+	}
+
+	fromDomains = Array.isArray(fromDomains) ? fromDomains : [fromDomains]
+	const matched = fromDomains.find((domain) => url.indexOf(domain) > -1)
+
+	if (!matched) {
+		return `Invalid url domain. Must be one of "${fromDomains.join(', ')}"`
+	}
+}
+
+/**
+ * Object builder to conditionally add properties to the
+ * object
+ */
+export class ObjectBuilder {
+	private state: any = {}
+
+	public add(key: string, value: any) {
+		if (value === undefined || value === null) {
+			return
+		}
+		this.state[key] = value
+	}
+
+	public toJSON() {
+		return this.state
+	}
+}

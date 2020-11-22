@@ -37,13 +37,11 @@ import remarkToRehype from 'remark-rehype'
  * Local imports
  */
 import {
-	Root,
-	Image,
 	Point,
-	Element,
-	Content,
 	Position,
 	StatsNode,
+	hastTypes,
+	mdastTypes,
 	ReferenceNode,
 	LeafDirective,
 	TextDirective,
@@ -75,8 +73,8 @@ export class MarkdownFile {
 	 * Registered hooks
 	 */
 	private hooks: {
-		test: string | ((node: Content, file: MarkdownFile) => boolean)
-		visitor: (node: Content, file: MarkdownFile) => void
+		test: string | ((node: mdastTypes.Content, file: MarkdownFile) => boolean)
+		visitor: (node: mdastTypes.Content, file: MarkdownFile) => void
 	}[] = []
 
 	/**
@@ -114,7 +112,7 @@ export class MarkdownFile {
 	/**
 	 * Reference to the document table of content. Only available when "options.generateToc = true"
 	 */
-	public toc: Element | null
+	public toc: hastTypes.Element | null
 
 	/**
 	 * Find if a document has a fatal message or not
@@ -139,12 +137,12 @@ export class MarkdownFile {
 	/**
 	 * Processed markdown summary to AST.
 	 */
-	public summary?: Root
+	public summary?: hastTypes.Root
 
 	/**
 	 * Parsed AST. Available after "process" call
 	 */
-	public ast?: Root
+	public ast?: hastTypes.Root
 
 	/**
 	 * A factory function to create hash script node
@@ -212,7 +210,7 @@ export class MarkdownFile {
 	/**
 	 * Returns the matching hooks for a given node
 	 */
-	private getNodeHooks(node: Content) {
+	private getNodeHooks(node: mdastTypes.Content) {
 		return this.hooks.filter((hook) => {
 			if (typeof hook.test === 'function') {
 				return hook.test(node, this)
@@ -234,7 +232,7 @@ export class MarkdownFile {
 
 		return stream.use(() => {
 			return (tree) => {
-				visit(tree, (node: Content) => {
+				visit(tree, (node: mdastTypes.Content) => {
 					this.getNodeHooks(node).forEach((hook) => hook.visitor(node, this))
 				})
 			}
@@ -273,7 +271,7 @@ export class MarkdownFile {
 					 */
 					const toc = mdastToc(tree, { maxDepth: this.options.tocDepth || 3 }).map
 					if (toc) {
-						this.toc = toHast(toc) as Element
+						this.toc = toHast(toc) as hastTypes.Element
 					}
 				}
 			})
@@ -283,7 +281,7 @@ export class MarkdownFile {
 		 * Collect assets
 		 */
 		if (this.options.collectAssets === true) {
-			this.on('image', (node: Image) => {
+			this.on('image', (node: mdastTypes.Image) => {
 				this.addAsset(node.url, 'image')
 			})
 		}
@@ -309,7 +307,7 @@ export class MarkdownFile {
 		 */
 		this.useCompiler(stream)
 
-		this.ast = (await stream.process(this.contents)).result as Root
+		this.ast = (await stream.process(this.contents)).result as hastTypes.Root
 	}
 
 	/**
@@ -338,7 +336,7 @@ export class MarkdownFile {
 		/**
 		 * Get summary and its plain text excerpt
 		 */
-		this.summary = (await stream.process(this.frontmatter.summary)).result as Root
+		this.summary = (await stream.process(this.frontmatter.summary)).result as hastTypes.Root
 		this.excerpt = toString(this.summary)
 	}
 
@@ -400,8 +398,8 @@ export class MarkdownFile {
 	 * Hook into link node
 	 */
 	public on(
-		test: string | ((node: Content, file: this) => boolean),
-		cb: (node: Content, file: this) => void
+		test: string | ((node: mdastTypes.Content, file: this) => boolean),
+		cb: (node: mdastTypes.Content, file: this) => void
 	): this {
 		this.hooks.push({ test, visitor: cb })
 		return this

@@ -10,3 +10,4 @@
 export * from './src/Contracts'
 export { toHtml } from './src/utils'
 export { MarkdownFile } from './src/MarkdownFile'
+export * as macros from './src/Macros/Collection'
