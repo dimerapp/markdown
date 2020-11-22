@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "description": "A markdown process",
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
@@ -108,9 +108,9 @@
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
     "vfile-message": "^2.0.4"
-	},
-	"publishConfig": {
-		"access": "public",
-		"tag": "next"
-	}
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  }
 }
