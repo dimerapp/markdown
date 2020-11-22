@@ -9,7 +9,7 @@
 
 import test from 'japa'
 import dedent from 'ts-dedent'
-import { ListItem } from '../src/Contracts'
+import { mdastTypes } from '../src/Contracts'
 import { MarkdownFile } from '../src/MarkdownFile'
 
 test.group('Markdown', () => {
@@ -897,7 +897,7 @@ test.group('Markdown hooks', () => {
 		`
 
 		const md = new MarkdownFile(contents, { collectAssets: true })
-		md.on('listItem', (node: ListItem, file) => {
+		md.on('listItem', (node: mdastTypes.ListItem, file) => {
 			assert.equal(node.type, 'listItem')
 			if (node.checked === null) {
 				return
@@ -935,7 +935,7 @@ test.group('Markdown hooks', () => {
 		`
 
 		const md = new MarkdownFile(contents, { collectAssets: true })
-		md.on('listItem', (node: ListItem, file) => {
+		md.on('listItem', (node: mdastTypes.ListItem, file) => {
 			assert.equal(node.type, 'listItem')
 			if (node.checked === null) {
 				return
@@ -949,7 +949,7 @@ test.group('Markdown hooks', () => {
 			}
 		})
 
-		md.on('listItem', (node: ListItem, file) => {
+		md.on('listItem', (node: mdastTypes.ListItem, file) => {
 			assert.equal(node.type, 'listItem')
 			file.stats.listItems = file.stats.listItems || 0
 			file.stats.listItems++
@@ -984,7 +984,7 @@ test.group('Markdown hooks', () => {
 			(node) => {
 				return node.type === 'listItem' && node.checked !== null
 			},
-			(node: ListItem, file) => {
+			(node: mdastTypes.ListItem, file) => {
 				assert.equal(node.type, 'listItem')
 
 				file.stats.todo = file.stats.todo || { total: 0, completed: 0 }
@@ -1000,7 +1000,7 @@ test.group('Markdown hooks', () => {
 			(node) => {
 				return node.type === 'listItem'
 			},
-			(node: ListItem, file) => {
+			(node: mdastTypes.ListItem, file) => {
 				assert.equal(node.type, 'listItem')
 				file.stats.listItems = file.stats.listItems || 0
 				file.stats.listItems++
