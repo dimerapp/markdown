@@ -23,7 +23,7 @@ test.group('Youtube', () => {
 		await file.process()
 
 		assert.lengthOf(file.messages, 1)
-		assert.equal(file.messages[0].reason, 'Missing url prop on youtube macro')
+		assert.equal(file.messages[0].reason, '"youtube" macro needs a url prop to be functional')
 
 		assert.deepEqual(file.ast!, {
 			type: 'root',
@@ -43,7 +43,7 @@ test.group('Youtube', () => {
 		assert.lengthOf(file.messages, 1)
 		assert.equal(
 			file.messages[0].reason,
-			'Invalid url domain. Must be one of youtube.com/watch,youtu.be'
+			'Invalid url domain. Must be one of "youtube.com/watch, youtu.be"'
 		)
 
 		assert.deepEqual(file.ast!, {
@@ -62,7 +62,7 @@ test.group('Youtube', () => {
 		await file.process()
 
 		assert.lengthOf(file.messages, 1)
-		assert.equal(file.messages[0].reason, 'Invalid youtube url. Copy url from the address bar')
+		assert.equal(file.messages[0].reason, 'Invalid youtube url. Copy the url from the address bar')
 
 		assert.deepEqual(file.ast!, {
 			type: 'root',
@@ -80,7 +80,7 @@ test.group('Youtube', () => {
 		await file.process()
 
 		assert.lengthOf(file.messages, 1)
-		assert.equal(file.messages[0].reason, 'Invalid youtube url. Copy url from the address bar')
+		assert.equal(file.messages[0].reason, 'Invalid youtube url. Copy the url from the address bar')
 
 		assert.deepEqual(file.ast!, {
 			type: 'root',

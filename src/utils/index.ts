@@ -66,7 +66,7 @@ export function toHtml(file: MarkdownFile) {
  */
 export function ensureDomainUrl(url: string | null, macroName: string, fromDomains: string[]) {
 	if (!url) {
-		return `"${macroName}" needs a url prop to be functional`
+		return `"${macroName}" macro needs a url prop to be functional`
 	}
 
 	fromDomains = Array.isArray(fromDomains) ? fromDomains : [fromDomains]

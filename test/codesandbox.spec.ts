@@ -23,7 +23,7 @@ test.group('Codesandbox', () => {
 		await file.process()
 
 		assert.lengthOf(file.messages, 1)
-		assert.equal(file.messages[0].reason, '"codesandbox" needs a url prop to be functional')
+		assert.equal(file.messages[0].reason, '"codesandbox" macro needs a url prop to be functional')
 
 		assert.deepEqual(file.ast!, {
 			type: 'root',
@@ -73,7 +73,7 @@ test.group('Codesandbox', () => {
 							tagName: 'iframe',
 							properties: {
 								src: `https://codesandbox.io/embed/github/adonisjs/adonis-starter-codesandbox/tree/master/`,
-								style: 'width:100%; height:500; border:0; border-radius: 4px; overflow:hidden;',
+								style: 'width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;',
 								allow:
 									'accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking',
 								sandbox: [
@@ -117,7 +117,7 @@ test.group('Codesandbox', () => {
 							tagName: 'iframe',
 							properties: {
 								src: `https://codesandbox.io/embed/github/adonisjs/adonis-starter-codesandbox/tree/master/?codemirror=1`,
-								style: 'width:100%; height:500; border:0; border-radius: 4px; overflow:hidden;',
+								style: 'width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;',
 								allow:
 									'accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking',
 								sandbox: [
