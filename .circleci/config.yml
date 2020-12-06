@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:12.18.2
     working_directory: ~/app
     environment:
-    	HUSKY: 0
+      HUSKY: 0
     steps:
       - checkout
       - restore_cache:
@@ -23,7 +23,7 @@ jobs:
       - image: circleci/node:latest
     working_directory: ~/app
     environment:
-    	HUSKY: 0
+      HUSKY: 0
     steps:
       - checkout
       - restore_cache:
