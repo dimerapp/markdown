@@ -13,9 +13,11 @@ import { VFileMessage } from 'vfile-message'
 import type { Node, Position, Point } from 'unist'
 
 export type Code = mdastTypes.Code & {
-	lang: null | string
-	lineHighlights: null | number[]
-	fileName: null | string
+	meta: {
+		lang: null | string
+		lineHighlights: null | number[]
+		fileName: null | string
+	}
 }
 
 export { Node, Position, Point }
