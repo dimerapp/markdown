@@ -4,15 +4,17 @@ jobs:
     docker:
       - image: circleci/node:12.18.2
     working_directory: ~/app
-    environment:
-      HUSKY: 0
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm install
+      - run:
+          name: Npm install
+          command: npm install
+          environment:
+            HUSKY: 0
       - save_cache:
           paths:
             - node_modules
@@ -22,15 +24,17 @@ jobs:
     docker:
       - image: circleci/node:latest
     working_directory: ~/app
-    environment:
-      HUSKY: 0
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm install
+      - run:
+          name: Npm install
+          command: npm install
+          environment:
+            HUSKY: 0
       - save_cache:
           paths:
             - node_modules
