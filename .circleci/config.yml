@@ -1,6 +1,6 @@
-version: 2.1
+version: 2
 jobs:
-  build_12_18_2:
+  build_12.18.2:
     docker:
       - image: circleci/node:12.18.2
     working_directory: ~/app
@@ -14,7 +14,7 @@ jobs:
           name: Npm install
           command: npm install
           environment:
-            HUSKY: 0
+            HUSKY_SKIP_INSTALL: 1
       - save_cache:
           paths:
             - node_modules
@@ -34,15 +34,15 @@ jobs:
           name: Npm install
           command: npm install
           environment:
-            HUSKY: 0
+            HUSKY_SKIP_INSTALL: 1
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 workflows:
-  version: 2.1
+  version: 2
   workflow:
     jobs:
-      - build_12_18_2
+      - build_12.18.2
       - build_latest
