@@ -9,6 +9,7 @@
 
 import test from 'japa'
 import dedent from 'ts-dedent'
+import visit from 'unist-util-visit'
 import { mdastTypes } from '../src/Contracts'
 import { MarkdownFile } from '../src/MarkdownFile'
 
@@ -1060,5 +1061,86 @@ test.group('Markdown toc', () => {
 		await md.process()
 
 		assert.equal(md.toc?.tagName, 'ul')
+	})
+})
+
+test.group('Markdown code', () => {
+	test('parse thematic block', async (assert) => {
+		assert.plan(1)
+		const contents = ['Hello', '```js', `const a = require('a')`, '```'].join('\n')
+
+		const md = new MarkdownFile(contents, { generateToc: true })
+		md.transform(() => {
+			return function (tree) {
+				visit(tree, 'code', (node) => {
+					assert.deepEqual(node.lang, 'js')
+				})
+			}
+		})
+
+		await md.process()
+	})
+
+	test('parse thematic block with line highlights', async (assert) => {
+		assert.plan(2)
+		const contents = ['Hello', '```js{1-3,4-6}', `const a = require('a')`, '```'].join('\n')
+
+		const md = new MarkdownFile(contents, { generateToc: true })
+		md.transform(() => {
+			return function (tree) {
+				visit(tree, 'code', (node) => {
+					assert.deepEqual(node.lang, 'js')
+					assert.deepEqual(node.meta, {
+						lang: 'js',
+						lineHighlights: [1, 2, 3, 4, 5, 6],
+						fileName: null,
+					})
+				})
+			}
+		})
+
+		await md.process()
+	})
+
+	test('parse thematic block with filename', async (assert) => {
+		assert.plan(2)
+		const contents = ['Hello', '```js{}{hello.ts}', `const a = require('a')`, '```'].join('\n')
+
+		const md = new MarkdownFile(contents, { generateToc: true })
+		md.transform(() => {
+			return function (tree) {
+				visit(tree, 'code', (node) => {
+					assert.deepEqual(node.lang, 'js')
+					assert.deepEqual(node.meta, {
+						lang: 'js',
+						lineHighlights: [],
+						fileName: 'hello.ts',
+					})
+				})
+			}
+		})
+
+		await md.process()
+	})
+
+	test('parse thematic block without language', async (assert) => {
+		assert.plan(2)
+		const contents = ['Hello', '```', `const a = require('a')`, '```'].join('\n')
+
+		const md = new MarkdownFile(contents, { generateToc: true })
+		md.transform(() => {
+			return function (tree) {
+				visit(tree, 'code', (node) => {
+					assert.isNull(node.lang)
+					assert.deepEqual(node.meta, {
+						lang: null,
+						lineHighlights: null,
+						fileName: null,
+					})
+				})
+			}
+		})
+
+		await md.process()
 	})
 })

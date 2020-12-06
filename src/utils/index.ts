@@ -9,9 +9,20 @@
 
 import { parse } from 'url'
 import hastToHtml from 'hast-util-to-html'
+import rangeParser from 'parse-numeric-range'
 import { MarkdownFile } from '../MarkdownFile'
 
 const CACHE: Map<string, string | null> = new Map()
+
+/**
+ * Default response for the parseThematicBlock when no
+ * lang is defined
+ */
+const DEFAULT_NODE = {
+	lang: null,
+	lineHighlights: null,
+	fileName: null,
+}
 
 /**
  * Returns the protocol for a given url. Using a cache to avoid
@@ -93,5 +104,32 @@ export class ObjectBuilder {
 
 	public toJSON() {
 		return this.state
+	}
+}
+
+/**
+ * Parse thematic block next to "```"
+ */
+export function parseThematicBlock(
+	lang: string
+): {
+	lang: null | string
+	lineHighlights: null | number[]
+	fileName: null | string
+} {
+	/**
+	 * Language property on node is missing
+	 */
+	if (!lang) {
+		return DEFAULT_NODE
+	}
+
+	const tokens = lang.split('{')
+	const language = tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)
+
+	return {
+		lang: language ? language[0] : null,
+		lineHighlights: tokens[1] ? rangeParser(tokens[1].replace('}', '')) : null,
+		fileName: tokens[2] ? tokens[2].replace('}', '') : null,
 	}
 }

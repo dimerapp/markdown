@@ -51,8 +51,8 @@ import {
 } from '../Contracts'
 
 import { Macros } from '../Macros'
-import { getProtocol } from '../utils'
 import { Compiler } from '../Compiler'
+import { getProtocol, parseThematicBlock } from '../utils'
 
 /**
  * Exposes the API to process markdown contents for a given file using unified,
@@ -246,7 +246,25 @@ export class MarkdownFile {
 		/**
 		 * Markdown + gfm + headings with id + auto linking headings
 		 */
-		const stream = unified().use(markdown).use(gfm).use(slug).use(headings)
+		const stream = unified()
+			.use(markdown)
+			.use(gfm)
+			.use(slug)
+			.use(headings)
+			.use(() => {
+				return (tree) => {
+					/**
+					 * Attach meta data to codeblocks
+					 */
+					visit(tree, 'code', (node: mdastTypes.Code) => {
+						const meta = parseThematicBlock(node.lang as string) as any
+						if (meta.lang) {
+							node.lang = meta.lang
+						}
+						node.meta = meta
+					})
+				}
+			})
 
 		/**
 		 * Enable directives and macros
