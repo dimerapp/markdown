@@ -7,9 +7,10 @@
  * file that was distributed with this source code.
  */
 
-export { default as codesandbox } from './codesandbox'
 export { default as note } from './note'
 export { default as tip } from './tip'
 export { default as video } from './video'
-export { default as warning } from './warning'
 export { default as youtube } from './youtube'
+export { default as warning } from './warning'
+export { default as codegroup } from './codegroup'
+export { default as codesandbox } from './codesandbox'

@@ -257,7 +257,8 @@ export class MarkdownFile {
 					 * Attach meta data to codeblocks
 					 */
 					visit(tree, 'code', (node: mdastTypes.Code) => {
-						const meta = parseThematicBlock(node.lang as string) as any
+						const block = node.meta ? `${node.lang} ${node.meta}` : node.lang!
+						const meta = parseThematicBlock(block) as any
 						if (meta.lang) {
 							node.lang = meta.lang
 						}
