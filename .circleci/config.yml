@@ -1,6 +1,6 @@
-version: 2
+version: 2.1
 jobs:
-  build_12.18.2:
+  build_12_18_2:
     docker:
       - image: circleci/node:12.18.2
     working_directory: ~/app
@@ -41,8 +41,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 workflows:
-  version: 2
+  version: 2.1
   workflow:
     jobs:
-      - build_12.18.2
+      - build_12_18_2
       - build_latest
