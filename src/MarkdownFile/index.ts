@@ -52,6 +52,7 @@ import {
 
 import { Macros } from '../Macros'
 import { Compiler } from '../Compiler'
+import { CodeBlockParser } from '../CodeBlockParser'
 import { getProtocol, parseThematicBlock } from '../utils'
 
 /**
@@ -258,11 +259,16 @@ export class MarkdownFile {
 					 */
 					visit(tree, 'code', (node: mdastTypes.Code) => {
 						const block = node.meta ? `${node.lang} ${node.meta}` : node.lang!
-						const meta = parseThematicBlock(block) as any
+						const meta = parseThematicBlock(block)
+
+						const { content, ...codeBlockMeta } = new CodeBlockParser().parse(node.value)
+
+						node.value = content
+						node.meta = { ...codeBlockMeta, ...meta } as any
+
 						if (meta.lang) {
 							node.lang = meta.lang
 						}
-						node.meta = meta
 					})
 				}
 			})

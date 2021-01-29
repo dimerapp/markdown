@@ -39,7 +39,7 @@ export default function (mdFile: MarkdownFile) {
 		node.data = node.data || {}
 		node.data.hName = 'div'
 		node.data.hProperties = {
-			dataTabs: tabNames,
+			dataTabs: JSON.stringify(tabNames),
 			className: ['codegroup'],
 		}
 	})

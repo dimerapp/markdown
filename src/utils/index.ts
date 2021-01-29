@@ -9,7 +9,6 @@
 
 import { parse } from 'url'
 import hastToHtml from 'hast-util-to-html'
-import rangeParser from 'parse-numeric-range'
 import { MarkdownFile } from '../MarkdownFile'
 
 const CACHE: Map<string, string | null> = new Map()
@@ -20,7 +19,6 @@ const CACHE: Map<string, string | null> = new Map()
  */
 const DEFAULT_NODE = {
 	lang: null,
-	lineHighlights: null,
 	fileName: null,
 }
 
@@ -114,7 +112,6 @@ export function parseThematicBlock(
 	lang: string
 ): {
 	lang: null | string
-	lineHighlights: null | number[]
 	fileName: null | string
 } {
 	/**
@@ -129,7 +126,6 @@ export function parseThematicBlock(
 
 	return {
 		lang: language ? language[0] : null,
-		lineHighlights: tokens[1] ? rangeParser(tokens[1].replace('}', '')) : null,
-		fileName: tokens[2] ? tokens[2].replace('}', '') : null,
+		fileName: tokens[1] ? tokens[1].replace('}', '') : null,
 	}
 }

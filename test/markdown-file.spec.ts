@@ -1083,7 +1083,15 @@ test.group('Markdown code', () => {
 
 	test('parse thematic block with line highlights', async (assert) => {
 		assert.plan(2)
-		const contents = ['Hello', '```js{1-3,4-6}', `const a = require('a')`, '```'].join('\n')
+		const contents = [
+			'Hello',
+			'```js',
+			`const a = require('a')`,
+			'// highlight-start',
+			'a.run()',
+			'// highlight-end',
+			'```',
+		].join('\n')
 
 		const md = new MarkdownFile(contents, { generateToc: true })
 		md.transform(() => {
@@ -1092,7 +1100,10 @@ test.group('Markdown code', () => {
 					assert.deepEqual(node.lang, 'js')
 					assert.deepEqual(node.meta, {
 						lang: 'js',
-						lineHighlights: [1, 2, 3, 4, 5, 6],
+						highlights: [2],
+						inserts: [],
+						deletes: [],
+						marks: [],
 						fileName: null,
 					})
 				})
@@ -1104,7 +1115,7 @@ test.group('Markdown code', () => {
 
 	test('parse thematic block with filename', async (assert) => {
 		assert.plan(2)
-		const contents = ['Hello', '```js{}{hello.ts}', `const a = require('a')`, '```'].join('\n')
+		const contents = ['Hello', '```js{hello.ts}', `const a = require('a')`, '```'].join('\n')
 
 		const md = new MarkdownFile(contents, { generateToc: true })
 		md.transform(() => {
@@ -1113,7 +1124,10 @@ test.group('Markdown code', () => {
 					assert.deepEqual(node.lang, 'js')
 					assert.deepEqual(node.meta, {
 						lang: 'js',
-						lineHighlights: [],
+						highlights: [],
+						inserts: [],
+						deletes: [],
+						marks: [],
 						fileName: 'hello.ts',
 					})
 				})
@@ -1134,7 +1148,10 @@ test.group('Markdown code', () => {
 					assert.isNull(node.lang)
 					assert.deepEqual(node.meta, {
 						lang: null,
-						lineHighlights: null,
+						highlights: [],
+						inserts: [],
+						deletes: [],
+						marks: [],
 						fileName: null,
 					})
 				})

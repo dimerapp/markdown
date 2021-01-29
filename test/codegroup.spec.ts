@@ -30,7 +30,7 @@ test.group('Codegroup', () => {
 		await file.process()
 
 		assert.deepEqual(file.ast?.children[0].properties, {
-			dataTabs: ['Tab 1', 'Tab 2'],
+			dataTabs: JSON.stringify(['Tab 1', 'Tab 2']),
 			className: ['codegroup'],
 		})
 	})
@@ -38,7 +38,7 @@ test.group('Codegroup', () => {
 	test('group codeblocks with filename into tabs', async (assert) => {
 		const contents = [
 			':::codegroup',
-			'```{}{Hello world}',
+			'```{Hello world}',
 			`const a = require('a')`,
 			'```',
 			'```',
@@ -53,7 +53,7 @@ test.group('Codegroup', () => {
 		await file.process()
 
 		assert.deepEqual(file.ast?.children[0].properties, {
-			dataTabs: ['Hello world', 'Tab 2'],
+			dataTabs: JSON.stringify(['Hello world', 'Tab 2']),
 			className: ['codegroup'],
 		})
 	})
