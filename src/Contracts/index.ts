@@ -15,7 +15,10 @@ import type { Node, Position, Point } from 'unist'
 export type Code = mdastTypes.Code & {
 	meta: {
 		lang: null | string
-		lineHighlights: null | number[]
+		highlights: number[]
+		inserts: []
+		deletes: []
+		marks: []
 		fileName: null | string
 	}
 }
