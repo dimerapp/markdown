@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "4.1.2",
+  "version": "5.0.0",
   "description": "A markdown process",
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
