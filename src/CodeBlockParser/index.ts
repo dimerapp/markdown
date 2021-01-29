@@ -25,7 +25,7 @@ export class CodeBlockParser {
 	private highlights: number[] = []
 	private inserts: number[] = []
 	private deletes: number[] = []
-	private marks: { line: number; col: { start: number; end: number } }[] = []
+	private marks: { [key: string]: { start: number; end: number }[] } = {}
 
 	private currentLine = 0
 	private parsedContent: string[] = []
@@ -35,16 +35,18 @@ export class CodeBlockParser {
 	 */
 	private processMarks(line: string) {
 		let result: any = null
+
 		while ((result = /{::(.+?)::}/g.exec(line))) {
+			if (!this.marks[this.currentLine]) {
+				this.marks[this.currentLine] = []
+			}
+
 			const subsititue = result[1]
 			const match = result[0]
 
-			this.marks.push({
-				line: this.currentLine,
-				col: {
-					start: result.index,
-					end: result.index + subsititue.length - 1,
-				},
+			this.marks[this.currentLine].push({
+				start: result.index,
+				end: result.index + subsititue.length,
 			})
 
 			line = `${line.substring(0, result.index)}${subsititue}${line.substring(

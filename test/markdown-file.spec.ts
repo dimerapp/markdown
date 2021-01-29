@@ -1103,7 +1103,7 @@ test.group('Markdown code', () => {
 						highlights: [2],
 						inserts: [],
 						deletes: [],
-						marks: [],
+						marks: {},
 						fileName: null,
 					})
 				})
@@ -1127,7 +1127,7 @@ test.group('Markdown code', () => {
 						highlights: [],
 						inserts: [],
 						deletes: [],
-						marks: [],
+						marks: {},
 						fileName: 'hello.ts',
 					})
 				})
@@ -1151,7 +1151,7 @@ test.group('Markdown code', () => {
 						highlights: [],
 						inserts: [],
 						deletes: [],
-						marks: [],
+						marks: {},
 						fileName: null,
 					})
 				})

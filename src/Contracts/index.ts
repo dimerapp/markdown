@@ -16,9 +16,9 @@ export type Code = mdastTypes.Code & {
 	meta: {
 		lang: null | string
 		highlights: number[]
-		inserts: []
-		deletes: []
-		marks: []
+		inserts: number[]
+		deletes: number[]
+		marks: { [key: string]: { start: number; end: number }[] }
 		fileName: null | string
 	}
 }

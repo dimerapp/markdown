@@ -23,7 +23,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -43,7 +43,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [2],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -67,7 +67,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [2, 3],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -91,7 +91,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [3],
 			highlights: [2],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -115,7 +115,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [2],
 			deletes: [3],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -139,7 +139,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [2, 3],
 			highlights: [],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -165,7 +165,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [2, 4],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -193,7 +193,7 @@ test.group('CodeBlock Parser', () => {
 			inserts: [2, 4],
 			highlights: [],
 			deletes: [],
-			marks: [],
+			marks: {},
 		})
 	})
 
@@ -217,15 +217,14 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [2, 3, 4],
 			deletes: [],
-			marks: [
-				{
-					line: 2,
-					col: {
+			marks: {
+				'2': [
+					{
 						start: 2,
-						end: 4,
+						end: 5,
 					},
-				},
-			],
+				],
+			},
 		})
 	})
 
@@ -247,15 +246,14 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [],
 			deletes: [],
-			marks: [
-				{
-					line: 2,
-					col: {
+			marks: {
+				'2': [
+					{
 						start: 2,
-						end: 4,
+						end: 5,
 					},
-				},
-			],
+				],
+			},
 		})
 	})
 
@@ -273,22 +271,18 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [],
 			deletes: [],
-			marks: [
-				{
-					line: 1,
-					col: {
+			marks: {
+				'1': [
+					{
 						start: 11,
-						end: 11,
+						end: 12,
 					},
-				},
-				{
-					line: 1,
-					col: {
+					{
 						start: 16,
-						end: 26,
+						end: 27,
 					},
-				},
-			],
+				],
+			},
 		})
 	})
 
@@ -306,22 +300,18 @@ test.group('CodeBlock Parser', () => {
 			inserts: [],
 			highlights: [],
 			deletes: [],
-			marks: [
-				{
-					line: 1,
-					col: {
+			marks: {
+				'1': [
+					{
 						start: 11,
-						end: 11,
+						end: 12,
 					},
-				},
-				{
-					line: 1,
-					col: {
+					{
 						start: 16,
-						end: 32,
+						end: 33,
 					},
-				},
-			],
+				],
+			},
 		})
 	})
 })
