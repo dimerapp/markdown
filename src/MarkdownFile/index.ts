@@ -53,7 +53,7 @@ import {
 import { Macros } from '../Macros'
 import { Compiler } from '../Compiler'
 import { CodeBlockParser } from '../CodeBlockParser'
-import { getProtocol, parseThematicBlock } from '../utils'
+import { getProtocol } from '../utils'
 
 /**
  * Exposes the API to process markdown contents for a given file using unified,
@@ -258,17 +258,10 @@ export class MarkdownFile {
            * Attach meta data to codeblocks
            */
           visit(tree, 'code', (node: mdastTypes.Code) => {
-            const block = node.meta ? `${node.lang} ${node.meta}` : node.lang!
-            const meta = parseThematicBlock(block)
-
             const { content, ...codeBlockMeta } = new CodeBlockParser().parse(node.value)
 
             node.value = content
-            node.meta = { ...codeBlockMeta, ...meta } as any
-
-            if (meta.lang) {
-              node.lang = meta.lang
-            }
+            node.meta = codeBlockMeta as any
           })
         }
       })

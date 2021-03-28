@@ -24,6 +24,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -44,6 +45,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [2],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -68,6 +70,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [2, 3],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -92,6 +95,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [2],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -116,6 +120,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [2],
       deletes: [3],
       marks: {},
+      title: null,
     })
   })
 
@@ -140,6 +145,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -166,6 +172,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [2, 4],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -194,6 +201,7 @@ test.group('CodeBlock Parser', () => {
       highlights: [],
       deletes: [],
       marks: {},
+      title: null,
     })
   })
 
@@ -225,6 +233,7 @@ test.group('CodeBlock Parser', () => {
           },
         ],
       },
+      title: null,
     })
   })
 
@@ -254,6 +263,7 @@ test.group('CodeBlock Parser', () => {
           },
         ],
       },
+      title: null,
     })
   })
 
@@ -283,6 +293,7 @@ test.group('CodeBlock Parser', () => {
           },
         ],
       },
+      title: null,
     })
   })
 
@@ -312,6 +323,7 @@ test.group('CodeBlock Parser', () => {
           },
         ],
       },
+      title: null,
     })
   })
 })

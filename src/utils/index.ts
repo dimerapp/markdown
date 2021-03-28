@@ -14,15 +14,6 @@ import { MarkdownFile } from '../MarkdownFile'
 const CACHE: Map<string, string | null> = new Map()
 
 /**
- * Default response for the parseThematicBlock when no
- * lang is defined
- */
-const DEFAULT_NODE = {
-  lang: null,
-  fileName: null,
-}
-
-/**
  * Returns the protocol for a given url. Using a cache to avoid
  * re-parsing the same url again and again
  */
@@ -102,30 +93,5 @@ export class ObjectBuilder {
 
   public toJSON() {
     return this.state
-  }
-}
-
-/**
- * Parse thematic block next to "```"
- */
-export function parseThematicBlock(
-  lang: string
-): {
-  lang: null | string
-  fileName: null | string
-} {
-  /**
-   * Language property on node is missing
-   */
-  if (!lang) {
-    return DEFAULT_NODE
-  }
-
-  const tokens = lang.split('{')
-  const language = tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)
-
-  return {
-    lang: language ? language[0] : null,
-    fileName: tokens[1] ? tokens[1].replace('}', '') : null,
   }
 }

@@ -27,6 +27,7 @@ export class CodeBlockParser {
   private deletes: number[] = []
   private marks: { [key: string]: { start: number; end: number }[] } = {}
 
+  private title: string | null = null
   private currentLine = 0
   private parsedContent: string[] = []
 
@@ -93,6 +94,11 @@ export class CodeBlockParser {
       return
     }
 
+    if (trimmedLine.startsWith('// title:')) {
+      this.title = trimmedLine.replace(/^\/\/\s+title:/, '').trim()
+      return
+    }
+
     this.currentLine++
 
     if (this.insertBlocks > 0) {
@@ -124,6 +130,7 @@ export class CodeBlockParser {
     contents.split('\n').forEach((line) => this.processHighlights(line))
     return {
       content: this.parsedContent.join('\n'),
+      title: this.title,
       inserts: this.inserts,
       highlights: this.highlights,
       deletes: this.deletes,

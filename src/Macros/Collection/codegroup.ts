@@ -18,7 +18,7 @@ export default function (mdFile: MarkdownFile) {
 
     const nonCodeBlock = node.children.findIndex((child, index) => {
       if (child.type === 'code') {
-        tabNames.push((child.meta as any).fileName || `Tab ${index + 1}`)
+        tabNames.push((child.meta as any).title || `Tab ${index + 1}`)
         return false
       }
       return true

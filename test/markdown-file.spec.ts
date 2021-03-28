@@ -16,8 +16,8 @@ import { MarkdownFile } from '../src/MarkdownFile'
 test.group('Markdown', () => {
   test('process markdown to ast', async (assert) => {
     const contents = dedent`
-		Hello world. This is **markdown**
-		`
+    Hello world. This is **markdown**
+    `
 
     const md = new MarkdownFile(contents)
     await md.process()
@@ -53,10 +53,10 @@ test.group('Markdown', () => {
 
   test('process markdown to ast with gfm syntax', async (assert) => {
     const contents = dedent`
-		www.example.com
+    www.example.com
 
-		~one~
-		`
+    ~one~
+    `
 
     const md = new MarkdownFile(contents)
     await md.process()
@@ -112,11 +112,11 @@ test.group('Markdown', () => {
 
   test('generate bookmarks for headings', async (assert) => {
     const contents = dedent`
-		## Hello world
-		Some text for fun
+    ## Hello world
+    Some text for fun
 
-		### Hello nested world
-		`
+    ### Hello nested world
+    `
 
     const md = new MarkdownFile(contents)
     await md.process()
@@ -213,12 +213,12 @@ test.group('Markdown', () => {
 
   test('ignore directives unless enabled', async (assert) => {
     const contents = dedent`
-		Hello :span[**hello**]{class="grey"}
+    Hello :span[**hello**]{class="grey"}
 
-		:::div{class="block"}
-		Some content
-		:::
-		`
+    :::div{class="block"}
+    Some content
+    :::
+    `
 
     const md = new MarkdownFile(contents)
     await md.process()
@@ -273,12 +273,12 @@ test.group('Markdown', () => {
 
   test('allow markdown directives when enabled', async (assert) => {
     const contents = dedent`
-		Hello :span[**hello**]{class="grey"}
+    Hello :span[**hello**]{class="grey"}
 
-		:::div{class="block"}
-		Some content
-		:::
-		`
+    :::div{class="block"}
+    Some content
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     await md.process()
@@ -349,10 +349,10 @@ test.group('Markdown', () => {
 test.group('Markdown html', () => {
   test('ignore html', async (assert) => {
     const contents = dedent`
-		Hello world
+    Hello world
 
-		<p> Hi world </p>
-		`
+    <p> Hi world </p>
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     await md.process()
@@ -377,10 +377,10 @@ test.group('Markdown html', () => {
 
   test('allow html when enabled', async (assert) => {
     const contents = dedent`
-		Hello world
+    Hello world
 
-		<p> Hi world </p>
-		`
+    <p> Hi world </p>
+    `
 
     const md = new MarkdownFile(contents, { allowHtml: true })
     await md.process()
@@ -425,13 +425,13 @@ test.group('Markdown html', () => {
 test.group('Markdown frontmatter', () => {
   test('process front matter', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		permalink: /hello-world
-		summary: Hello **world**
-		---
-		Hello world. This is **markdown**
-		`
+    ---
+    title: Hello world
+    permalink: /hello-world
+    summary: Hello **world**
+    ---
+    Hello world. This is **markdown**
+    `
 
     const md = new MarkdownFile(contents)
     assert.deepEqual(md.frontmatter, {
@@ -443,13 +443,13 @@ test.group('Markdown frontmatter', () => {
 
   test('process summary markdown to ast', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		permalink: /hello-world
-		summary: Hello **world**
-		---
-		Hello world. This is **markdown**
-		`
+    ---
+    title: Hello world
+    permalink: /hello-world
+    summary: Hello **world**
+    ---
+    Hello world. This is **markdown**
+    `
 
     const md = new MarkdownFile(contents)
     assert.deepEqual(md.frontmatter, {
@@ -520,13 +520,13 @@ test.group('Markdown frontmatter', () => {
 
   test('allow html in summary when enabled', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		permalink: /hello-world
-		summary: Hello <strong>world</strong>
-		---
-		Hello world. This is **markdown**
-		`
+    ---
+    title: Hello world
+    permalink: /hello-world
+    summary: Hello <strong>world</strong>
+    ---
+    Hello world. This is **markdown**
+    `
 
     const md = new MarkdownFile(contents, { allowHtml: true })
     assert.deepEqual(md.frontmatter, {
@@ -602,13 +602,13 @@ test.group('Markdown frontmatter', () => {
 
   test('do not process directives inside summary', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		permalink: /hello-world
-		summary: Hello :strong[world]
-		---
-		Hello world. This is :strong[markdown]
-		`
+    ---
+    title: Hello world
+    permalink: /hello-world
+    summary: Hello :strong[world]
+    ---
+    Hello world. This is :strong[markdown]
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     assert.deepEqual(md.frontmatter, {
@@ -670,12 +670,12 @@ test.group('Markdown frontmatter', () => {
 test.group('Markdown macros', () => {
   test('allow defining custom macros', async (assert) => {
     const contents = dedent`
-		Hello world
+    Hello world
 
-		:::note
-		This is a note
-		:::
-		`
+    :::note
+    This is a note
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     md.macro('note', (ast) => {
@@ -732,12 +732,12 @@ test.group('Markdown macros', () => {
 
   test('allow macros to report errors', async (assert) => {
     const contents = dedent`
-		Hello world
+    Hello world
 
-		:::note
-		This is a note
-		:::
-		`
+    :::note
+    This is a note
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     md.macro('note', (ast, file) => {
@@ -754,17 +754,17 @@ test.group('Markdown macros', () => {
 
   test('ensure correct line + column when yaml front matter is used', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		summary: Some summary
-		---
+    ---
+    title: Hello world
+    summary: Some summary
+    ---
 
-		Hello world
+    Hello world
 
-		:::note
-		This is a note
-		:::
-		`
+    :::note
+    This is a note
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     md.macro('note', (ast, file) => {
@@ -781,17 +781,17 @@ test.group('Markdown macros', () => {
 
   test('allow macro to remove node all together', async (assert) => {
     const contents = dedent`
-		---
-		title: Hello world
-		summary: Some summary
-		---
+    ---
+    title: Hello world
+    summary: Some summary
+    ---
 
-		Hello world
+    Hello world
 
-		:::note
-		This is a note
-		:::
-		`
+    :::note
+    This is a note
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     md.macro('note', (_, __, removeNode) => {
@@ -821,17 +821,17 @@ test.group('Markdown macros', () => {
     assert.plan(1)
 
     const contents = dedent`
-		---
-		title: Hello world
-		summary: Some summary
-		---
+    ---
+    title: Hello world
+    summary: Some summary
+    ---
 
-		Hello world
+    Hello world
 
-		:::note
-		This is a note
-		:::
-		`
+    :::note
+    This is a note
+    :::
+    `
 
     const md = new MarkdownFile(contents, { enableDirectives: true })
     md.macro('note', () => {
@@ -849,10 +849,10 @@ test.group('Markdown macros', () => {
 test.group('Markdown assets', () => {
   test('collect images from the markdown document', async (assert) => {
     const contents = dedent`
-		Hello world. I link to [google](http://google.com)
+    Hello world. I link to [google](http://google.com)
 
-		And also have this image ![](foo.jpg)
-		`
+    And also have this image ![](foo.jpg)
+    `
 
     const md = new MarkdownFile(contents, { collectAssets: true })
     await md.process()
@@ -872,10 +872,10 @@ test.group('Markdown assets', () => {
 
   test('do not collect links when "collectAssets" is not true', async (assert) => {
     const contents = dedent`
-		Hello world. I link to [google](http://google.com)
+    Hello world. I link to [google](http://google.com)
 
-		And also have this image ![](foo.jpg)
-		`
+    And also have this image ![](foo.jpg)
+    `
 
     const md = new MarkdownFile(contents, {})
     await md.process()
@@ -889,13 +889,13 @@ test.group('Markdown assets', () => {
 test.group('Markdown hooks', () => {
   test('allow hooking into nodes', async (assert) => {
     const contents = dedent`
-		The tasks are
+    The tasks are
 
-		- [ ] Task 1
-		- [x] Task 2
-		- [ ] Task 3
-		- [x] Task 4
-		`
+    - [ ] Task 1
+    - [x] Task 2
+    - [ ] Task 3
+    - [x] Task 4
+    `
 
     const md = new MarkdownFile(contents, { collectAssets: true })
     md.on('listItem', (node: mdastTypes.ListItem, file) => {
@@ -922,18 +922,18 @@ test.group('Markdown hooks', () => {
 
   test('allow multiple handlers for a given node', async (assert) => {
     const contents = dedent`
-		The tasks are
+    The tasks are
 
-		- [ ] Task 1
-		- [x] Task 2
-		- [ ] Task 3
-		- [x] Task 4
+    - [ ] Task 1
+    - [x] Task 2
+    - [ ] Task 3
+    - [x] Task 4
 
-		And some standard list items
+    And some standard list items
 
-		- Hello
-		- world
-		`
+    - Hello
+    - world
+    `
 
     const md = new MarkdownFile(contents, { collectAssets: true })
     md.on('listItem', (node: mdastTypes.ListItem, file) => {
@@ -967,18 +967,18 @@ test.group('Markdown hooks', () => {
 
   test('allow match test as a function', async (assert) => {
     const contents = dedent`
-		The tasks are
+    The tasks are
 
-		- [ ] Task 1
-		- [x] Task 2
-		- [ ] Task 3
-		- [x] Task 4
+    - [ ] Task 1
+    - [x] Task 2
+    - [ ] Task 3
+    - [x] Task 4
 
-		And some standard list items
+    And some standard list items
 
-		- Hello
-		- world
-		`
+    - Hello
+    - world
+    `
 
     const md = new MarkdownFile(contents, { collectAssets: true })
     md.on(
@@ -1023,13 +1023,13 @@ test.group('Markdown transform plugin', () => {
     assert.plan(2)
 
     const contents = dedent`
-		The tasks are
+    The tasks are
 
-		- [ ] Task 1
-		- [x] Task 2
-		- [ ] Task 3
-		- [x] Task 4
-		`
+    - [ ] Task 1
+    - [x] Task 2
+    - [ ] Task 3
+    - [x] Task 4
+    `
 
     const md = new MarkdownFile(contents, { collectAssets: true })
     md.transform(
@@ -1049,13 +1049,13 @@ test.group('Markdown transform plugin', () => {
 test.group('Markdown toc', () => {
   test('generate toc when enabled', async (assert) => {
     const contents = dedent`
-		# Hello
-		hello
+    # Hello
+    hello
 
-		## Hello world
+    ## Hello world
 
-		### Hello nested world
-		`
+    ### Hello nested world
+    `
 
     const md = new MarkdownFile(contents, { generateToc: true })
     await md.process()
@@ -1081,7 +1081,7 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block with line highlights', async (assert) => {
+  test('parse codeblock block with line highlights', async (assert) => {
     assert.plan(2)
     const contents = [
       'Hello',
@@ -1099,12 +1099,11 @@ test.group('Markdown code', () => {
         visit(tree, 'code', (node) => {
           assert.deepEqual(node.lang, 'js')
           assert.deepEqual(node.meta, {
-            lang: 'js',
             highlights: [2],
             inserts: [],
             deletes: [],
             marks: {},
-            fileName: null,
+            title: null,
           })
         })
       }
@@ -1113,9 +1112,11 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block with filename', async (assert) => {
+  test('parse code block with title', async (assert) => {
     assert.plan(2)
-    const contents = ['Hello', '```js{hello.ts}', `const a = require('a')`, '```'].join('\n')
+    const contents = ['Hello', '```js', '// title: hello.ts', `const a = require('a')`, '```'].join(
+      '\n'
+    )
 
     const md = new MarkdownFile(contents, { generateToc: true })
     md.transform(() => {
@@ -1123,12 +1124,11 @@ test.group('Markdown code', () => {
         visit(tree, 'code', (node) => {
           assert.deepEqual(node.lang, 'js')
           assert.deepEqual(node.meta, {
-            lang: 'js',
             highlights: [],
             inserts: [],
             deletes: [],
             marks: {},
-            fileName: 'hello.ts',
+            title: 'hello.ts',
           })
         })
       }
@@ -1137,7 +1137,7 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block without language', async (assert) => {
+  test('parse codeblock without language', async (assert) => {
     assert.plan(2)
     const contents = ['Hello', '```', `const a = require('a')`, '```'].join('\n')
 
@@ -1147,12 +1147,11 @@ test.group('Markdown code', () => {
         visit(tree, 'code', (node) => {
           assert.isNull(node.lang)
           assert.deepEqual(node.meta, {
-            lang: null,
             highlights: [],
             inserts: [],
             deletes: [],
             marks: {},
-            fileName: null,
+            title: null,
           })
         })
       }

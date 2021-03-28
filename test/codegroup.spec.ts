@@ -38,7 +38,8 @@ test.group('Codegroup', () => {
   test('group codeblocks with filename into tabs', async (assert) => {
     const contents = [
       ':::codegroup',
-      '```{Hello world}',
+      '```',
+      '// title: Hello world',
       `const a = require('a')`,
       '```',
       '```',
