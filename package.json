@@ -50,14 +50,13 @@
     "japa": "^3.1.1",
     "mrm": "^2.6.1",
     "np": "^7.4.0",
-    "npm-audit-html": "^1.5.0",
     "prettier": "^2.2.1",
     "ts-dedent": "^2.1.0",
     "typescript": "^4.2.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm audit --production --json | ./node_modules/.bin/npm-audit-html && git add npm-audit.html && doctoc README.md --title='## Table of contents' && git add README.md",
+      "pre-commit": "doctoc README.md --title='## Table of contents' && git add README.md",
       "commit-msg": "node ./node_modules/@adonisjs/mrm-preset/validateCommit/conventional/validate.js"
     }
   },

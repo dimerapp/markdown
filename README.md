@@ -22,7 +22,7 @@
 # Markdown processor
 > An improved markdown processor built on top of remark
 
-[![circleci-image]][circleci-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
+[![circleci-image]][circleci-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url] [![synk-image]][synk-url]
 
 Dimer markdown is an opinionated markdown processor built on top of remark with following features and goals.
 
@@ -137,3 +137,6 @@ TBD
 
 [license-image]: https://img.shields.io/npm/l/@dimerapp/markdown?color=blueviolet&style=for-the-badge
 [license-url]: LICENSE.md "license"
+
+[synk-image]: https://img.shields.io/snyk/vulnerabilities/github/dimerapp/markdown?label=Synk%20Vulnerabilities&style=for-the-badge
+[synk-url]: https://snyk.io/test/github/dimerapp/markdown?targetFile=package.json "synk"
