@@ -13,16 +13,16 @@ import { MarkdownFile } from '../../MarkdownFile'
  * Wrap markup inside div with class "alert-note"
  */
 export default function (mdFile: MarkdownFile) {
-	mdFile.macro('note', (node) => {
-		node.data = node.data || {}
-		node.data.hName = 'div'
-		node.data.hProperties = {
-			className: ['alert', 'alert-note'],
-			/**
-			 * We do not add the `role=alert` inside note, since role=alert is meant
-			 * to inform the user about the things that needs immediate attention
-			 * and "notes" are not one of them
-			 */
-		}
-	})
+  mdFile.macro('note', (node) => {
+    node.data = node.data || {}
+    node.data.hName = 'div'
+    node.data.hProperties = {
+      className: ['alert', 'alert-note'],
+      /**
+       * We do not add the `role=alert` inside note, since role=alert is meant
+       * to inform the user about the things that needs immediate attention
+       * and "notes" are not one of them
+       */
+    }
+  })
 }

@@ -12,66 +12,66 @@ import { MarkdownFile } from '../src/MarkdownFile'
 import codegroup from '../src/Macros/Collection/codegroup'
 
 test.group('Codegroup', () => {
-	test('group codeblocks into tabs', async (assert) => {
-		const contents = [
-			':::codegroup',
-			'```',
-			`const a = require('a')`,
-			'```',
-			'```',
-			`const b = require('b')`,
-			'```',
-			':::',
-		].join('\n')
+  test('group codeblocks into tabs', async (assert) => {
+    const contents = [
+      ':::codegroup',
+      '```',
+      `const a = require('a')`,
+      '```',
+      '```',
+      `const b = require('b')`,
+      '```',
+      ':::',
+    ].join('\n')
 
-		const file = new MarkdownFile(contents, { enableDirectives: true })
+    const file = new MarkdownFile(contents, { enableDirectives: true })
 
-		codegroup(file)
-		await file.process()
+    codegroup(file)
+    await file.process()
 
-		assert.deepEqual(file.ast?.children[0].properties, {
-			dataTabs: JSON.stringify(['Tab 1', 'Tab 2']),
-			className: ['codegroup'],
-		})
-	})
+    assert.deepEqual(file.ast?.children[0].properties, {
+      dataTabs: JSON.stringify(['Tab 1', 'Tab 2']),
+      className: ['codegroup'],
+    })
+  })
 
-	test('group codeblocks with filename into tabs', async (assert) => {
-		const contents = [
-			':::codegroup',
-			'```{Hello world}',
-			`const a = require('a')`,
-			'```',
-			'```',
-			`const b = require('b')`,
-			'```',
-			':::',
-		].join('\n')
+  test('group codeblocks with filename into tabs', async (assert) => {
+    const contents = [
+      ':::codegroup',
+      '```{Hello world}',
+      `const a = require('a')`,
+      '```',
+      '```',
+      `const b = require('b')`,
+      '```',
+      ':::',
+    ].join('\n')
 
-		const file = new MarkdownFile(contents, { enableDirectives: true })
+    const file = new MarkdownFile(contents, { enableDirectives: true })
 
-		codegroup(file)
-		await file.process()
+    codegroup(file)
+    await file.process()
 
-		assert.deepEqual(file.ast?.children[0].properties, {
-			dataTabs: JSON.stringify(['Hello world', 'Tab 2']),
-			className: ['codegroup'],
-		})
-	})
+    assert.deepEqual(file.ast?.children[0].properties, {
+      dataTabs: JSON.stringify(['Hello world', 'Tab 2']),
+      className: ['codegroup'],
+    })
+  })
 
-	test('raise error when intermediate children is not a codeblock', async (assert) => {
-		const contents = [':::codegroup', 'Hello', '```', `const b = require('b')`, '```', ':::'].join(
-			'\n'
-		)
+  test('raise error when intermediate children is not a codeblock', async (assert) => {
+    const contents = [':::codegroup', 'Hello', '```', `const b = require('b')`, '```', ':::'].join(
+      '\n'
+    )
 
-		const file = new MarkdownFile(contents, { enableDirectives: true })
+    const file = new MarkdownFile(contents, { enableDirectives: true })
 
-		codegroup(file)
-		await file.process()
+    codegroup(file)
+    await file.process()
 
-		assert.lengthOf(file.messages, 1)
-		assert.equal(file.messages[0].message, 'Codegroup children at index "0" is not a codeblock')
-		assert.equal(file.messages[0].line, 2)
-		assert.equal(file.messages[0].column, 1)
-		assert.deepEqual(file.ast, { type: 'root', children: [] })
-	})
+    assert.lengthOf(file.messages, 1)
+    assert.equal(file.messages[0].message, 'Codegroup children at index "0" is not a codeblock')
+    assert.equal(file.messages[0].line, 2)
+    assert.equal(file.messages[0].column, 1)
+    assert.deepEqual(file.ast, { type: 'root', children: [] })
+  })
 })

@@ -4,12 +4,12 @@ import { readFileSync } from 'fs'
 const css = readFileSync(join(__dirname, './style.css'), 'utf-8')
 
 export const template = (doc: {
-	contents: string
-	toc?: string
-	summary?: string
-	excerpt?: string
+  contents: string
+  toc?: string
+  summary?: string
+  excerpt?: string
 }) => {
-	return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8">

@@ -37,17 +37,17 @@ import remarkToRehype from 'remark-rehype'
  * Local imports
  */
 import {
-	Point,
-	Position,
-	StatsNode,
-	hastTypes,
-	mdastTypes,
-	ReferenceNode,
-	LeafDirective,
-	TextDirective,
-	ContainerDirective,
-	MarkdownFileOptions,
-	MarkdownFileJson,
+  Point,
+  Position,
+  StatsNode,
+  hastTypes,
+  mdastTypes,
+  ReferenceNode,
+  LeafDirective,
+  TextDirective,
+  ContainerDirective,
+  MarkdownFileOptions,
+  MarkdownFileJson,
 } from '../Contracts'
 
 import { Macros } from '../Macros'
@@ -60,420 +60,420 @@ import { getProtocol, parseThematicBlock } from '../utils'
  * remark and rehype.
  */
 export class MarkdownFile {
-	/**
-	 * Tracked assets to avoid duplicates
-	 */
-	private trackedAssets: Set<string> = new Set()
+  /**
+   * Tracked assets to avoid duplicates
+   */
+  private trackedAssets: Set<string> = new Set()
 
-	/**
-	 * Macros manager
-	 */
-	private macros = new Macros(this)
+  /**
+   * Macros manager
+   */
+  private macros = new Macros(this)
 
-	/**
-	 * Registered hooks
-	 */
-	private hooks: {
-		test: string | ((node: mdastTypes.Content, file: MarkdownFile) => boolean)
-		visitor: (node: mdastTypes.Content, file: MarkdownFile) => void
-	}[] = []
+  /**
+   * Registered hooks
+   */
+  private hooks: {
+    test: string | ((node: mdastTypes.Content, file: MarkdownFile) => boolean)
+    visitor: (node: mdastTypes.Content, file: MarkdownFile) => void
+  }[] = []
 
-	/**
-	 * Collection of unified plugins
-	 */
-	private unifiedPlugins: { callback: unified.Plugin<any>; settings?: any }[] = []
+  /**
+   * Collection of unified plugins
+   */
+  private unifiedPlugins: { callback: unified.Plugin<any>; settings?: any }[] = []
 
-	/**
-	 * File state
-	 */
-	public state: 'idle' | 'processing' | 'processed' = 'idle'
+  /**
+   * File state
+   */
+  public state: 'idle' | 'processing' | 'processed' = 'idle'
 
-	/**
-	 * Reference to the file path
-	 */
-	public filePath?: string = this.options.filePath
+  /**
+   * Reference to the file path
+   */
+  public filePath?: string = this.options.filePath
 
-	/**
-	 * Reference to the file basename
-	 */
-	public basename?: string = this.filePath ? basename(this.filePath) : undefined
+  /**
+   * Reference to the file basename
+   */
+  public basename?: string = this.filePath ? basename(this.filePath) : undefined
 
-	/**
-	 * Reference to the file dirname
-	 */
-	public dirname?: string = this.filePath ? dirname(this.filePath) : undefined
+  /**
+   * Reference to the file dirname
+   */
+  public dirname?: string = this.filePath ? dirname(this.filePath) : undefined
 
-	/**
-	 * Document collected stats
-	 */
-	public stats: StatsNode = {
-		assets: [],
-	}
+  /**
+   * Document collected stats
+   */
+  public stats: StatsNode = {
+    assets: [],
+  }
 
-	/**
-	 * Reference to the document table of content. Only available when "options.generateToc = true"
-	 */
-	public toc: hastTypes.Element | null
+  /**
+   * Reference to the document table of content. Only available when "options.generateToc = true"
+   */
+  public toc: hastTypes.Element | null
 
-	/**
-	 * Find if a document has a fatal message or not
-	 */
-	public hasFatalMessages: boolean = false
+  /**
+   * Find if a document has a fatal message or not
+   */
+  public hasFatalMessages: boolean = false
 
-	/**
-	 * Array of reported messages
-	 */
-	public messages: VFileMessage[] = []
+  /**
+   * Array of reported messages
+   */
+  public messages: VFileMessage[] = []
 
-	/**
-	 * Reference to the file parsed front matter
-	 */
-	public frontmatter: { [key: string]: any }
+  /**
+   * Reference to the file parsed front matter
+   */
+  public frontmatter: { [key: string]: any }
 
-	/**
-	 * Excerpt generated from the summary.
-	 */
-	public excerpt?: string
+  /**
+   * Excerpt generated from the summary.
+   */
+  public excerpt?: string
 
-	/**
-	 * Processed markdown summary to AST.
-	 */
-	public summary?: hastTypes.Root
+  /**
+   * Processed markdown summary to AST.
+   */
+  public summary?: hastTypes.Root
 
-	/**
-	 * Parsed AST. Available after "process" call
-	 */
-	public ast?: hastTypes.Root
+  /**
+   * Parsed AST. Available after "process" call
+   */
+  public ast?: hastTypes.Root
 
-	/**
-	 * A factory function to create hash script node
-	 */
-	public hastFactory = hastscript
+  /**
+   * A factory function to create hash script node
+   */
+  public hastFactory = hastscript
 
-	constructor(public contents: string, public options: MarkdownFileOptions = {}) {
-		this.boot()
-	}
+  constructor(public contents: string, public options: MarkdownFileOptions = {}) {
+    this.boot()
+  }
 
-	/**
-	 * Boot method parses the yaml front matter right away
-	 */
-	private boot() {
-		const { attributes, body, bodyBegin } = frontmatter<{
-			[key: string]: any
-		}>(this.contents)
+  /**
+   * Boot method parses the yaml front matter right away
+   */
+  private boot() {
+    const { attributes, body, bodyBegin } = frontmatter<{
+      [key: string]: any
+    }>(this.contents)
 
-		this.frontmatter = attributes
+    this.frontmatter = attributes
 
-		/**
-		 * Patch the remaining contents with empty whitespace. This will ensure
-		 * that the ast location points to the correct line + col
-		 */
-		this.contents = `${new Array(bodyBegin).join('\n')}${body}`
-	}
+    /**
+     * Patch the remaining contents with empty whitespace. This will ensure
+     * that the ast location points to the correct line + col
+     */
+    this.contents = `${new Array(bodyBegin).join('\n')}${body}`
+  }
 
-	/**
-	 * Cleanup by releasing values no longer required
-	 */
-	private cleanup() {
-		this.unifiedPlugins = []
-		this.hooks = []
-		this.trackedAssets.clear()
-		this.macros.clear()
-	}
+  /**
+   * Cleanup by releasing values no longer required
+   */
+  private cleanup() {
+    this.unifiedPlugins = []
+    this.hooks = []
+    this.trackedAssets.clear()
+    this.macros.clear()
+  }
 
-	/**
-	 * Convert mdast to hast
-	 */
-	private useRehype(stream: unified.Processor) {
-		/**
-		 * Configure stream to process HTML. The "rehype-raw" plugin is required to properly
-		 * re-parse HTML nodes. Mdast is not good in recognizing HTML
-		 */
-		if (this.options.allowHtml === true) {
-			return stream
-				.use(remarkToRehype, { allowDangerousHtml: this.options.allowHtml === true })
-				.use(raw)
-		} else {
-			return stream.use(remarkToRehype)
-		}
-	}
+  /**
+   * Convert mdast to hast
+   */
+  private useRehype(stream: unified.Processor) {
+    /**
+     * Configure stream to process HTML. The "rehype-raw" plugin is required to properly
+     * re-parse HTML nodes. Mdast is not good in recognizing HTML
+     */
+    if (this.options.allowHtml === true) {
+      return stream
+        .use(remarkToRehype, { allowDangerousHtml: this.options.allowHtml === true })
+        .use(raw)
+    } else {
+      return stream.use(remarkToRehype)
+    }
+  }
 
-	/**
-	 * Add compiler to the unified stream
-	 */
-	private useCompiler(stream: unified.Processor) {
-		return stream.use(function () {
-			const compiler = new Compiler()
-			this.Compiler = compiler.compile.bind(compiler)
-		})
-	}
+  /**
+   * Add compiler to the unified stream
+   */
+  private useCompiler(stream: unified.Processor) {
+    return stream.use(function () {
+      const compiler = new Compiler()
+      this.Compiler = compiler.compile.bind(compiler)
+    })
+  }
 
-	/**
-	 * Returns the matching hooks for a given node
-	 */
-	private getNodeHooks(node: mdastTypes.Content) {
-		return this.hooks.filter((hook) => {
-			if (typeof hook.test === 'function') {
-				return hook.test(node, this)
-			}
-			return node.type === hook.test
-		})
-	}
+  /**
+   * Returns the matching hooks for a given node
+   */
+  private getNodeHooks(node: mdastTypes.Content) {
+    return this.hooks.filter((hook) => {
+      if (typeof hook.test === 'function') {
+        return hook.test(node, this)
+      }
+      return node.type === hook.test
+    })
+  }
 
-	/**
-	 * Processes pre-defined hooks for the matching nodes.
-	 */
-	private processHooks(stream: unified.Processor) {
-		/**
-		 * Return early if no hooks are defined
-		 */
-		if (this.hooks.length === 0) {
-			return stream
-		}
+  /**
+   * Processes pre-defined hooks for the matching nodes.
+   */
+  private processHooks(stream: unified.Processor) {
+    /**
+     * Return early if no hooks are defined
+     */
+    if (this.hooks.length === 0) {
+      return stream
+    }
 
-		return stream.use(() => {
-			return (tree) => {
-				visit(tree, (node: mdastTypes.Content) => {
-					this.getNodeHooks(node).forEach((hook) => hook.visitor(node, this))
-				})
-			}
-		})
-	}
+    return stream.use(() => {
+      return (tree) => {
+        visit(tree, (node: mdastTypes.Content) => {
+          this.getNodeHooks(node).forEach((hook) => hook.visitor(node, this))
+        })
+      }
+    })
+  }
 
-	/**
-	 * Process the markdown contents
-	 */
-	private async processContents() {
-		/**
-		 * Markdown + gfm + headings with id + auto linking headings
-		 */
-		const stream = unified()
-			.use(markdown)
-			.use(gfm)
-			.use(slug)
-			.use(headings)
-			.use(() => {
-				return (tree) => {
-					/**
-					 * Attach meta data to codeblocks
-					 */
-					visit(tree, 'code', (node: mdastTypes.Code) => {
-						const block = node.meta ? `${node.lang} ${node.meta}` : node.lang!
-						const meta = parseThematicBlock(block)
+  /**
+   * Process the markdown contents
+   */
+  private async processContents() {
+    /**
+     * Markdown + gfm + headings with id + auto linking headings
+     */
+    const stream = unified()
+      .use(markdown)
+      .use(gfm)
+      .use(slug)
+      .use(headings)
+      .use(() => {
+        return (tree) => {
+          /**
+           * Attach meta data to codeblocks
+           */
+          visit(tree, 'code', (node: mdastTypes.Code) => {
+            const block = node.meta ? `${node.lang} ${node.meta}` : node.lang!
+            const meta = parseThematicBlock(block)
 
-						const { content, ...codeBlockMeta } = new CodeBlockParser().parse(node.value)
+            const { content, ...codeBlockMeta } = new CodeBlockParser().parse(node.value)
 
-						node.value = content
-						node.meta = { ...codeBlockMeta, ...meta } as any
+            node.value = content
+            node.meta = { ...codeBlockMeta, ...meta } as any
 
-						if (meta.lang) {
-							node.lang = meta.lang
-						}
-					})
-				}
-			})
+            if (meta.lang) {
+              node.lang = meta.lang
+            }
+          })
+        }
+      })
 
-		/**
-		 * Enable directives and macros
-		 */
-		if (this.options.enableDirectives === true) {
-			stream.use(directive).use(() => this.macros.transform.bind(this.macros))
-		}
+    /**
+     * Enable directives and macros
+     */
+    if (this.options.enableDirectives === true) {
+      stream.use(directive).use(() => this.macros.transform.bind(this.macros))
+    }
 
-		/**
-		 * Stick custom plugins
-		 */
-		this.unifiedPlugins.forEach((plugin) => stream.use(plugin.callback, ...plugin.settings))
+    /**
+     * Stick custom plugins
+     */
+    this.unifiedPlugins.forEach((plugin) => stream.use(plugin.callback, ...plugin.settings))
 
-		/**
-		 * Generate toc when generateToc is set to true
-		 */
-		if (this.options.generateToc === true) {
-			stream.use(() => {
-				return (tree) => {
-					/**
-					 * Generate table of contents and convert to hast tree
-					 */
-					const toc = mdastToc(tree, { maxDepth: this.options.tocDepth || 3 }).map
-					if (toc) {
-						this.toc = toHast(toc) as hastTypes.Element
-					}
-				}
-			})
-		}
+    /**
+     * Generate toc when generateToc is set to true
+     */
+    if (this.options.generateToc === true) {
+      stream.use(() => {
+        return (tree) => {
+          /**
+           * Generate table of contents and convert to hast tree
+           */
+          const toc = mdastToc(tree, { maxDepth: this.options.tocDepth || 3 }).map
+          if (toc) {
+            this.toc = toHast(toc) as hastTypes.Element
+          }
+        }
+      })
+    }
 
-		/**
-		 * Collect assets
-		 */
-		if (this.options.collectAssets === true) {
-			this.on('image', (node: mdastTypes.Image) => {
-				this.addAsset(node.url, 'image')
-			})
-		}
+    /**
+     * Collect assets
+     */
+    if (this.options.collectAssets === true) {
+      this.on('image', (node: mdastTypes.Image) => {
+        this.addAsset(node.url, 'image')
+      })
+    }
 
-		/**
-		 * Final set of mdast plugins to squeeze empty paragraphs. Should be the
-		 * last mdast plugin
-		 */
-		stream.use(squeezeParagraphs)
+    /**
+     * Final set of mdast plugins to squeeze empty paragraphs. Should be the
+     * last mdast plugin
+     */
+    stream.use(squeezeParagraphs)
 
-		/**
-		 * Process hooks on the mdast tree
-		 */
-		this.processHooks(stream)
+    /**
+     * Process hooks on the mdast tree
+     */
+    this.processHooks(stream)
 
-		/**
-		 * Convert to rehype
-		 */
-		this.useRehype(stream)
+    /**
+     * Convert to rehype
+     */
+    this.useRehype(stream)
 
-		/**
-		 * Stick compiler
-		 */
-		this.useCompiler(stream)
+    /**
+     * Stick compiler
+     */
+    this.useCompiler(stream)
 
-		this.ast = (await stream.process(this.contents)).result as hastTypes.Root
-	}
+    this.ast = (await stream.process(this.contents)).result as hastTypes.Root
+  }
 
-	/**
-	 * Process the file summary as markdown
-	 */
-	private async processSummary() {
-		if (!this.frontmatter.summary) {
-			return
-		}
+  /**
+   * Process the file summary as markdown
+   */
+  private async processSummary() {
+    if (!this.frontmatter.summary) {
+      return
+    }
 
-		/**
-		 * Markdown + gfm (headings and autolinking not required here)
-		 */
-		const stream = unified().use(markdown).use(gfm)
+    /**
+     * Markdown + gfm (headings and autolinking not required here)
+     */
+    const stream = unified().use(markdown).use(gfm)
 
-		/**
-		 * Convert to rehype
-		 */
-		this.useRehype(stream)
+    /**
+     * Convert to rehype
+     */
+    this.useRehype(stream)
 
-		/**
-		 * Stick compiler
-		 */
-		this.useCompiler(stream)
+    /**
+     * Stick compiler
+     */
+    this.useCompiler(stream)
 
-		/**
-		 * Get summary and its plain text excerpt
-		 */
-		this.summary = (await stream.process(this.frontmatter.summary)).result as hastTypes.Root
-		this.excerpt = toString(this.summary)
-	}
+    /**
+     * Get summary and its plain text excerpt
+     */
+    this.summary = (await stream.process(this.frontmatter.summary)).result as hastTypes.Root
+    this.excerpt = toString(this.summary)
+  }
 
-	/**
-	 * Report error message
-	 */
-	public report(reason: string, position?: Position | Point, rule?: string): VFileMessage {
-		const message = new VMessage(reason, position, rule)
-		this.messages.push(message)
-		return message
-	}
+  /**
+   * Report error message
+   */
+  public report(reason: string, position?: Position | Point, rule?: string): VFileMessage {
+    const message = new VMessage(reason, position, rule)
+    this.messages.push(message)
+    return message
+  }
 
-	/**
-	 * Define inline macro
-	 */
-	public inlineMacro(
-		name: string,
-		cb: (node: TextDirective | LeafDirective, file: this, removeNode: () => void) => void
-	): this {
-		this.macros.add(name, cb)
-		return this
-	}
+  /**
+   * Define inline macro
+   */
+  public inlineMacro(
+    name: string,
+    cb: (node: TextDirective | LeafDirective, file: this, removeNode: () => void) => void
+  ): this {
+    this.macros.add(name, cb)
+    return this
+  }
 
-	/**
-	 * Define container macro
-	 */
-	public macro(
-		name: string,
-		cb: (node: ContainerDirective, file: this, removeNode: () => void) => void
-	): this {
-		this.macros.add(name, cb)
-		return this
-	}
+  /**
+   * Define container macro
+   */
+  public macro(
+    name: string,
+    cb: (node: ContainerDirective, file: this, removeNode: () => void) => void
+  ): this {
+    this.macros.add(name, cb)
+    return this
+  }
 
-	/**
-	 * Track asset
-	 */
-	public addAsset(url: string, type: string): this {
-		if (this.trackedAssets.has(url)) {
-			return this
-		}
+  /**
+   * Track asset
+   */
+  public addAsset(url: string, type: string): this {
+    if (this.trackedAssets.has(url)) {
+      return this
+    }
 
-		const protocol = getProtocol(url)
+    const protocol = getProtocol(url)
 
-		const asset: ReferenceNode = {
-			originalUrl: url,
-			url: url,
-			type: type,
-			isRelative: !protocol,
-			isLocal: !protocol || protocol === 'file:',
-		}
+    const asset: ReferenceNode = {
+      originalUrl: url,
+      url: url,
+      type: type,
+      isRelative: !protocol,
+      isLocal: !protocol || protocol === 'file:',
+    }
 
-		this.trackedAssets.add(url)
-		this.stats.assets.push(asset)
-		return this
-	}
+    this.trackedAssets.add(url)
+    this.stats.assets.push(asset)
+    return this
+  }
 
-	/**
-	 * Hook into link node
-	 */
-	public on(
-		test: string | ((node: mdastTypes.Content, file: this) => boolean),
-		cb: (node: mdastTypes.Content, file: this) => void
-	): this {
-		this.hooks.push({ test, visitor: cb })
-		return this
-	}
+  /**
+   * Hook into link node
+   */
+  public on(
+    test: string | ((node: mdastTypes.Content, file: this) => boolean),
+    cb: (node: mdastTypes.Content, file: this) => void
+  ): this {
+    this.hooks.push({ test, visitor: cb })
+    return this
+  }
 
-	/**
-	 * Define unified plugin
-	 */
-	public transform<S extends any[] = [Settings?]>(
-		callback: unified.Plugin<S>,
-		...settings: S
-	): this {
-		this.unifiedPlugins.push({ callback, settings })
-		return this
-	}
+  /**
+   * Define unified plugin
+   */
+  public transform<S extends any[] = [Settings?]>(
+    callback: unified.Plugin<S>,
+    ...settings: S
+  ): this {
+    this.unifiedPlugins.push({ callback, settings })
+    return this
+  }
 
-	/**
-	 * Process the file
-	 */
-	public async process() {
-		if (this.state !== 'idle') {
-			throw new Error('Cannot re-process the same markdown file')
-		}
+  /**
+   * Process the file
+   */
+  public async process() {
+    if (this.state !== 'idle') {
+      throw new Error('Cannot re-process the same markdown file')
+    }
 
-		this.state = 'processing'
-		await Promise.all([this.processSummary(), this.processContents()])
-		this.state = 'processed'
+    this.state = 'processing'
+    await Promise.all([this.processSummary(), this.processContents()])
+    this.state = 'processed'
 
-		this.cleanup()
+    this.cleanup()
 
-		return this.ast
-	}
+    return this.ast
+  }
 
-	/**
-	 * JSON representation of the file
-	 */
-	public toJSON(): MarkdownFileJson {
-		return {
-			state: this.state,
-			stats: this.stats,
-			ast: this.ast,
-			summary: this.summary,
-			excerpt: this.excerpt,
-			frontmatter: this.frontmatter,
-			messages: this.messages,
-			...(this.filePath
-				? { filePath: this.filePath, dirname: this.dirname, basename: this.basename }
-				: {}),
-			...(this.options.generateToc ? { toc: this.toc! } : {}),
-		}
-	}
+  /**
+   * JSON representation of the file
+   */
+  public toJSON(): MarkdownFileJson {
+    return {
+      state: this.state,
+      stats: this.stats,
+      ast: this.ast,
+      summary: this.summary,
+      excerpt: this.excerpt,
+      frontmatter: this.frontmatter,
+      messages: this.messages,
+      ...(this.filePath
+        ? { filePath: this.filePath, dirname: this.dirname, basename: this.basename }
+        : {}),
+      ...(this.options.generateToc ? { toc: this.toc! } : {}),
+    }
+  }
 }

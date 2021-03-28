@@ -14,63 +14,63 @@ import { Root, Node, Parent } from 'hast'
  * the registered hooks (if provided)
  */
 export class Compiler {
-	constructor() {}
+  constructor() {}
 
-	/**
-	 * Find if hast root node
-	 */
-	private isRoot(node: Root | Node | Parent): node is Root {
-		return node.type === 'root'
-	}
+  /**
+   * Find if hast root node
+   */
+  private isRoot(node: Root | Node | Parent): node is Root {
+    return node.type === 'root'
+  }
 
-	/**
-	 * Find if hast parent node
-	 */
-	private isParent(node: Root | Node | Parent): node is Parent {
-		return node.type === 'element'
-	}
+  /**
+   * Find if hast parent node
+   */
+  private isParent(node: Root | Node | Parent): node is Parent {
+    return node.type === 'element'
+  }
 
-	/**
-	 * Traverse over hast tree and drop unncessary attributes like Lines & Columns
-	 */
-	private traverse(node: Root | Node, result: Node[]) {
-		if (this.isRoot(node)) {
-			node.children.forEach((child) => this.traverse(child, result))
-			return
-		}
+  /**
+   * Traverse over hast tree and drop unncessary attributes like Lines & Columns
+   */
+  private traverse(node: Root | Node, result: Node[]) {
+    if (this.isRoot(node)) {
+      node.children.forEach((child) => this.traverse(child, result))
+      return
+    }
 
-		if (this.isParent(node)) {
-			const children = []
-			result.push({
-				type: 'element',
-				tagName: node.tagName,
-				properties: node.properties,
-				children,
-			})
+    if (this.isParent(node)) {
+      const children = []
+      result.push({
+        type: 'element',
+        tagName: node.tagName,
+        properties: node.properties,
+        children,
+      })
 
-			node.children.forEach((child) => this.traverse(child, children))
-			return
-		}
+      node.children.forEach((child) => this.traverse(child, children))
+      return
+    }
 
-		if (node.type === 'text') {
-			result.push({
-				type: 'text',
-				value: node.value,
-			})
-		}
-	}
+    if (node.type === 'text') {
+      result.push({
+        type: 'text',
+        value: node.value,
+      })
+    }
+  }
 
-	/**
-	 * Process hast tree and invoke the registered hooks
-	 */
-	public compile(root: Root) {
-		const result = []
-		this.traverse(root, result)
+  /**
+   * Process hast tree and invoke the registered hooks
+   */
+  public compile(root: Root) {
+    const result = []
+    this.traverse(root, result)
 
-		return {
-			type: 'root',
-			children: result,
-			...(root.data ? { data: root.data } : {}),
-		}
-	}
+    return {
+      type: 'root',
+      children: result,
+      ...(root.data ? { data: root.data } : {}),
+    }
+  }
 }
