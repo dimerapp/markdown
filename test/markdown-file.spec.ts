@@ -10,6 +10,7 @@
 import test from 'japa'
 import dedent from 'ts-dedent'
 import visit from 'unist-util-visit'
+import { toHtml } from '../src/utils'
 import { mdastTypes } from '../src/Contracts'
 import { MarkdownFile } from '../src/MarkdownFile'
 
@@ -1061,6 +1062,50 @@ test.group('Markdown toc', () => {
     await md.process()
 
     assert.equal(md.toc?.tagName, 'ul')
+    assert.equal(md.toc?.tagName, 'ul')
+    assert.match(toHtml(md).toc!, /Hello nested world/)
+  })
+
+  test('generate toc when enabled using frontmatter', async (assert) => {
+    const contents = dedent`
+    ---
+    generateToc: true
+    ---
+
+    # Hello
+    hello
+
+    ## Hello world
+
+    ### Hello nested world
+    `
+
+    const md = new MarkdownFile(contents, { generateToc: false })
+    await md.process()
+
+    assert.equal(md.toc?.tagName, 'ul')
+    assert.match(toHtml(md).toc!, /Hello nested world/)
+  })
+
+  test('change toc depth using frontmatter', async (assert) => {
+    const contents = dedent`
+    ---
+    tocDepth: 2
+    ---
+
+    # Hello
+    hello
+
+    ## Hello world
+
+    ### Hello nested world
+    `
+
+    const md = new MarkdownFile(contents, { generateToc: true })
+    await md.process()
+
+    assert.equal(md.toc?.tagName, 'ul')
+    assert.notMatch(toHtml(md).toc!, /Hello nested world/)
   })
 })
 

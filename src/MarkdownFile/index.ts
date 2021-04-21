@@ -165,6 +165,26 @@ export class MarkdownFile {
     this.frontmatter = attributes
 
     /**
+     * Here we intentionally patch the public options to reflect the options
+     * defined in front matter. This is done, so that any other part of the
+     * codebase relying on the `file.options` property get the final set
+     * of options and not just the initial options.
+     *
+     * ------------------------------------------------------------------
+     * ONLY FOLLOWING OPTIONS ARE ENTERTAINED
+     * ------------------------------------------------------------------
+     *
+     * generateToc?: boolean
+     * tocDepth?: 1 | 2 | 3 | 4 | 5 | 6
+     */
+    if (this.frontmatter.generateToc !== undefined) {
+      this.options.generateToc = this.frontmatter.generateToc
+    }
+    if (this.frontmatter.tocDepth !== undefined) {
+      this.options.tocDepth = this.frontmatter.tocDepth
+    }
+
+    /**
      * Patch the remaining contents with empty whitespace. This will ensure
      * that the ast location points to the correct line + col
      */
