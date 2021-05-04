@@ -100,7 +100,7 @@
     "remark-directive": "^1.0.1",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.0.0",
+    "remark-rehype": "^8.1.0",
     "remark-slug": "^6.0.0",
     "remark-squeeze-paragraphs": "^4.0.0",
     "remark-stringify": "^9.0.1",
