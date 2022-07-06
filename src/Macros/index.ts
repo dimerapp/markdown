@@ -21,10 +21,8 @@ export class Macros {
   /**
    * Registered macros
    */
-  private macros: Map<
-    string,
-    (node: any, file: MarkdownFile, deleteNode?: () => void) => void
-  > = new Map()
+  private macros: Map<string, (node: any, file: MarkdownFile, deleteNode?: () => void) => void> =
+    new Map()
 
   /**
    * Clear registered macros

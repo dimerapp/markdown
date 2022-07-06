@@ -108,9 +108,7 @@ export class ObjectBuilder {
 /**
  * Parse thematic block next to "```"
  */
-export function parseThematicBlock(
-  lang: string
-): {
+export function parseThematicBlock(lang: string): {
   lang: null | string
   fileName: null | string
 } {
