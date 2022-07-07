@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import codesandbox from '../src/Macros/Collection/codesandbox'
 
 test.group('Codesandbox', () => {
-  test('report error when url is missing', async (assert) => {
+  test('report error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{}
 		`
@@ -31,7 +31,7 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('report error when url domain is not allowed', async (assert) => {
+  test('report error when url domain is not allowed', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="foo.com"}
 		`
@@ -49,7 +49,7 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('embed codesandbox url', async (assert) => {
+  test('embed codesandbox url', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js"}
 		`
@@ -93,7 +93,7 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('forward attributes to codesandbox', async (assert) => {
+  test('forward attributes to codesandbox', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js" codemirror=1}
 		`

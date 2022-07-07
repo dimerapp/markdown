@@ -7,14 +7,14 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import visit from 'unist-util-visit'
 import { mdastTypes } from '../src/Contracts'
 import { MarkdownFile } from '../src/MarkdownFile'
 
 test.group('Markdown', () => {
-  test('process markdown to ast', async (assert) => {
+  test('process markdown to ast', async ({ assert }) => {
     const contents = dedent`
 		Hello world. This is **markdown**
 		`
@@ -51,7 +51,7 @@ test.group('Markdown', () => {
     })
   })
 
-  test('process markdown to ast with gfm syntax', async (assert) => {
+  test('process markdown to ast with gfm syntax', async ({ assert }) => {
     const contents = dedent`
 		www.example.com
 
@@ -110,7 +110,7 @@ test.group('Markdown', () => {
     })
   })
 
-  test('generate bookmarks for headings', async (assert) => {
+  test('generate bookmarks for headings', async ({ assert }) => {
     const contents = dedent`
 		## Hello world
 		Some text for fun
@@ -211,7 +211,7 @@ test.group('Markdown', () => {
     })
   })
 
-  test('ignore directives unless enabled', async (assert) => {
+  test('ignore directives unless enabled', async ({ assert }) => {
     const contents = dedent`
 		Hello :span[**hello**]{class="grey"}
 
@@ -271,7 +271,7 @@ test.group('Markdown', () => {
     })
   })
 
-  test('allow markdown directives when enabled', async (assert) => {
+  test('allow markdown directives when enabled', async ({ assert }) => {
     const contents = dedent`
 		Hello :span[**hello**]{class="grey"}
 
@@ -347,7 +347,7 @@ test.group('Markdown', () => {
 })
 
 test.group('Markdown html', () => {
-  test('ignore html', async (assert) => {
+  test('ignore html', async ({ assert }) => {
     const contents = dedent`
 		Hello world
 
@@ -375,7 +375,7 @@ test.group('Markdown html', () => {
     })
   })
 
-  test('allow html when enabled', async (assert) => {
+  test('allow html when enabled', async ({ assert }) => {
     const contents = dedent`
 		Hello world
 
@@ -423,7 +423,7 @@ test.group('Markdown html', () => {
 })
 
 test.group('Markdown frontmatter', () => {
-  test('process front matter', async (assert) => {
+  test('process front matter', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -441,7 +441,7 @@ test.group('Markdown frontmatter', () => {
     })
   })
 
-  test('process summary markdown to ast', async (assert) => {
+  test('process summary markdown to ast', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -518,7 +518,7 @@ test.group('Markdown frontmatter', () => {
     })
   })
 
-  test('allow html in summary when enabled', async (assert) => {
+  test('allow html in summary when enabled', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -600,7 +600,7 @@ test.group('Markdown frontmatter', () => {
     })
   })
 
-  test('do not process directives inside summary', async (assert) => {
+  test('do not process directives inside summary', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -668,7 +668,7 @@ test.group('Markdown frontmatter', () => {
 })
 
 test.group('Markdown macros', () => {
-  test('allow defining custom macros', async (assert) => {
+  test('allow defining custom macros', async ({ assert }) => {
     const contents = dedent`
 		Hello world
 
@@ -730,7 +730,7 @@ test.group('Markdown macros', () => {
     })
   })
 
-  test('allow macros to report errors', async (assert) => {
+  test('allow macros to report errors', async ({ assert }) => {
     const contents = dedent`
 		Hello world
 
@@ -752,7 +752,7 @@ test.group('Markdown macros', () => {
     assert.equal(md.messages[0].column, 1)
   })
 
-  test('ensure correct line + column when yaml front matter is used', async (assert) => {
+  test('ensure correct line + column when yaml front matter is used', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -779,7 +779,7 @@ test.group('Markdown macros', () => {
     assert.equal(md.messages[0].column, 1)
   })
 
-  test('allow macro to remove node all together', async (assert) => {
+  test('allow macro to remove node all together', async ({ assert }) => {
     const contents = dedent`
 		---
 		title: Hello world
@@ -817,7 +817,7 @@ test.group('Markdown macros', () => {
     })
   })
 
-  test('forward exceptions raised by macros', async (assert) => {
+  test('forward exceptions raised by macros', async ({ assert }) => {
     assert.plan(1)
 
     const contents = dedent`
@@ -847,7 +847,7 @@ test.group('Markdown macros', () => {
 })
 
 test.group('Markdown assets', () => {
-  test('collect images from the markdown document', async (assert) => {
+  test('collect images from the markdown document', async ({ assert }) => {
     const contents = dedent`
 		Hello world. I link to [google](http://google.com)
 
@@ -870,7 +870,7 @@ test.group('Markdown assets', () => {
     })
   })
 
-  test('do not collect links when "collectAssets" is not true', async (assert) => {
+  test('do not collect links when "collectAssets" is not true', async ({ assert }) => {
     const contents = dedent`
 		Hello world. I link to [google](http://google.com)
 
@@ -887,7 +887,7 @@ test.group('Markdown assets', () => {
 })
 
 test.group('Markdown hooks', () => {
-  test('allow hooking into nodes', async (assert) => {
+  test('allow hooking into nodes', async ({ assert }) => {
     const contents = dedent`
 		The tasks are
 
@@ -920,7 +920,7 @@ test.group('Markdown hooks', () => {
     })
   })
 
-  test('allow multiple handlers for a given node', async (assert) => {
+  test('allow multiple handlers for a given node', async ({ assert }) => {
     const contents = dedent`
 		The tasks are
 
@@ -965,7 +965,7 @@ test.group('Markdown hooks', () => {
     assert.deepEqual(md.stats.listItems, 6)
   })
 
-  test('allow match test as a function', async (assert) => {
+  test('allow match test as a function', async ({ assert }) => {
     const contents = dedent`
 		The tasks are
 
@@ -1019,7 +1019,7 @@ test.group('Markdown hooks', () => {
 })
 
 test.group('Markdown transform plugin', () => {
-  test('define unified mdast plugin', async (assert) => {
+  test('define unified mdast plugin', async ({ assert }) => {
     assert.plan(2)
 
     const contents = dedent`
@@ -1047,7 +1047,7 @@ test.group('Markdown transform plugin', () => {
 })
 
 test.group('Markdown toc', () => {
-  test('generate toc when enabled', async (assert) => {
+  test('generate toc when enabled', async ({ assert }) => {
     const contents = dedent`
 		# Hello
 		hello
@@ -1065,7 +1065,7 @@ test.group('Markdown toc', () => {
 })
 
 test.group('Markdown code', () => {
-  test('parse thematic block', async (assert) => {
+  test('parse thematic block', async ({ assert }) => {
     assert.plan(1)
     const contents = ['Hello', '```js', `const a = require('a')`, '```'].join('\n')
 
@@ -1081,7 +1081,7 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block with line highlights', async (assert) => {
+  test('parse thematic block with line highlights', async ({ assert }) => {
     assert.plan(2)
     const contents = [
       'Hello',
@@ -1113,7 +1113,7 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block with filename', async (assert) => {
+  test('parse thematic block with filename', async ({ assert }) => {
     assert.plan(2)
     const contents = ['Hello', '```js{hello.ts}', `const a = require('a')`, '```'].join('\n')
 
@@ -1137,7 +1137,7 @@ test.group('Markdown code', () => {
     await md.process()
   })
 
-  test('parse thematic block without language', async (assert) => {
+  test('parse thematic block without language', async ({ assert }) => {
     assert.plan(2)
     const contents = ['Hello', '```', `const a = require('a')`, '```'].join('\n')
 

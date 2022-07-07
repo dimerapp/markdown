@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import video from '../src/Macros/Collection/video'
 
 test.group('Video', () => {
-  test('report error when url is missing', async (assert) => {
+  test('report error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::video{}
 		`
@@ -31,7 +31,7 @@ test.group('Video', () => {
     })
   })
 
-  test('embed video as mp4', async (assert) => {
+  test('embed video as mp4', async ({ assert }) => {
     const contents = dedent`
 		::video{url="any-url-works.mp4"}
 		`

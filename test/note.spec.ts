@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import note from '../src/Macros/Collection/note'
 
 test.group('Note', () => {
-  test('transform notes', async (assert) => {
+  test('transform notes', async ({ assert }) => {
     const contents = dedent`
 		:::note
 		This is a note

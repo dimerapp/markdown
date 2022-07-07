@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import youtube from '../src/Macros/Collection/youtube'
 
 test.group('Youtube', () => {
-  test('raise error when url is missing', async (assert) => {
+  test('raise error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::youtube{}
 		`
@@ -31,7 +31,7 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when url is not from youtube.com or youtu.be', async (assert) => {
+  test('raise error when url is not from youtube.com or youtu.be', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="foo"}
 		`
@@ -52,7 +52,7 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when video id is missing in youtu.be url', async (assert) => {
+  test('raise error when video id is missing in youtu.be url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://youtu.be"}
 		`
@@ -70,7 +70,7 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when video id is missing in youtube.com url', async (assert) => {
+  test('raise error when video id is missing in youtube.com url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://www.youtube.com/watch"}
 		`
@@ -88,7 +88,7 @@ test.group('Youtube', () => {
     })
   })
 
-  test('embed from youtube.com url', async (assert) => {
+  test('embed from youtube.com url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://www.youtube.com/watch?v=Hm14pyibQhQ&feature=youtu.be&t=2"}
 		`
@@ -126,7 +126,7 @@ test.group('Youtube', () => {
     })
   })
 
-  test('embed from youtu.be url', async (assert) => {
+  test('embed from youtu.be url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://youtu.be/Hm14pyibQhQ?t=2"}
 		`

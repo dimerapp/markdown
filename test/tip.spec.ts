@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import tip from '../src/Macros/Collection/tip'
 
 test.group('Tip', () => {
-  test('transform tips', async (assert) => {
+  test('transform tips', async ({ assert }) => {
     const contents = dedent`
 		:::tip
 		This is a tip

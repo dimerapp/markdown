@@ -7,13 +7,13 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { MarkdownFile } from '../src/MarkdownFile'
 import warning from '../src/Macros/Collection/warning'
 
 test.group('Warnings', () => {
-  test('transform warnings', async (assert) => {
+  test('transform warnings', async ({ assert }) => {
     const contents = dedent`
 		:::warning
 		This is a warning

@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
+import { test } from '@japa/runner'
 import dedent from 'ts-dedent'
 import { CodeBlockParser } from '../src/CodeBlockParser'
 
 test.group('CodeBlock Parser', () => {
-  test('parse contents without any highlights', (assert) => {
+  test('parse contents without any highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		a.run()
@@ -27,7 +27,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with highlights', (assert) => {
+  test('parse contents with highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -47,7 +47,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with nested highlights', (assert) => {
+  test('parse contents with nested highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -71,7 +71,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with inserts', (assert) => {
+  test('parse contents with inserts', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -95,7 +95,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with deletes', (assert) => {
+  test('parse contents with deletes', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -119,7 +119,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('ignore deletes inside insert', (assert) => {
+  test('ignore deletes inside insert', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// insert-start
@@ -143,7 +143,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with multiple highlights', (assert) => {
+  test('parse contents with multiple highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -169,7 +169,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('parse contents with multiple inserts', (assert) => {
+  test('parse contents with multiple inserts', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -197,7 +197,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('process marks inside highlights', (assert) => {
+  test('process marks inside highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		// highlight-start
@@ -228,7 +228,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('process marks without highlights', (assert) => {
+  test('process marks without highlights', ({ assert }) => {
     const contents = dedent`
 		const a = require('a')
 		a.{::run::}()
@@ -257,7 +257,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('process multiple marks in a single file', (assert) => {
+  test('process multiple marks in a single file', ({ assert }) => {
     const contents = dedent`
 		Route.get('{::/::}', ({::{ request }::}) => {
 		})
@@ -286,7 +286,7 @@ test.group('CodeBlock Parser', () => {
     })
   })
 
-  test('process marks at the end of line', (assert) => {
+  test('process marks at the end of line', ({ assert }) => {
     const contents = dedent`
 		Route.get('{::/::}', ({::{ request }) => {::}
 		})
