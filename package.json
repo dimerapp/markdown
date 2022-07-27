@@ -88,7 +88,7 @@
     "@types/mdast": "^3.0.3",
     "@types/unist": "^2.0.3",
     "front-matter": "^4.0.2",
-    "hast-util-to-html": "^7.1.2",
+    "hast-util-to-html": "^8.0.3",
     "hast-util-to-string": "^1.0.4",
     "hastscript": "^6.0.0",
     "mdast-util-to-hast": "^10.2.0",
