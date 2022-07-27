@@ -295,6 +295,19 @@ await md.process()
 ### codegroup
 Render multiple codeblocks inside a group of tabs. The `macro` wraps all the codeblocks inside a `div` with `data-tabs` property.
 
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import codegroup from '@dimerapp/markdown/macros/codegroup'
+
+const md = new MarkdownFile(content)
+
+/**
+ * Codegroup function registers the macro
+ * with the markdown file
+ */
+codegroup(md)
+```
+
 ````md
 :::codegroup
 
@@ -324,12 +337,38 @@ Output AST
 ### codesandbox
 Embed a codesandbox example. All of the [embed options](https://codesandbox.io/docs/embedding#embed-options) can be passed as props.
 
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import codesandbox from '@dimerapp/markdown/macros/codesandbox'
+
+const md = new MarkdownFile(content)
+
+/**
+ * Codesandbox function registers the macro
+ * with the markdown file
+ */
+codesandbox(md)
+```
+
 ```md
 ::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js" autoresize=0 codemirror=1 fontsize=16}
 ```
 
 ### note
 Render an alert message of type `note`. The content of the directive is wrapped inside a `div` with `alert alert-note` class names.
+
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import note from '@dimerapp/markdown/macros/note'
+
+const md = new MarkdownFile(content)
+
+/**
+ * note function registers the macro
+ * with the markdown file
+ */
+note(md)
+```
 
 ```md
 :::note
@@ -340,6 +379,19 @@ This is a note
 ### tip
 Render an alert message of type `tip`. The content of the directive is wrapped inside a `div` with `alert alert-tip` class names.
 
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import tip from '@dimerapp/markdown/macros/tip'
+
+const md = new MarkdownFile(content)
+
+/**
+ * tip function registers the macro
+ * with the markdown file
+ */
+tip(md)
+```
+
 ```md
 :::tip
 This is a tip
@@ -349,6 +401,19 @@ This is a tip
 ### warning
 Render an alert message of type `warning`. The content of the directive is wrapped inside a `div` with `alert alert-warning` class names.
 
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import warning from '@dimerapp/markdown/macros/warning'
+
+const md = new MarkdownFile(content)
+
+/**
+ * warning function registers the macro
+ * with the markdown file
+ */
+warning(md)
+```
+
 ```md
 :::warning
 This is a warning
@@ -357,6 +422,19 @@ This is a warning
 
 ### youtube
 Embed a youtube video inside an iframe.
+
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import youtube from '@dimerapp/markdown/macros/youtube'
+
+const md = new MarkdownFile(content)
+
+/**
+ * youtube function registers the macro
+ * with the markdown file
+ */
+youtube(md)
+```
 
 ```md
 ::youtube{url="https://www.youtube.com/watch?v=Hm14pyibQhQ"}
@@ -370,6 +448,19 @@ Along with the URL, you can also pass the `width` and `height` of the video.
 
 ### video
 Embed a video using the `video` HTML tag. The video tag is wrapped inside a div with `embed embed-video` class names.
+
+```ts
+import { MarkdownFile } from '@dimerapp/markdown'
+import video from '@dimerapp/markdown/macros/video'
+
+const md = new MarkdownFile(content)
+
+/**
+ * video function registers the macro
+ * with the markdown file
+ */
+video(md)
+```
 
 ```md
 ::video{url="./bunny.mp4"}
