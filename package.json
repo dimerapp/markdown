@@ -84,7 +84,7 @@
     "anyBranch": false
   },
   "dependencies": {
-    "@types/hast": "^2.3.1",
+    "@types/hast": "^2.3.4",
     "@types/mdast": "^3.0.3",
     "@types/unist": "^2.0.3",
     "front-matter": "^4.0.2",
