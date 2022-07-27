@@ -7,21 +7,21 @@
  * file that was distributed with this source code.
  */
 
-import { MarkdownFile } from '../../MarkdownFile'
+import { MarkdownFile } from '../markdown_file.js'
 
 /**
- * Wrap markup inside div with class "alert-tip"
+ * Wrap markup inside div with class "alert-note"
  */
 export default function (mdFile: MarkdownFile) {
-  mdFile.macro('tip', (node) => {
+  mdFile.macro('note', (node) => {
     node.data = node.data || {}
     node.data.hName = 'div'
     node.data.hProperties = {
-      className: ['alert', 'alert-tip'],
+      className: ['alert', 'alert-note'],
       /**
-       * We do not add the `role=alert` inside tip, since role=alert is meant
+       * We do not add the `role=alert` inside note, since role=alert is meant
        * to inform the user about the things that needs immediate attention
-       * and "tips" are not one of them
+       * and "notes" are not one of them
        */
     }
   })

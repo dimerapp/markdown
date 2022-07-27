@@ -7,11 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import { Root, Node, Parent } from 'hast'
+import { Root, Element, Comment, Text } from 'hast'
 
 /**
- * Post processes the hast tree and removes the location nodes. Also invokes
- * the registered hooks (if provided)
+ * Post processes the hast tree and removes the location nodes.
  */
 export class Compiler {
   constructor() {}
@@ -19,28 +18,30 @@ export class Compiler {
   /**
    * Find if hast root node
    */
-  private isRoot(node: Root | Node | Parent): node is Root {
+  #isRoot(node: Root | Element | Comment | Text): node is Root {
     return node.type === 'root'
   }
 
   /**
    * Find if hast parent node
    */
-  private isParent(node: Root | Node | Parent): node is Parent {
+  #isParent(node: Root | Element | Comment | Text): node is Element {
     return node.type === 'element'
   }
 
   /**
    * Traverse over hast tree and drop unncessary attributes like Lines & Columns
    */
-  private traverse(node: Root | Node, result: Node[]) {
-    if (this.isRoot(node)) {
-      node.children.forEach((child) => this.traverse(child, result))
+  #traverse(node: Root | Element | Comment | Text, result: (Element | Text)[]) {
+    if (this.#isRoot(node)) {
+      for (const child of node.children) {
+        this.#traverse(child as Element, result)
+      }
       return
     }
 
-    if (this.isParent(node)) {
-      const children = []
+    if (this.#isParent(node)) {
+      const children: Element[] = []
       result.push({
         type: 'element',
         tagName: node.tagName,
@@ -48,7 +49,10 @@ export class Compiler {
         children,
       })
 
-      node.children.forEach((child) => this.traverse(child, children))
+      for (const child of node.children) {
+        this.#traverse(child, children)
+      }
+
       return
     }
 
@@ -61,11 +65,11 @@ export class Compiler {
   }
 
   /**
-   * Process hast tree and invoke the registered hooks
+   * Process hast tree
    */
-  public compile(root: Root) {
-    const result = []
-    this.traverse(root, result)
+  compile(root: Root) {
+    const result: Element[] = []
+    this.#traverse(root, result)
 
     return {
       type: 'root',

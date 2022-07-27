@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import { parse } from 'url'
-import { ensureDomainUrl } from '../../utils'
-import { MarkdownFile } from '../../MarkdownFile'
+import { parse } from 'node:url'
+import { ensureDomainUrl } from '../utils.js'
+import { MarkdownFile } from '../markdown_file.js'
 
 /**
  * Embed youtube videos to your document
@@ -67,7 +67,7 @@ export default function (mdFile: MarkdownFile) {
      * Mutate the node
      */
     node.data = node.data || {}
-    node.data.hname = 'div'
+    node.data.hName = 'div'
     node.data.hProperties = {
       className: ['embed', 'embed-youtube'],
     }

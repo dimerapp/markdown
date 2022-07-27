@@ -7,10 +7,11 @@
  * file that was distributed with this source code.
  */
 
+import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import youtube from '../src/Macros/Collection/youtube'
+
+import youtube from '../src/macros/youtube.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Youtube', () => {
   test('raise error when url is missing', async ({ assert }) => {

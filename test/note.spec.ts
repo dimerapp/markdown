@@ -8,9 +8,10 @@
  */
 
 import { test } from '@japa/runner'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import note from '../src/Macros/Collection/note'
+import { dedent } from 'ts-dedent'
+
+import note from '../src/macros/note.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Note', () => {
   test('transform notes', async ({ assert }) => {

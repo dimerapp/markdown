@@ -300,7 +300,7 @@ Or use directives along with inbuilt macros.
 
 How about greate CodeSandbox embeds
 
-::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js" codemirror=1}
+::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js" autoresize=0 codemirror=1 fontsize=16}
 
 :::note
 The content inside a div with `.alert .alert-note` classes.

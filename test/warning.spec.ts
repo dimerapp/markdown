@@ -8,9 +8,10 @@
  */
 
 import { test } from '@japa/runner'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import warning from '../src/Macros/Collection/warning'
+import { dedent } from 'ts-dedent'
+
+import warning from '../src/macros/warning.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Warnings', () => {
   test('transform warnings', async ({ assert }) => {

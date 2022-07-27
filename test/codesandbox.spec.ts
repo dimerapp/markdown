@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
+import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import codesandbox from '../src/Macros/Collection/codesandbox'
+import { MarkdownFile } from '../src/markdown_file.js'
+import codesandbox from '../src/macros/codesandbox.js'
 
 test.group('Codesandbox', () => {
   test('report error when url is missing', async ({ assert }) => {

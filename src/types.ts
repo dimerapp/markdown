@@ -12,38 +12,12 @@ import type * as mdastTypes from 'mdast'
 import { VFileMessage } from 'vfile-message'
 import type { Node, Position, Point } from 'unist'
 
-export type Code = mdastTypes.Code & {
-  meta: {
-    lang: null | string
-    highlights: number[]
-    inserts: number[]
-    deletes: number[]
-    marks: { [key: string]: { start: number; end: number }[] }
-    fileName: null | string
-  }
-}
-
-export { Node, Position, Point }
-export { hastTypes }
-export { mdastTypes }
-
-/**
- * Shape of the collected reference
- */
-export type ReferenceNode = {
-  url: string
-  originalUrl: string
-  type: string
-  isLocal: boolean
-  isRelative: boolean
-}
+export { hastTypes, mdastTypes, Node, Point, Position }
 
 /**
  * Shape of the stats node
  */
-export type StatsNode = {
-  assets: ReferenceNode[]
-} & { [key: string]: any }
+export type StatsNode = Record<string, any>
 
 /**
  * Directives
@@ -89,7 +63,6 @@ export interface MarkdownFileOptions {
   allowHtml?: boolean
   filePath?: string
   enableDirectives?: boolean
-  collectAssets?: boolean
 }
 
 /**
@@ -97,7 +70,6 @@ export interface MarkdownFileOptions {
  */
 export interface MarkdownFileJson {
   state: 'idle' | 'processing' | 'processed'
-  stats: StatsNode
   ast?: hastTypes.Root
   summary?: hastTypes.Root
   excerpt?: string
@@ -107,4 +79,17 @@ export interface MarkdownFileJson {
   dirname?: string
   basename?: string
   toc?: hastTypes.Parent
+  stats: StatsNode
+}
+
+/**
+ * Shape of the codeblock
+ */
+export type Code = mdastTypes.Code & {
+  meta: {
+    highlights: number[]
+    inserts: number[]
+    deletes: number[]
+    title: null | string
+  }
 }

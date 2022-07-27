@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { MarkdownFile } from '../src/MarkdownFile'
-import codegroup from '../src/Macros/Collection/codegroup'
+import codegroup from '../src/macros/codegroup.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Codegroup', () => {
   test('group codeblocks into tabs', async ({ assert }) => {
@@ -38,7 +38,8 @@ test.group('Codegroup', () => {
   test('group codeblocks with filename into tabs', async ({ assert }) => {
     const contents = [
       ':::codegroup',
-      '```{Hello world}',
+      '```',
+      '// title: Hello world',
       `const a = require('a')`,
       '```',
       '```',

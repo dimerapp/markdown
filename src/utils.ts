@@ -7,20 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import { parse } from 'url'
-import hastToHtml from 'hast-util-to-html'
-import { MarkdownFile } from '../MarkdownFile'
+import { parse } from 'node:url'
+import { toHtml as hashToHtml } from 'hast-util-to-html'
+
+import { MarkdownFile } from './markdown_file.js'
 
 const CACHE: Map<string, string | null> = new Map()
-
-/**
- * Default response for the parseThematicBlock when no
- * lang is defined
- */
-const DEFAULT_NODE = {
-  lang: null,
-  fileName: null,
-}
 
 /**
  * Returns the protocol for a given url. Using a cache to avoid
@@ -46,21 +38,21 @@ export function toHtml(file: MarkdownFile) {
     toc?: string
     excerpt?: string
   } = {
-    contents: hastToHtml(file.ast!, {
+    contents: hashToHtml(file.ast!, {
       allowDangerousHtml: file.options.allowHtml === true,
       allowDangerousCharacters: file.options.allowHtml === true,
     }),
   }
 
   if (file.summary) {
-    output.summary = hastToHtml(file.summary, {
+    output.summary = hashToHtml(file.summary, {
       allowDangerousHtml: file.options.allowHtml === true,
       allowDangerousCharacters: file.options.allowHtml === true,
     })
   }
 
   if (file.toc) {
-    output.toc = hastToHtml(file.toc)
+    output.toc = hashToHtml(file.toc)
   }
 
   if (file.excerpt) {
@@ -93,37 +85,14 @@ export function ensureDomainUrl(url: string | null, macroName: string, fromDomai
 export class ObjectBuilder {
   private state: any = {}
 
-  public add(key: string, value: any) {
+  add(key: string, value: any) {
     if (value === undefined || value === null) {
       return
     }
     this.state[key] = value
   }
 
-  public toJSON() {
+  toJSON() {
     return this.state
-  }
-}
-
-/**
- * Parse thematic block next to "```"
- */
-export function parseThematicBlock(lang: string): {
-  lang: null | string
-  fileName: null | string
-} {
-  /**
-   * Language property on node is missing
-   */
-  if (!lang) {
-    return DEFAULT_NODE
-  }
-
-  const tokens = lang.split('{')
-  const language = tokens[0].match(/^[^ \t]+(?=[ \t]|$)/)
-
-  return {
-    lang: language ? language[0] : null,
-    fileName: tokens[1] ? tokens[1].replace('}', '') : null,
   }
 }

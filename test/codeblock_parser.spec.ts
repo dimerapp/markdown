@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
+import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
-import dedent from 'ts-dedent'
-import { CodeBlockParser } from '../src/CodeBlockParser'
+import { CodeBlockParser } from '../src/codeblock_parser.js'
 
 test.group('CodeBlock Parser', () => {
   test('parse contents without any highlights', ({ assert }) => {
@@ -20,10 +20,29 @@ test.group('CodeBlock Parser', () => {
 
     assert.deepEqual(new CodeBlockParser().parse(contents), {
       content: contents,
+      title: null,
       inserts: [],
       highlights: [],
       deletes: [],
-      marks: {},
+    })
+  })
+
+  test('parse codeblock title', ({ assert }) => {
+    const contents = dedent`
+    // title: foobar
+    const a = require('a')
+    a.run()
+    `
+
+    assert.deepEqual(new CodeBlockParser().parse(contents), {
+      content: dedent`
+      const a = require('a')
+      a.run()
+      `,
+      title: 'foobar',
+      inserts: [],
+      highlights: [],
+      deletes: [],
     })
   })
 
@@ -40,10 +59,10 @@ test.group('CodeBlock Parser', () => {
 			const a = require('a')
 			a.run()
 			`,
+      title: null,
       inserts: [],
       highlights: [2],
       deletes: [],
-      marks: {},
     })
   })
 
@@ -64,10 +83,10 @@ test.group('CodeBlock Parser', () => {
 			a.run()
 			a.walk()
 			`,
+      title: null,
       inserts: [],
       highlights: [2, 3],
       deletes: [],
-      marks: {},
     })
   })
 
@@ -88,10 +107,10 @@ test.group('CodeBlock Parser', () => {
 			a.run()
 			a.walk()
 			`,
+      title: null,
       inserts: [3],
       highlights: [2],
       deletes: [],
-      marks: {},
     })
   })
 
@@ -112,10 +131,10 @@ test.group('CodeBlock Parser', () => {
 			a.run()
 			a.walk()
 			`,
+      title: null,
       inserts: [],
       highlights: [2],
       deletes: [3],
-      marks: {},
     })
   })
 
@@ -136,10 +155,10 @@ test.group('CodeBlock Parser', () => {
 			a.run()
 			a.walk()
 			`,
+      title: null,
       inserts: [2, 3],
       highlights: [],
       deletes: [],
-      marks: {},
     })
   })
 
@@ -162,10 +181,10 @@ test.group('CodeBlock Parser', () => {
 			// or call the following method
 			a.walk()
 			`,
+      title: null,
       inserts: [],
       highlights: [2, 4],
       deletes: [],
-      marks: {},
     })
   })
 
@@ -190,128 +209,10 @@ test.group('CodeBlock Parser', () => {
 			// or call the following method
 			a.walk()
 			`,
+      title: null,
       inserts: [2, 4],
       highlights: [],
       deletes: [],
-      marks: {},
-    })
-  })
-
-  test('process marks inside highlights', ({ assert }) => {
-    const contents = dedent`
-		const a = require('a')
-		// highlight-start
-		a.{::run::}()
-		// or call the following method
-		a.walk()
-		// highlight-end
-		`
-
-    assert.deepEqual(new CodeBlockParser().parse(contents), {
-      content: dedent`
-			const a = require('a')
-			a.run()
-			// or call the following method
-			a.walk()
-			`,
-      inserts: [],
-      highlights: [2, 3, 4],
-      deletes: [],
-      marks: {
-        '2': [
-          {
-            start: 2,
-            end: 5,
-          },
-        ],
-      },
-    })
-  })
-
-  test('process marks without highlights', ({ assert }) => {
-    const contents = dedent`
-		const a = require('a')
-		a.{::run::}()
-		// or call the following method
-		a.walk()
-		`
-
-    assert.deepEqual(new CodeBlockParser().parse(contents), {
-      content: dedent`
-			const a = require('a')
-			a.run()
-			// or call the following method
-			a.walk()
-			`,
-      inserts: [],
-      highlights: [],
-      deletes: [],
-      marks: {
-        '2': [
-          {
-            start: 2,
-            end: 5,
-          },
-        ],
-      },
-    })
-  })
-
-  test('process multiple marks in a single file', ({ assert }) => {
-    const contents = dedent`
-		Route.get('{::/::}', ({::{ request }::}) => {
-		})
-		`
-
-    assert.deepEqual(new CodeBlockParser().parse(contents), {
-      content: dedent`
-			Route.get('/', ({ request }) => {
-			})
-			`,
-      inserts: [],
-      highlights: [],
-      deletes: [],
-      marks: {
-        '1': [
-          {
-            start: 11,
-            end: 12,
-          },
-          {
-            start: 16,
-            end: 27,
-          },
-        ],
-      },
-    })
-  })
-
-  test('process marks at the end of line', ({ assert }) => {
-    const contents = dedent`
-		Route.get('{::/::}', ({::{ request }) => {::}
-		})
-		`
-
-    assert.deepEqual(new CodeBlockParser().parse(contents), {
-      content: dedent`
-			Route.get('/', ({ request }) => {
-			})
-			`,
-      inserts: [],
-      highlights: [],
-      deletes: [],
-      marks: {
-        '1': [
-          {
-            start: 11,
-            end: 12,
-          },
-          {
-            start: 16,
-            end: 33,
-          },
-        ],
-      },
     })
   })
 })
