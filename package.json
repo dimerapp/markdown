@@ -91,7 +91,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "next"
+    "tag": "prerelease"
   },
   "eslintConfig": {
     "extends": [
@@ -129,8 +129,8 @@
     ]
   },
   "np": {
+    "contents": "./",
     "message": "chore(release): %s",
-    "tag": "latest",
     "branch": "main",
     "anyBranch": false
   }
