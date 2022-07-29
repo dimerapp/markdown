@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "7.0.0-0",
+  "version": "7.0.1-0",
   "description": "A markdown process",
   "type": "module",
   "main": "build/index.js",
