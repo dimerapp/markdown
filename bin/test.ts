@@ -1,4 +1,5 @@
 import { assert } from '@japa/assert'
+import { pathToFileURL } from 'node:url'
 import { specReporter } from '@japa/spec-reporter'
 import { runFailedTests } from '@japa/run-failed-tests'
 import { processCliArgs, configure, run } from '@japa/runner'
@@ -22,7 +23,9 @@ configure({
     files: ['test/**/*.spec.ts'],
     plugins: [assert(), runFailedTests()],
     reporters: [specReporter()],
-    importer: (filePath) => import(filePath),
+    importer: (filePath) => {
+      return import(pathToFileURL(filePath).href)
+    },
   },
 })
 
