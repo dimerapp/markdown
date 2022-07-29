@@ -8,7 +8,7 @@
  */
 
 import { test } from '@japa/runner'
-import codegroup from '../src/macros/codegroup.js'
+import { codegroup } from '../src/macros/codegroup.js'
 import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Codegroup', () => {
@@ -25,8 +25,7 @@ test.group('Codegroup', () => {
     ].join('\n')
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.deepEqual(file.ast?.children[0].properties, {
@@ -49,8 +48,7 @@ test.group('Codegroup', () => {
     ].join('\n')
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.deepEqual(file.ast?.children[0].properties, {
@@ -65,8 +63,7 @@ test.group('Codegroup', () => {
     )
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.lengthOf(file.messages, 1)

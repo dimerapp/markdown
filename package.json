@@ -12,7 +12,7 @@
   "exports": {
     ".": "./build/index.js",
     "./utils": "./build/src/utils.js",
-    "./macros": "./build/src/macros/*.js",
+    "./macros": "./build/src/macros/index.js",
     "./types": "./build/src/types.js"
   },
   "scripts": {

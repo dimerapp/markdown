@@ -10,7 +10,7 @@
 import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
 
-import video from '../src/macros/video.js'
+import { video } from '../src/macros/video.js'
 import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Video', () => {
@@ -20,7 +20,7 @@ test.group('Video', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    video(file)
+    file.use(video)
     await file.process()
 
     assert.lengthOf(file.messages, 1)

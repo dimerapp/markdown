@@ -15,8 +15,8 @@ import { ensureDomainUrl, ObjectBuilder } from '../utils.js'
 /**
  * Embed codesandbox to your document
  */
-export default function (mdFile: MarkdownFile) {
-  mdFile.inlineMacro('codesandbox', (node, file, removeNode) => {
+export function codesandbox(mdFile: MarkdownFile) {
+  mdFile.macro('codesandbox', (node, file, removeNode) => {
     /**
      * Ensure macro doesn't have children
      */

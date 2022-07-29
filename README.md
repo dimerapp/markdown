@@ -279,13 +279,13 @@ console.log(md.stats.todo)
 ```
 
 ## Using remark plugins
-You can use the [remark-plugins](https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins) by calling the `use` method on the markdown file instance. The plugin API is the same as unified plugins.
+You can use the [remark-plugins](https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins) by calling the `transform` method on the markdown file instance. The plugin API is the same as unified plugins.
 
 ```ts
 import remarkCapitalize from 'remark-capitalize'
 
 const md = new MarkdownFile(contents)
-md.use(remarkCapitalize)
+md.transform(remarkCapitalize)
 
 await md.process()
 ```
@@ -297,15 +297,10 @@ Render multiple codeblocks inside a group of tabs. The `macro` wraps all the cod
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import codegroup from '@dimerapp/markdown/macros/codegroup'
+import { codegroup } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * Codegroup function registers the macro
- * with the markdown file
- */
-codegroup(md)
+md.use(codegroup)
 ```
 
 ````md
@@ -339,15 +334,10 @@ Embed a codesandbox example. All of the [embed options](https://codesandbox.io/d
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import codesandbox from '@dimerapp/markdown/macros/codesandbox'
+import { codesandbox } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * Codesandbox function registers the macro
- * with the markdown file
- */
-codesandbox(md)
+md.use(codesandbox)
 ```
 
 ```md
@@ -359,15 +349,10 @@ Render an alert message of type `note`. The content of the directive is wrapped 
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import note from '@dimerapp/markdown/macros/note'
+import { note } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * note function registers the macro
- * with the markdown file
- */
-note(md)
+md.use(note)
 ```
 
 ```md
@@ -381,15 +366,10 @@ Render an alert message of type `tip`. The content of the directive is wrapped i
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import tip from '@dimerapp/markdown/macros/tip'
+import { tip } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * tip function registers the macro
- * with the markdown file
- */
-tip(md)
+md.use(tip)
 ```
 
 ```md
@@ -403,15 +383,10 @@ Render an alert message of type `warning`. The content of the directive is wrapp
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import warning from '@dimerapp/markdown/macros/warning'
+import { warning } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * warning function registers the macro
- * with the markdown file
- */
-warning(md)
+md.use(warning)
 ```
 
 ```md
@@ -425,15 +400,10 @@ Embed a youtube video inside an iframe.
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import youtube from '@dimerapp/markdown/macros/youtube'
+import { youtube } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * youtube function registers the macro
- * with the markdown file
- */
-youtube(md)
+md.use(youtube)
 ```
 
 ```md
@@ -451,15 +421,10 @@ Embed a video using the `video` HTML tag. The video tag is wrapped inside a div 
 
 ```ts
 import { MarkdownFile } from '@dimerapp/markdown'
-import video from '@dimerapp/markdown/macros/video'
+import { video } from '@dimerapp/markdown/macros'
 
 const md = new MarkdownFile(content)
-
-/**
- * video function registers the macro
- * with the markdown file
- */
-video(md)
+md.use(video)
 ```
 
 ```md

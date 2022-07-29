@@ -10,7 +10,7 @@
 import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
 import { MarkdownFile } from '../src/markdown_file.js'
-import codesandbox from '../src/macros/codesandbox.js'
+import { codesandbox } from '../src/macros/codesandbox.js'
 
 test.group('Codesandbox', () => {
   test('report error when url is missing', async ({ assert }) => {
@@ -19,7 +19,7 @@ test.group('Codesandbox', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -37,7 +37,7 @@ test.group('Codesandbox', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -55,7 +55,7 @@ test.group('Codesandbox', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.deepEqual(file.ast!, {
@@ -99,7 +99,7 @@ test.group('Codesandbox', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.deepEqual(file.ast!, {

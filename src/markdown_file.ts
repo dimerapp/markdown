@@ -41,12 +41,11 @@ import {
   Position,
   hastTypes,
   StatsNode,
+  Directives,
   mdastTypes,
-  LeafDirective,
-  TextDirective,
   MarkdownFileJson,
-  ContainerDirective,
   MarkdownFileOptions,
+  PluginCallback,
 } from './types.js'
 
 import { Compiler } from './compiler.js'
@@ -70,6 +69,11 @@ export class MarkdownFile {
     test: string | ((node: any, file: MarkdownFile) => boolean)
     visitor: (node: any, file: MarkdownFile) => void
   }[] = []
+
+  /**
+   * A collection of markdown file plugins
+   */
+  #plugins: { callback: PluginCallback<any>; options?: any }[] = []
 
   /**
    * Collection of unified plugins
@@ -188,6 +192,7 @@ export class MarkdownFile {
    */
   #cleanup() {
     this.#unifiedPlugins = []
+    this.#plugins = []
     this.#hooks = []
     this.#macros.clear()
   }
@@ -232,9 +237,9 @@ export class MarkdownFile {
   }
 
   /**
-   * Invoke pre-defined hooks for the matching nodes.
+   * Run pre-defined hooks for the matching nodes.
    */
-  #processHooks(stream: Processor) {
+  #runHooks(stream: Processor) {
     /**
      * Return early if no hooks are defined
      */
@@ -251,6 +256,15 @@ export class MarkdownFile {
         })
       }
     })
+  }
+
+  /**
+   * Run registered plugins
+   */
+  #runPlugins() {
+    for (const plugin of this.#plugins) {
+      plugin.callback(this, ...plugin.options)
+    }
   }
 
   /**
@@ -319,7 +333,7 @@ export class MarkdownFile {
     /**
      * Process hooks on the mdast tree
      */
-    this.#processHooks(stream)
+    this.#runHooks(stream)
 
     /**
      * Convert to rehype
@@ -376,22 +390,11 @@ export class MarkdownFile {
   }
 
   /**
-   * Define inline macro
-   */
-  inlineMacro(
-    name: string,
-    cb: (node: TextDirective | LeafDirective, file: MarkdownFile, removeNode: () => void) => void
-  ): this {
-    this.#macros.add(name, cb)
-    return this
-  }
-
-  /**
    * Define container macro
    */
   macro(
     name: string,
-    cb: (node: ContainerDirective, file: MarkdownFile, removeNode: () => void) => void
+    cb: (node: Directives, file: MarkdownFile, removeNode: () => void) => void
   ): this {
     this.#macros.add(name, cb)
     return this
@@ -409,9 +412,17 @@ export class MarkdownFile {
   }
 
   /**
+   * Register markdown file plugin
+   */
+  use<Options extends any[]>(callback: PluginCallback<Options>, ...options: Options): this {
+    this.#plugins.push({ callback, options })
+    return this
+  }
+
+  /**
    * Define unified plugin
    */
-  use<S extends any[]>(callback: Plugin<S>, ...settings: S): this {
+  transform<Args extends any[]>(callback: Plugin<Args>, ...settings: Args): this {
     this.#unifiedPlugins.push({ callback, settings })
     return this
   }
@@ -425,6 +436,7 @@ export class MarkdownFile {
     }
 
     this.state = 'processing'
+    this.#runPlugins()
     await Promise.all([this.#processSummary(), this.#processContents()])
     this.state = 'processed'
 

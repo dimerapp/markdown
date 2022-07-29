@@ -12,7 +12,7 @@ import { MarkdownFile } from '../markdown_file.js'
 /**
  * Wrap markup inside div with class "alert-note"
  */
-export default function (mdFile: MarkdownFile) {
+export function note(mdFile: MarkdownFile) {
   mdFile.macro('note', (node) => {
     node.data = node.data || {}
     node.data.hName = 'div'

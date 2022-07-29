@@ -14,7 +14,7 @@ import { MarkdownFile } from '../markdown_file.js'
 /**
  * Embed youtube videos to your document
  */
-export default function (mdFile: MarkdownFile) {
+export function youtube(mdFile: MarkdownFile) {
   mdFile.macro('youtube', (node, file, removeNode) => {
     /**
      * Ensure macro doesn't have children

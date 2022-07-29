@@ -10,7 +10,7 @@
 import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
 
-import youtube from '../src/macros/youtube.js'
+import { youtube } from '../src/macros/youtube.js'
 import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Youtube', () => {
@@ -20,7 +20,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -38,7 +38,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -59,7 +59,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -77,7 +77,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -95,7 +95,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.deepEqual(file.ast!, {
@@ -133,7 +133,7 @@ test.group('Youtube', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.deepEqual(file.ast!, {

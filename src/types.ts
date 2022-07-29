@@ -11,8 +11,17 @@ import type * as hastTypes from 'hast'
 import type * as mdastTypes from 'mdast'
 import { VFileMessage } from 'vfile-message'
 import type { Node, Position, Point } from 'unist'
+import type { MarkdownFile } from './markdown_file.js'
 
 export { hastTypes, mdastTypes, Node, Point, Position }
+
+/**
+ * Markdown file plugin callback
+ */
+export type PluginCallback<Options extends any[]> = (
+  file: MarkdownFile,
+  ...options: Options
+) => void
 
 /**
  * Shape of the stats node

@@ -12,9 +12,9 @@ import { readFileSync } from 'node:fs'
 import { createServer } from 'node:http'
 
 import { template } from './template.js'
-import { MarkdownFile } from '../index.js'
 import { toHtml } from '../src/utils.js'
-import * as macros from '../src/macros/all.js'
+import { MarkdownFile } from '../index.js'
+import * as macros from '../src/macros/index.js'
 
 const mdFilePath = new URL('./sample.md', import.meta.url)
 const routesImage = new URL('./routes.png', import.meta.url)
@@ -34,12 +34,9 @@ createServer(async (req, res) => {
     generateToc: true,
   })
 
-  macros.codesandbox(md)
-  macros.youtube(md)
-  macros.note(md)
-  macros.tip(md)
-  macros.warning(md)
-  macros.video(md)
+  for (let macro of Object.values(macros)) {
+    md.use(macro)
+  }
 
   await md.process()
   res.writeHead(200, { 'content-type': 'text/html' })

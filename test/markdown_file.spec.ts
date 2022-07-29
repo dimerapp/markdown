@@ -994,7 +994,7 @@ test.group('Markdown transform plugin', () => {
     `
 
     const md = new MarkdownFile(contents, {})
-    md.use(
+    md.transform(
       function (options) {
         assert.deepEqual(options.md, md)
         return async function (node) {
@@ -1069,7 +1069,7 @@ test.group('Markdown code', () => {
     const contents = ['Hello', '```js', `const a = require('a')`, '```'].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.use(() => {
+    md.transform(() => {
       return function (tree) {
         visit(tree, 'code', (node: Code) => {
           assert.deepEqual(node.lang, 'js')
@@ -1093,7 +1093,7 @@ test.group('Markdown code', () => {
     ].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.use(() => {
+    md.transform(() => {
       return function (tree) {
         visit(tree, 'code', (node: Code) => {
           assert.deepEqual(node.lang, 'js')
@@ -1117,7 +1117,7 @@ test.group('Markdown code', () => {
     )
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.use(() => {
+    md.transform(() => {
       return function (tree) {
         visit(tree, 'code', (node: Code) => {
           assert.deepEqual(node.lang, 'js')
@@ -1139,7 +1139,7 @@ test.group('Markdown code', () => {
     const contents = ['Hello', '```', `const a = require('a')`, '```'].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.use(() => {
+    md.transform(() => {
       return function (tree) {
         visit(tree, 'code', (node: Code) => {
           assert.isNull(node.lang)

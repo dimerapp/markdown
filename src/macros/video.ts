@@ -13,8 +13,8 @@ import { MarkdownFile } from '../markdown_file.js'
 /**
  * Allows adding videos to the document
  */
-export default function (mdFile: MarkdownFile) {
-  mdFile.inlineMacro('video', (node, file, removeNode) => {
+export function video(mdFile: MarkdownFile) {
+  mdFile.macro('video', (node, file, removeNode) => {
     /**
      * Ensure macro doesn't have children
      */

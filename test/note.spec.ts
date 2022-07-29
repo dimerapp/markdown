@@ -10,7 +10,7 @@
 import { test } from '@japa/runner'
 import { dedent } from 'ts-dedent'
 
-import note from '../src/macros/note.js'
+import { note } from '../src/macros/note.js'
 import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Note', () => {
@@ -22,7 +22,7 @@ test.group('Note', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    note(file)
+    file.use(note)
     await file.process()
 
     assert.deepEqual(file.ast!, {

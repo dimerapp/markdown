@@ -13,7 +13,7 @@ import { MarkdownFile } from './markdown_file.js'
 import { Directives, LeafDirective, TextDirective, ContainerDirective } from './types.js'
 
 /**
- * Allows registering macros to manually process directives.
+ * Exposes API to register and execute macros on MDAST containers
  */
 export class Macros {
   #file: MarkdownFile

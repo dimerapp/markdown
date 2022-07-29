@@ -12,7 +12,7 @@ import { MarkdownFile } from '../markdown_file.js'
 /**
  * Group codeblocks inside tabs
  */
-export default function (mdFile: MarkdownFile) {
+export function codegroup(mdFile: MarkdownFile) {
   mdFile.macro('codegroup', (node, file, removeNode) => {
     const tabNames: string[] = []
 
