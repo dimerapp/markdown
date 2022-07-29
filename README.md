@@ -1,11 +1,11 @@
 # Dimer markdown
 > Opinionated markdown parser built on top of Remark.js
 
-[![circleci-image]][circleci-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
+[![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
 Dimer markdown is an opinionated markdown processor built on top of remark with the following features and goals.
 
-> **NOTE**: This package is ESM only
+> **Note**: This package is ESM only
 
 - Generates [HAST](https://github.com/syntax-tree/hast) abstract syntax tree as the output. Later, you can use any template engine or a frontend framework to render HTML from the AST.
 - Implements the markdown [directives proposal](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444) to extend the markdown native capabilities.
@@ -539,9 +539,6 @@ const foo = 'bar'
 // insert-end
 ```
 
-[circleci-image]: https://img.shields.io/circleci/project/github/dimerapp/markdown/master.svg?style=for-the-badge&logo=circleci
-[circleci-url]: https://circleci.com/gh/dimerapp/markdown "circleci"
-
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
 [typescript-url]:  "typescript"
 
@@ -550,3 +547,6 @@ const foo = 'bar'
 
 [license-image]: https://img.shields.io/npm/l/@dimerapp/markdown?color=blueviolet&style=for-the-badge
 [license-url]: LICENSE.md "license"
+
+[gh-workflow-image]: https://img.shields.io/github/workflow/status/dimerapp/markdown/test?style=for-the-badge
+[gh-workflow-url]: https://github.com/dimerapp/markdown/actions/workflows/test.yml "Github action"
