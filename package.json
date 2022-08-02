@@ -97,7 +97,7 @@
     "rehype-raw": "^5.1.0",
     "rehype-stringify": "^8.0.0",
     "remark-autolink-headings": "^6.0.1",
-    "remark-directive": "^1.0.1",
+    "remark-directive": "^2.0.1",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
