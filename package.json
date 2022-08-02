@@ -103,7 +103,7 @@
     "remark-rehype": "^8.0.0",
     "remark-slug": "^6.0.0",
     "remark-squeeze-paragraphs": "^4.0.0",
-    "remark-stringify": "^9.0.1",
+    "remark-stringify": "^10.0.2",
     "unified": "^9.2.1",
     "unist-util-visit": "^2.0.3",
     "vfile-message": "^2.0.4"
