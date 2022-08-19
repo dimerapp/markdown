@@ -316,9 +316,19 @@ export class MarkdownFile {
           /**
            * Generate table of contents and convert to hast tree
            */
-          const toc = mdastToc(tree, { maxDepth: this.options.tocDepth || 3 }).map
-          if (toc) {
-            this.toc = toHast(toc) as hastTypes.Element
+          const toc = mdastToc(tree, { maxDepth: this.options.tocDepth || 3, tight: true }).map
+          if (!toc) {
+            return
+          }
+
+          const firstListItem = toc.children.find((node) => node.type === 'listItem')
+          if (!firstListItem) {
+            return
+          }
+
+          const nestedUl = firstListItem.children.find((node) => node.type === 'list')
+          if (nestedUl) {
+            this.toc = toHast(nestedUl) as hastTypes.Element
           }
         }
       })
