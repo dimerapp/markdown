@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { Root, Element, Comment, Text } from 'hast'
+import { Root, Element, Text, ElementContent } from 'hast'
 
 /**
  * Post processes the hast tree and removes the location nodes.
@@ -18,21 +18,21 @@ export class Compiler {
   /**
    * Find if hast root node
    */
-  #isRoot(node: Root | Element | Comment | Text): node is Root {
+  #isRoot(node: Root | ElementContent): node is Root {
     return node.type === 'root'
   }
 
   /**
    * Find if hast parent node
    */
-  #isParent(node: Root | Element | Comment | Text): node is Element {
+  #isParent(node: Root | ElementContent): node is Element {
     return node.type === 'element'
   }
 
   /**
    * Traverse over hast tree and drop unncessary attributes like Lines & Columns
    */
-  #traverse(node: Root | Element | Comment | Text, result: (Element | Text)[]) {
+  #traverse(node: Root | ElementContent, result: (Element | Text)[]) {
     if (this.#isRoot(node)) {
       for (const child of node.children) {
         this.#traverse(child as Element, result)

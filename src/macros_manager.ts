@@ -9,8 +9,8 @@
 
 import { visit, SKIP } from 'unist-util-visit'
 
-import { MarkdownFile } from './markdown_file.js'
-import { Directives, LeafDirective, TextDirective, ContainerDirective } from './types.js'
+import type { Directives } from './types.js'
+import type { MarkdownFile } from './markdown_file.js'
 
 /**
  * Exposes API to register and execute macros on MDAST containers
@@ -49,47 +49,47 @@ export class Macros {
     /**
      * Visitor cannot be async, sine AST modifications has to be sync
      */
-    visit(
-      tree,
-      ['textDirective', 'leafDirective', 'containerDirective'],
-      (
-        node: ContainerDirective | LeafDirective | TextDirective,
-        index: string | number,
-        parent: any
-      ) => {
-        /**
-         * Execute macro function if defined
-         */
-        const macroFn = this.#macros.get(node.name)
-        if (typeof macroFn !== 'function' || node.data?.isMacro === false) {
-          const hastNode = this.#file.hastFactory(node.name, node.attributes)
-          node.data = node.data || {}
-          node.data.hName = hastNode.tagName
-          node.data.hProperties = hastNode.properties
-          return
-        }
-
-        /**
-         * Collect as post hook when returns a function. This is done to allow
-         * the macro to run async functions. Actual macro function cannot be
-         * async AST modifications has to be sync.
-         */
-        let nodeRemoved = false
-        macroFn(node, this.#file, () => {
-          /**
-           * Implementation reference https://unifiedjs.com/learn/recipe/remove-node/
-           */
-          nodeRemoved = true
-          parent!.children.splice(index, 1)
-        })
-
-        /**
-         * Notify visit function that node has been removed
-         */
-        if (nodeRemoved) {
-          return [SKIP, index]
-        }
+    visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], (node, index, parent) => {
+      if (
+        node.type !== 'textDirective' &&
+        node.type !== 'leafDirective' &&
+        node.type !== 'containerDirective'
+      ) {
+        return
       }
-    )
+
+      /**
+       * Execute macro function if defined
+       */
+      const macroFn = this.#macros.get(node.name)
+      if (typeof macroFn !== 'function' || node.data?.isMacro === false) {
+        const hastNode = this.#file.hastFactory(node.name, node.attributes)
+        node.data = node.data || {}
+        node.data.hName = hastNode.tagName
+        node.data.hProperties = hastNode.properties
+        return
+      }
+
+      /**
+       * Collect as post hook when returns a function. This is done to allow
+       * the macro to run async functions. Actual macro function cannot be
+       * async AST modifications has to be sync.
+       */
+      let nodeRemoved = false
+      macroFn(node, this.#file, () => {
+        /**
+         * Implementation reference https://unifiedjs.com/learn/recipe/remove-node/
+         */
+        nodeRemoved = true
+        parent!.children.splice(index!, 1)
+      })
+
+      /**
+       * Notify visit function that node has been removed
+       */
+      if (nodeRemoved) {
+        return [SKIP, index]
+      }
+    })
   }
 }

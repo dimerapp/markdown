@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
+import fm from 'front-matter'
 import { visit } from 'unist-util-visit'
 import { VFileMessage } from 'vfile-message'
-import { default as fm } from 'front-matter'
 import { toHast } from 'mdast-util-to-hast'
 import { h as hastscript } from 'hastscript'
 import { basename, dirname } from 'node:path'
@@ -108,7 +108,7 @@ export class MarkdownFile {
   /**
    * Reference to the document table of content. Only available when "options.generateToc = true"
    */
-  toc: hastTypes.Element | null
+  toc: hastTypes.Element | null = null
 
   /**
    * Find if a document has a fatal message or not
@@ -146,13 +146,7 @@ export class MarkdownFile {
   hastFactory: typeof hastscript = hastscript
 
   constructor(public contents: string, public options: MarkdownFileOptions = {}) {
-    this.#boot()
-  }
-
-  /**
-   * Boot method parses the yaml front matter right away
-   */
-  #boot() {
+    /** @ts-expect-error */
     const { attributes, body, bodyBegin } = fm<{
       [key: string]: any
     }>(this.contents)
