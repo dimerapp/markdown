@@ -106,7 +106,7 @@
     "remark-stringify": "^9.0.1",
     "unified": "^9.2.1",
     "unist-util-visit": "^2.0.3",
-    "vfile-message": "^2.0.4"
+    "vfile-message": "^3.1.4"
   },
   "publishConfig": {
     "access": "public",
