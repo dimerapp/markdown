@@ -1,7 +1,7 @@
 # Dimer markdown
 > Opinionated markdown parser built on top of Remark.js
 
-[![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
+[![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url] [![snyk-image]][snyk-url]
 
 Dimer markdown is an opinionated markdown processor built on top of remark with the following features and goals.
 
@@ -504,14 +504,17 @@ const foo = 'bar'
 // insert-end
 ```
 
+[gh-workflow-image]: https://img.shields.io/github/actions/workflow/status/dimerapp/markdown/test.yml?style=for-the-badge
+[gh-workflow-url]: https://github.com/dimerapp/markdown/actions/workflows/test.yml 'Github action'
+
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
-[typescript-url]:  "typescript"
+[typescript-url]: "typescript"
 
 [npm-image]: https://img.shields.io/npm/v/@dimerapp/markdown.svg?style=for-the-badge&logo=npm
-[npm-url]: https://npmjs.org/package/@dimerapp/markdown "npm"
+[npm-url]: https://npmjs.org/package/@dimerapp/markdown 'npm'
 
 [license-image]: https://img.shields.io/npm/l/@dimerapp/markdown?color=blueviolet&style=for-the-badge
-[license-url]: LICENSE.md "license"
+[license-url]: LICENSE.md 'license'
 
-[gh-workflow-image]: https://img.shields.io/github/workflow/status/dimerapp/markdown/test?style=for-the-badge
-[gh-workflow-url]: https://github.com/dimerapp/markdown/actions/workflows/test.yml "Github action"
+[snyk-image]: https://img.shields.io/snyk/vulnerabilities/github/dimerapp/markdown?label=Synk%20Vulnerabilities&style=for-the-badge
+[snyk-url]: https://snyk.io/test/github/dimerapp/markdown?targetFile=package.json 'snyk'
