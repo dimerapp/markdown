@@ -17,7 +17,7 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "node --loader=ts-node/esm bin/test.ts",
+    "test": "c8 npm run vscode:test",
     "clean": "del build",
     "compile": "npm run lint && npm run clean && tsc",
     "build": "npm run compile",
@@ -26,6 +26,7 @@
     "format": "prettier --write .",
     "release": "np",
     "version": "npm run build",
+    "vscode:test": "node --loader=ts-node/esm bin/test.js",
     "sync-labels": "github-label-sync --labels .github/labels.json dimerapp/markdown"
   },
   "repository": {
@@ -54,6 +55,7 @@
     "@swc/core": "^1.3.41",
     "@types/mdast": "^3.0.10",
     "@types/node": "^18.15.3",
+    "c8": "^7.13.0",
     "del-cli": "^5.0.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
@@ -133,5 +135,14 @@
     "message": "chore(release): %s",
     "branch": "main",
     "anyBranch": false
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   }
 }
