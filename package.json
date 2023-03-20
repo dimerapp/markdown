@@ -105,7 +105,7 @@
     "remark-squeeze-paragraphs": "^4.0.0",
     "remark-stringify": "^9.0.1",
     "unified": "^9.2.1",
-    "unist-util-visit": "^2.0.3",
+    "unist-util-visit": "^4.1.2",
     "vfile-message": "^2.0.4"
   },
   "publishConfig": {
