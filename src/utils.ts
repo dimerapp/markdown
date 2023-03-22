@@ -8,7 +8,7 @@
  */
 
 import { parse } from 'node:url'
-import { toHtml as hashToHtml } from 'hast-util-to-html'
+import { toHtml as hastToHtml } from 'hast-util-to-html'
 
 import { MarkdownFile } from './markdown_file.js'
 
@@ -38,21 +38,21 @@ export function toHtml(file: MarkdownFile) {
     toc?: string
     excerpt?: string
   } = {
-    contents: hashToHtml(file.ast!, {
+    contents: hastToHtml(file.ast!, {
       allowDangerousHtml: file.options.allowHtml === true,
       allowDangerousCharacters: file.options.allowHtml === true,
     }),
   }
 
   if (file.summary) {
-    output.summary = hashToHtml(file.summary, {
+    output.summary = hastToHtml(file.summary, {
       allowDangerousHtml: file.options.allowHtml === true,
       allowDangerousCharacters: file.options.allowHtml === true,
     })
   }
 
   if (file.toc) {
-    output.toc = hashToHtml(file.toc)
+    output.toc = hastToHtml(file.toc)
   }
 
   if (file.excerpt) {
