@@ -159,19 +159,18 @@ export class MarkdownFile {
      * defined in front matter. This is done, so that any other part of the
      * codebase relying on the `file.options` property get the final set
      * of options and not just the initial options.
-     *
-     * ------------------------------------------------------------------
-     * ONLY FOLLOWING OPTIONS ARE ENTERTAINED
-     * ------------------------------------------------------------------
-     *
-     * generateToc?: boolean
-     * tocDepth?: 1 | 2 | 3 | 4 | 5 | 6
      */
     if (this.frontmatter.generateToc !== undefined) {
       this.options.generateToc = this.frontmatter.generateToc
     }
     if (this.frontmatter.tocDepth !== undefined) {
       this.options.tocDepth = this.frontmatter.tocDepth
+    }
+    if (this.frontmatter.allowHtml !== undefined) {
+      this.options.allowHtml = this.frontmatter.allowHtml
+    }
+    if (this.frontmatter.enableDirectives !== undefined) {
+      this.options.enableDirectives = this.frontmatter.enableDirectives
     }
 
     /**
