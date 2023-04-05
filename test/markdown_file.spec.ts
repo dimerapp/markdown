@@ -1,7 +1,7 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,10 +10,9 @@
 import { Element } from 'hast'
 import { dedent } from 'ts-dedent'
 import { test } from '@japa/runner'
-import { visit } from 'unist-util-visit'
 
 import { toHtml } from '../src/utils.js'
-import { Code, mdastTypes } from '../src/types.js'
+import { mdastTypes } from '../src/types.js'
 import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Markdown', () => {
