@@ -7,8 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import { test } from '@japa/runner'
+import { Element } from 'hast'
 import { dedent } from 'ts-dedent'
+import { test } from '@japa/runner'
 import { visit } from 'unist-util-visit'
 
 import { toHtml } from '../src/utils.js'
@@ -1065,23 +1066,16 @@ test.group('Markdown toc', () => {
 
 test.group('Markdown code', () => {
   test('parse thematic block', async ({ assert }) => {
-    assert.plan(1)
     const contents = ['Hello', '```js', `const a = require('a')`, '```'].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.transform(() => {
-      return function (tree) {
-        visit(tree, 'code', (node: Code) => {
-          assert.deepEqual(node.lang, 'js')
-        })
-      }
-    })
-
     await md.process()
+
+    const codeTag = md.ast?.children[2].children[0] as unknown as Element
+    assert.deepEqual(codeTag.properties, { className: ['language-js'] })
   })
 
   test('parse thematic block with line highlights', async ({ assert }) => {
-    assert.plan(2)
     const contents = [
       'Hello',
       '```js',
@@ -1093,66 +1087,36 @@ test.group('Markdown code', () => {
     ].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.transform(() => {
-      return function (tree) {
-        visit(tree, 'code', (node: Code) => {
-          assert.deepEqual(node.lang, 'js')
-          assert.deepEqual(node.meta, {
-            highlights: [2],
-            inserts: [],
-            deletes: [],
-            title: null,
-          })
-        })
-      }
-    })
-
     await md.process()
+
+    const codeTag = md.ast?.children[2].children[0] as unknown as Element
+    assert.deepEqual(codeTag.data?.meta, { highlights: [2], inserts: [], deletes: [], title: null })
   })
 
   test('parse thematic block with title', async ({ assert }) => {
-    assert.plan(2)
     const contents = ['Hello', '```js', '// title: hello.ts', `const a = require('a')`, '```'].join(
       '\n'
     )
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.transform(() => {
-      return function (tree) {
-        visit(tree, 'code', (node: Code) => {
-          assert.deepEqual(node.lang, 'js')
-          assert.deepEqual(node.meta, {
-            highlights: [],
-            inserts: [],
-            deletes: [],
-            title: 'hello.ts',
-          })
-        })
-      }
-    })
-
     await md.process()
+
+    const codeTag = md.ast?.children[2].children[0] as unknown as Element
+    assert.deepEqual(codeTag.data?.meta, {
+      highlights: [],
+      inserts: [],
+      deletes: [],
+      title: 'hello.ts',
+    })
   })
 
   test('parse thematic block without language', async ({ assert }) => {
-    assert.plan(2)
     const contents = ['Hello', '```', `const a = require('a')`, '```'].join('\n')
 
     const md = new MarkdownFile(contents, { generateToc: true })
-    md.transform(() => {
-      return function (tree) {
-        visit(tree, 'code', (node: Code) => {
-          assert.isNull(node.lang)
-          assert.deepEqual(node.meta, {
-            highlights: [],
-            inserts: [],
-            deletes: [],
-            title: null,
-          })
-        })
-      }
-    })
-
     await md.process()
+
+    const codeTag = md.ast?.children[2].children[0] as unknown as Element
+    assert.deepEqual(codeTag.properties, {})
   })
 })

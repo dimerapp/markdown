@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { Root, Element, Text, ElementContent } from 'hast'
+import type { Root, Element, Text, ElementContent } from 'hast'
 
 /**
  * Post processes the hast tree and removes the location nodes.
@@ -47,6 +47,7 @@ export class Compiler {
         tagName: node.tagName,
         properties: node.properties,
         children,
+        ...(node.data ? { data: node.data } : {}),
       })
 
       for (const child of node.children) {
