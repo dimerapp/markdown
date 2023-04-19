@@ -1,25 +1,25 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import codesandbox from '../src/Macros/Collection/codesandbox'
+import { dedent } from 'ts-dedent'
+import { test } from '@japa/runner'
+import { MarkdownFile } from '../src/markdown_file.js'
+import { codesandbox } from '../src/macros/codesandbox.js'
 
 test.group('Codesandbox', () => {
-  test('report error when url is missing', async (assert) => {
+  test('report error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -31,13 +31,13 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('report error when url domain is not allowed', async (assert) => {
+  test('report error when url domain is not allowed', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="foo.com"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -49,13 +49,13 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('embed codesandbox url', async (assert) => {
+  test('embed codesandbox url', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.deepEqual(file.ast!, {
@@ -93,13 +93,13 @@ test.group('Codesandbox', () => {
     })
   })
 
-  test('forward attributes to codesandbox', async (assert) => {
+  test('forward attributes to codesandbox', async ({ assert }) => {
     const contents = dedent`
 		::codesandbox{url="https://codesandbox.io/s/github/adonisjs/adonis-starter-codesandbox/tree/master/?file=/server.js" codemirror=1}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    codesandbox(file)
+    file.use(codesandbox)
     await file.process()
 
     assert.deepEqual(file.ast!, {

@@ -1,19 +1,20 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import note from '../src/Macros/Collection/note'
+import { test } from '@japa/runner'
+import { dedent } from 'ts-dedent'
+
+import { note } from '../src/macros/note.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Note', () => {
-  test('transform notes', async (assert) => {
+  test('transform notes', async ({ assert }) => {
     const contents = dedent`
 		:::note
 		This is a note
@@ -21,7 +22,7 @@ test.group('Note', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    note(file)
+    file.use(note)
     await file.process()
 
     assert.deepEqual(file.ast!, {

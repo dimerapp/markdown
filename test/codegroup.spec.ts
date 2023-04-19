@@ -1,18 +1,18 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import { MarkdownFile } from '../src/MarkdownFile'
-import codegroup from '../src/Macros/Collection/codegroup'
+import { test } from '@japa/runner'
+import { codegroup } from '../src/macros/codegroup.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Codegroup', () => {
-  test('group codeblocks into tabs', async (assert) => {
+  test('group codeblocks into tabs', async ({ assert }) => {
     const contents = [
       ':::codegroup',
       '```',
@@ -25,8 +25,7 @@ test.group('Codegroup', () => {
     ].join('\n')
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.deepEqual(file.ast?.children[0].properties, {
@@ -35,7 +34,7 @@ test.group('Codegroup', () => {
     })
   })
 
-  test('group codeblocks with filename into tabs', async (assert) => {
+  test('group codeblocks with filename into tabs', async ({ assert }) => {
     const contents = [
       ':::codegroup',
       '```',
@@ -49,8 +48,7 @@ test.group('Codegroup', () => {
     ].join('\n')
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.deepEqual(file.ast?.children[0].properties, {
@@ -59,14 +57,13 @@ test.group('Codegroup', () => {
     })
   })
 
-  test('raise error when intermediate children is not a codeblock', async (assert) => {
+  test('raise error when intermediate children is not a codeblock', async ({ assert }) => {
     const contents = [':::codegroup', 'Hello', '```', `const b = require('b')`, '```', ':::'].join(
       '\n'
     )
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-
-    codegroup(file)
+    file.use(codegroup)
     await file.process()
 
     assert.lengthOf(file.messages, 1)

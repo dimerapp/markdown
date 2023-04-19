@@ -1,19 +1,20 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import warning from '../src/Macros/Collection/warning'
+import { test } from '@japa/runner'
+import { dedent } from 'ts-dedent'
+
+import { warning } from '../src/macros/warning.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Warnings', () => {
-  test('transform warnings', async (assert) => {
+  test('transform warnings', async ({ assert }) => {
     const contents = dedent`
 		:::warning
 		This is a warning
@@ -21,7 +22,7 @@ test.group('Warnings', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    warning(file)
+    file.use(warning)
     await file.process()
 
     assert.deepEqual(file.ast!, {

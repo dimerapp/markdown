@@ -1,15 +1,16 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import { parse } from 'url'
-import hastToHtml from 'hast-util-to-html'
-import { MarkdownFile } from '../MarkdownFile'
+import { parse } from 'node:url'
+import { toHtml as hastToHtml } from 'hast-util-to-html'
+
+import { MarkdownFile } from './markdown_file.js'
 
 const CACHE: Map<string, string | null> = new Map()
 
@@ -84,14 +85,14 @@ export function ensureDomainUrl(url: string | null, macroName: string, fromDomai
 export class ObjectBuilder {
   private state: any = {}
 
-  public add(key: string, value: any) {
+  add(key: string, value: any) {
     if (value === undefined || value === null) {
       return
     }
     this.state[key] = value
   }
 
-  public toJSON() {
+  toJSON() {
     return this.state
   }
 }

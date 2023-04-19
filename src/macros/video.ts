@@ -1,19 +1,19 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import { MarkdownFile } from '../../MarkdownFile'
-import { ObjectBuilder } from '../../utils'
+import { ObjectBuilder } from '../utils.js'
+import { MarkdownFile } from '../markdown_file.js'
 
 /**
  * Allows adding videos to the document
  */
-export default function (mdFile: MarkdownFile) {
+export function video(mdFile: MarkdownFile) {
   mdFile.macro('video', (node, file, removeNode) => {
     /**
      * Ensure macro doesn't have children
@@ -40,7 +40,7 @@ export default function (mdFile: MarkdownFile) {
      * Mutate the node
      */
     node.data = node.data || {}
-    node.data.hname = 'div'
+    node.data.hName = 'div'
     node.data.hProperties = {
       className: ['embed', 'embed-video'],
     }

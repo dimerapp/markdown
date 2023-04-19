@@ -1,25 +1,26 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import youtube from '../src/Macros/Collection/youtube'
+import { dedent } from 'ts-dedent'
+import { test } from '@japa/runner'
+
+import { youtube } from '../src/macros/youtube.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Youtube', () => {
-  test('raise error when url is missing', async (assert) => {
+  test('raise error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::youtube{}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -31,13 +32,13 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when url is not from youtube.com or youtu.be', async (assert) => {
+  test('raise error when url is not from youtube.com or youtu.be', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="foo"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -52,13 +53,13 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when video id is missing in youtu.be url', async (assert) => {
+  test('raise error when video id is missing in youtu.be url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://youtu.be"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -70,13 +71,13 @@ test.group('Youtube', () => {
     })
   })
 
-  test('raise error when video id is missing in youtube.com url', async (assert) => {
+  test('raise error when video id is missing in youtube.com url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://www.youtube.com/watch"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -88,13 +89,13 @@ test.group('Youtube', () => {
     })
   })
 
-  test('embed from youtube.com url', async (assert) => {
+  test('embed from youtube.com url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://www.youtube.com/watch?v=Hm14pyibQhQ&feature=youtu.be&t=2"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.deepEqual(file.ast!, {
@@ -126,13 +127,13 @@ test.group('Youtube', () => {
     })
   })
 
-  test('embed from youtu.be url', async (assert) => {
+  test('embed from youtu.be url', async ({ assert }) => {
     const contents = dedent`
 		::youtube{url="https://youtu.be/Hm14pyibQhQ?t=2"}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    youtube(file)
+    file.use(youtube)
     await file.process()
 
     assert.deepEqual(file.ast!, {

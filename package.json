@@ -1,21 +1,35 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "6.1.0",
+  "version": "7.0.1-4",
   "description": "A markdown process",
+  "type": "module",
+  "main": "build/index.js",
+  "files": [
+    "src",
+    "index.ts",
+    "build/src",
+    "build/index.d.ts",
+    "build/index.js"
+  ],
+  "exports": {
+    ".": "./build/index.js",
+    "./utils": "./build/src/utils.js",
+    "./macros": "./build/src/macros/index.js",
+    "./types": "./build/src/types.js"
+  },
   "scripts": {
-    "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
-    "test": "node japaFile.js",
+    "test": "c8 npm run vscode:test",
     "clean": "del build",
     "compile": "npm run lint && npm run clean && tsc",
     "build": "npm run compile",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "commit": "git-cz",
     "release": "np",
     "version": "npm run build",
-    "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json dimerapp/markdown"
+    "vscode:test": "node --loader=ts-node/esm bin/test.js",
+    "sync-labels": "github-label-sync --labels .github/labels.json dimerapp/markdown"
   },
   "repository": {
     "type": "git",
@@ -27,7 +41,7 @@
     "ast",
     "dimerapp"
   ],
-  "author": "virk",
+  "author": "virk,dimerapp",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dimerapp/markdown/issues"
@@ -50,13 +64,14 @@
     "japa": "^3.1.1",
     "mrm": "^2.6.1",
     "np": "^7.4.0",
+    "npm-audit-html": "^1.5.0",
     "prettier": "^2.2.1",
     "ts-dedent": "^2.1.0",
     "typescript": "^4.2.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "doctoc README.md --title='## Table of contents' && git add README.md",
+      "pre-commit": "npm audit --production --json | ./node_modules/.bin/npm-audit-html && git add npm-audit.html && doctoc README.md --title='## Table of contents' && git add README.md",
       "commit-msg": "node ./node_modules/@adonisjs/mrm-preset/validateCommit/conventional/validate.js"
     }
   },
@@ -68,48 +83,85 @@
       ".ts"
     ]
   },
-  "main": "build/index.js",
-  "files": [
-    "build/src",
-    "build/index.d.ts",
-    "build/index.js"
-  ],
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
   },
-  "np": {
-    "contents": ".",
-    "anyBranch": false
-  },
   "dependencies": {
-    "@types/hast": "^2.3.1",
-    "@types/mdast": "^3.0.3",
-    "@types/unist": "^2.0.3",
     "front-matter": "^4.0.2",
-    "hast-util-to-html": "^7.1.2",
-    "hast-util-to-string": "^1.0.4",
-    "hastscript": "^6.0.0",
-    "mdast-util-to-hast": "^10.2.0",
-    "mdast-util-toc": "^5.1.0",
+    "hast-util-to-html": "^8.0.4",
+    "hast-util-to-string": "^2.0.0",
+    "hastscript": "^7.2.0",
+    "mdast-util-to-hast": "^12.3.0",
+    "mdast-util-toc": "^6.1.1",
     "parseurl": "^1.3.3",
-    "rehype-raw": "^5.1.0",
-    "rehype-stringify": "^8.0.0",
-    "remark-autolink-headings": "^6.0.1",
-    "remark-directive": "^1.0.1",
-    "remark-gfm": "^1.0.0",
-    "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.0.0",
-    "remark-slug": "^6.0.0",
-    "remark-squeeze-paragraphs": "^4.0.0",
-    "remark-stringify": "^9.0.1",
-    "unified": "^9.2.1",
-    "unist-util-visit": "^2.0.3",
-    "vfile-message": "^2.0.4"
+    "rehype-raw": "^6.1.1",
+    "rehype-stringify": "^9.0.3",
+    "remark-autolink-headings": "^7.0.1",
+    "remark-directive": "^2.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "remark-slug": "^7.0.1",
+    "remark-squeeze-paragraphs": "^5.0.1",
+    "remark-stringify": "^10.0.2",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vfile-message": "^3.1.4"
   },
   "publishConfig": {
     "access": "public",
-    "tag": "next"
+    "tag": "prerelease"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:adonis/typescriptPackage",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "build"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "np": {
+    "contents": "./",
+    "message": "chore(release): %s",
+    "branch": "main",
+    "anyBranch": false
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   }
 }

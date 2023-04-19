@@ -1,25 +1,26 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import video from '../src/Macros/Collection/video'
+import { dedent } from 'ts-dedent'
+import { test } from '@japa/runner'
+
+import { video } from '../src/macros/video.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Video', () => {
-  test('report error when url is missing', async (assert) => {
+  test('report error when url is missing', async ({ assert }) => {
     const contents = dedent`
 		::video{}
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    video(file)
+    file.use(video)
     await file.process()
 
     assert.lengthOf(file.messages, 1)
@@ -31,7 +32,7 @@ test.group('Video', () => {
     })
   })
 
-  test('embed video as mp4', async (assert) => {
+  test('embed video as mp4', async ({ assert }) => {
     const contents = dedent`
 		::video{url="any-url-works.mp4"}
 		`

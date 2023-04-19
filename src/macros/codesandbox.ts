@@ -1,21 +1,21 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import { parse } from 'url'
-import { stringify } from 'querystring'
-import { MarkdownFile } from '../../MarkdownFile'
-import { ensureDomainUrl, ObjectBuilder } from '../../utils'
+import { parse } from 'node:url'
+import { stringify } from 'node:querystring'
+import { MarkdownFile } from '../markdown_file.js'
+import { ensureDomainUrl, ObjectBuilder } from '../utils.js'
 
 /**
  * Embed codesandbox to your document
  */
-export default function (mdFile: MarkdownFile) {
+export function codesandbox(mdFile: MarkdownFile) {
   mdFile.macro('codesandbox', (node, file, removeNode) => {
     /**
      * Ensure macro doesn't have children
@@ -35,7 +35,7 @@ export default function (mdFile: MarkdownFile) {
     const errorMessage = ensureDomainUrl(node.attributes.url, 'codesandbox', ['codesandbox.io'])
     if (errorMessage) {
       file.report(errorMessage, node.position)
-      removeNode()
+      removeNode?.()
       return
     }
 
@@ -77,7 +77,7 @@ export default function (mdFile: MarkdownFile) {
      * Mutate the node
      */
     node.data = node.data || {}
-    node.data.hname = 'div'
+    node.data.hName = 'div'
     node.data.hProperties = {
       className: ['embed', 'embed-codesandbox'],
     }

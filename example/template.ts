@@ -1,7 +1,7 @@
-import { join } from 'path'
-import { readFileSync } from 'fs'
+import { URL } from 'node:url'
+import { readFileSync } from 'node:fs'
 
-const css = readFileSync(join(__dirname, './style.css'), 'utf-8')
+const css = readFileSync(new URL('./style.css', import.meta.url), 'utf-8')
 
 export const template = (doc: {
   contents: string

@@ -1,19 +1,20 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-import test from 'japa'
-import dedent from 'ts-dedent'
-import { MarkdownFile } from '../src/MarkdownFile'
-import tip from '../src/Macros/Collection/tip'
+import { test } from '@japa/runner'
+import { dedent } from 'ts-dedent'
+
+import { tip } from '../src/macros/tip.js'
+import { MarkdownFile } from '../src/markdown_file.js'
 
 test.group('Tip', () => {
-  test('transform tips', async (assert) => {
+  test('transform tips', async ({ assert }) => {
     const contents = dedent`
 		:::tip
 		This is a tip
@@ -21,7 +22,7 @@ test.group('Tip', () => {
 		`
 
     const file = new MarkdownFile(contents, { enableDirectives: true })
-    tip(file)
+    file.use(tip)
     await file.process()
 
     assert.deepEqual(file.ast!, {

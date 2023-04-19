@@ -1,7 +1,7 @@
 /*
  * @dimerapp/markdown
  *
- * (c) Harminder Virk <virk@adonisjs.com>
+ * (c) DimerApp
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,38 +11,21 @@ import type * as hastTypes from 'hast'
 import type * as mdastTypes from 'mdast'
 import { VFileMessage } from 'vfile-message'
 import type { Node, Position, Point } from 'unist'
-
-export type Code = mdastTypes.Code & {
-  meta: {
-    highlights: number[]
-    inserts: number[]
-    deletes: number[]
-    marks: { [key: string]: { start: number; end: number }[] }
-    title: null | string
-  }
-}
-
-export { Node, Position, Point }
-export { hastTypes }
-export { mdastTypes }
+import type { MarkdownFile } from './markdown_file.js'
+export { hastTypes, mdastTypes, Node, Point, Position }
 
 /**
- * Shape of the collected reference
+ * Markdown file plugin callback
  */
-export type ReferenceNode = {
-  url: string
-  originalUrl: string
-  type: string
-  isLocal: boolean
-  isRelative: boolean
-}
+export type PluginCallback<Options extends any[]> = (
+  file: MarkdownFile,
+  ...options: Options
+) => void
 
 /**
  * Shape of the stats node
  */
-export type StatsNode = {
-  assets: ReferenceNode[]
-} & { [key: string]: any }
+export type StatsNode = Record<string, any>
 
 /**
  * Directives
@@ -88,7 +71,6 @@ export interface MarkdownFileOptions {
   allowHtml?: boolean
   filePath?: string
   enableDirectives?: boolean
-  collectAssets?: boolean
 }
 
 /**
@@ -96,7 +78,6 @@ export interface MarkdownFileOptions {
  */
 export interface MarkdownFileJson {
   state: 'idle' | 'processing' | 'processed'
-  stats: StatsNode
   ast?: hastTypes.Root
   summary?: hastTypes.Root
   excerpt?: string
@@ -106,4 +87,17 @@ export interface MarkdownFileJson {
   dirname?: string
   basename?: string
   toc?: hastTypes.Parent
+  stats: StatsNode
+}
+
+/**
+ * Shape of the codeblock
+ */
+export type Code = mdastTypes.Code & {
+  meta: {
+    highlights: number[]
+    inserts: number[]
+    deletes: number[]
+    title: null | string
+  }
 }
