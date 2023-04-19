@@ -112,7 +112,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "prerelease"
+    "tag": "latest"
   },
   "eslintConfig": {
     "extends": [
