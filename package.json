@@ -48,18 +48,18 @@
   },
   "homepage": "https://github.com/dimerapp/markdown#readme",
   "devDependencies": {
-    "@commitlint/cli": "^17.5.1",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@japa/assert": "^1.4.1",
     "@japa/run-failed-tests": "^1.1.1",
     "@japa/runner": "^2.5.1",
     "@japa/spec-reporter": "^1.3.3",
-    "@swc/core": "^1.3.46",
+    "@swc/core": "^1.3.51",
     "@types/mdast": "^3.0.11",
     "@types/node": "^18.15.11",
     "c8": "^7.13.0",
     "del-cli": "^5.0.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-adonis": "^3.0.3",
     "eslint-plugin-prettier": "^4.2.1",
@@ -69,7 +69,7 @@
     "prettier": "^2.8.7",
     "ts-dedent": "^2.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "front-matter": "^4.0.2",
