@@ -41,6 +41,7 @@ export function codegroup(mdFile: MarkdownFile) {
     node.data.hProperties = {
       dataTabs: JSON.stringify(tabNames),
       className: ['codegroup'],
+      ...node.attributes,
     }
   })
 }

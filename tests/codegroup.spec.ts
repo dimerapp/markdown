@@ -72,4 +72,27 @@ test.group('Codegroup', () => {
     assert.equal(file.messages[0].column, 1)
     assert.deepEqual(file.ast, { type: 'root', children: [] })
   })
+
+  test('serialize code group attributes', async ({ assert }) => {
+    const contents = [
+      ':::codegroup{id="pkg-selector"}',
+      '```',
+      `const a = require('a')`,
+      '```',
+      '```',
+      `const b = require('b')`,
+      '```',
+      ':::',
+    ].join('\n')
+
+    const file = new MarkdownFile(contents, { enableDirectives: true })
+    file.use(codegroup)
+    await file.process()
+
+    assert.deepEqual(file.ast?.children[0].properties, {
+      dataTabs: JSON.stringify(['Tab 1', 'Tab 2']),
+      className: ['codegroup'],
+      id: 'pkg-selector',
+    })
+  })
 })
