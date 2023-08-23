@@ -1,4 +1,5 @@
 # Dimer markdown
+
 > Opinionated markdown parser built on top of Remark.js
 
 [![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url] [![snyk-image]][snyk-url]
@@ -18,6 +19,7 @@ Dimer markdown is an opinionated markdown processor built on top of remark with 
 - Pre-built macros to render code group tabs, embed videos, and show alert messages.
 
 ## Setup
+
 Install the package from the npm registry as follows:
 
 ```sh
@@ -79,6 +81,7 @@ if (excerpt) {
 - `excerpt` is the plain text version of the summary. Available only when the summary is defined in the front matter.
 
 ## Options
+
 You can pass the following options when creating a new instance of the `MarkdownFile`.
 
 ```ts
@@ -98,6 +101,7 @@ const md = new MarkdownFile(contents, {
 - `enableDirectives`: Enable support for the [directives proposal](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444). **Defaults to `false`**.
 
 ## Directives and macros
+
 Dimer markdown ships with an implementation of [Markdown directives](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444) to enhance the markdown syntax by adding rich components inside it.
 
 For example, using the following syntax, you can embed a Youtube video inside the markdown.
@@ -132,7 +136,7 @@ md.macro('youtube', function (node, file, removeNode) {
    */
   node.data.hName = 'div'
   node.data.hProperties = {
-    className: ['embed', 'embed-youtube']
+    className: ['embed', 'embed-youtube'],
   }
 
   const videoId = node.attributes.id
@@ -173,12 +177,15 @@ When you use the `youtube` directive, it will render the following HTML markup. 
     width="100%"
     height="400"
     frameborder="none"
-    allow="autoplay; encrypted-media" allowfullscreen>
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  >
   </iframe>
 </div>
 ```
 
 ### Macros props
+
 You can access the props passed to a directive using the `node.attributes` property. For example:
 
 ```md
@@ -194,6 +201,7 @@ md.macro('container', function (node) {
 ```
 
 ### Reporting errors from macros
+
 Often, your macros will not receive the data it expects, so you would want to report errors to the markdown author.
 
 You can report errors using the `file.report` method from within the macro.
@@ -206,10 +214,7 @@ md.macro('youtube', function (node, file, removeNode) {
      * as it will allow us to report the error with the
      * exact line and column number.
      */
-    file.report(
-      '"youtube" macro needs the youtube video id',
-      node.position
-    )
+    file.report('"youtube" macro needs the youtube video id', node.position)
 
     /**
      * Remove the node from the markdown since we are
@@ -222,6 +227,7 @@ md.macro('youtube', function (node, file, removeNode) {
 ```
 
 ## Error messages
+
 Every markdown file can have error messages associated with it. Usually, these errors are reported by the macros. However, you can report them manually as well.
 
 ```ts
@@ -236,7 +242,7 @@ if (!md.frontmatter.author) {
 
 for (let message of md.messages) {
   /**
-   * Message is an instance of 
+   * Message is an instance of
    * https://www.npmjs.com/package/vfile-message
    */
   console.log(message)
@@ -244,6 +250,7 @@ for (let message of md.messages) {
 ```
 
 ## Hooks
+
 You can use hooks to observe or mutate the AST nodes as the markdown content is being processed.
 
 The hook callback receives the AST syntax tree in [MDAST](https://github.com/syntax-tree/mdast) format.
@@ -279,6 +286,7 @@ console.log(md.stats.todo)
 ```
 
 ## Using remark plugins
+
 You can use the [remark-plugins](https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins) by calling the `transform` method on the markdown file instance. The plugin API is the same as unified plugins.
 
 ```ts
@@ -293,6 +301,7 @@ await md.process()
 ## Bundled macros
 
 ### codegroup
+
 Render multiple codeblocks inside a group of tabs. The `macro` wraps all the codeblocks inside a `div` with `data-tabs` property.
 
 ```ts
@@ -330,6 +339,7 @@ Output AST
 ```
 
 ### codesandbox
+
 Embed a codesandbox example. All of the [embed options](https://codesandbox.io/docs/embedding#embed-options) can be passed as props.
 
 ```ts
@@ -345,6 +355,7 @@ md.use(codesandbox)
 ```
 
 ### note
+
 Render an alert message of type `note`. The content of the directive is wrapped inside a `div` with `alert alert-note` class names.
 
 ```ts
@@ -362,6 +373,7 @@ This is a note
 ```
 
 ### tip
+
 Render an alert message of type `tip`. The content of the directive is wrapped inside a `div` with `alert alert-tip` class names.
 
 ```ts
@@ -379,6 +391,7 @@ This is a tip
 ```
 
 ### warning
+
 Render an alert message of type `warning`. The content of the directive is wrapped inside a `div` with `alert alert-warning` class names.
 
 ```ts
@@ -396,6 +409,7 @@ This is a warning
 ```
 
 ### youtube
+
 Embed a youtube video inside an iframe.
 
 ```ts
@@ -417,6 +431,7 @@ Along with the URL, you can also pass the `width` and `height` of the video.
 ```
 
 ### video
+
 Embed a video using the `video` HTML tag. The video tag is wrapped inside a div with `embed embed-video` class names.
 
 ```ts
@@ -434,7 +449,7 @@ md.use(video)
 Along with the `url`, you can also pass the following props.
 
 - `autoplay`
-- `controls` 
+- `controls`
 - `loop`
 - `preload`
 - `poster`
@@ -442,24 +457,27 @@ Along with the `url`, you can also pass the following props.
 ## Enhanced markdown syntax
 
 ### Github flavored markdown
+
 The [github flavored markdown](https://github.github.com/gfm/) is fully supported by default.
 
 ### Auto linking headings
+
 All of the headings inside the markdown receives a unique id based upon the heading content. Also, all headings receives a little bookmark link next to them.
 
 ## Codeblock enhancements
+
 Following is the AST node structure for the codeblock.
 
 ```ts
 type CodeBlock = {
-  type: 'code',
-  lang: string,
+  type: 'code'
+  lang: string
   meta: {
     title: null | string
     highlights: number[]
     inserts: number[]
     deletes: number[]
-  }  
+  }
 }
 ```
 
@@ -474,6 +492,7 @@ type CodeBlock = {
 - `meta.deletes`: An array of line numbers to be highlighted as diff deletes.
 
 ### Codeblock title
+
 You can define the title for a codeblock by adding a comment in the first line.
 
 ```ts
@@ -484,6 +503,7 @@ Route.get('/', () => {})
 The title will end up on the `meta` object of the codeblock AST node.
 
 ### Codeblock line highlights
+
 You can highlight lines within the codeblocks using the `highlight-start` and `highlight-end` comments.
 
 ```js
@@ -493,6 +513,7 @@ This line is highlighted
 ```
 
 ### Codeblock line diffs
+
 You can show **add** and **remove** line diffs using the `insert-start` and `delete-start` comments.
 
 ```ts
@@ -506,12 +527,9 @@ const foo = 'bar'
 
 [gh-workflow-image]: https://img.shields.io/github/actions/workflow/status/dimerapp/markdown/test.yml?style=for-the-badge
 [gh-workflow-url]: https://github.com/dimerapp/markdown/actions/workflows/test.yml 'Github action'
-
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
 [typescript-url]: "typescript"
-
 [npm-image]: https://img.shields.io/npm/v/@dimerapp/markdown.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/@dimerapp/markdown 'npm'
-
 [license-image]: https://img.shields.io/npm/l/@dimerapp/markdown?color=blueviolet&style=for-the-badge
-[license-url]: LICENSE.md "license"
+[license-url]: LICENSE.md 'license'

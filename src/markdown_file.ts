@@ -145,7 +145,10 @@ export class MarkdownFile {
    */
   hastFactory: typeof hastscript = hastscript
 
-  constructor(public contents: string, public options: MarkdownFileOptions = {}) {
+  constructor(
+    public contents: string,
+    public options: MarkdownFileOptions = {}
+  ) {
     /** @ts-expect-error */
     const { attributes, body, bodyBegin } = fm<{
       [key: string]: any
@@ -213,7 +216,7 @@ export class MarkdownFile {
   #useCompiler(stream: Processor) {
     return stream.use(function () {
       const compiler = new Compiler()
-      this.Compiler = compiler.compile.bind(compiler)
+      Object.assign(this, { Compiler: compiler.compile.bind(compiler) })
     })
   }
 
