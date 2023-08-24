@@ -11,6 +11,9 @@
     "build/index.d.ts",
     "build/index.js"
   ],
+  "engines": {
+    "node": ">18.16.0"
+  },
   "exports": {
     ".": "./build/index.js",
     "./utils": "./build/src/utils.js",
