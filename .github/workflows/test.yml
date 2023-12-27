@@ -3,13 +3,13 @@ on:
   - push
   - pull_request
 jobs:
-  linux:
+  test_linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
-          - 18.x
-          - 19.x
+          - 20.10.0
+          - 21.x
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -20,13 +20,13 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
-  windows:
+  test_windows:
     runs-on: windows-latest
     strategy:
       matrix:
         node-version:
-          - 18.x
-          - 19.x
+          - 20.10.0
+          - 21.x
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -37,3 +37,21 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.10.0
+      - run: npm install
+      - run: npm run lint%
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.10.0
+      - run: npm install
+      - run: npm run typecheck
