@@ -2,7 +2,7 @@
 
 > Opinionated markdown parser built on top of Remark.js
 
-[![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url] [![snyk-image]][snyk-url]
+[![gh-workflow-image]][gh-workflow-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
 Dimer markdown is an opinionated markdown processor built on top of remark with the following features and goals.
 
