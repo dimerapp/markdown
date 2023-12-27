@@ -1,18 +1,16 @@
 {
   "name": "@dimerapp/markdown",
   "version": "7.0.3",
-  "description": "A markdown process",
-  "type": "module",
+  "description": "Opinionated markdown processor built on top of remark and mdast",
   "main": "build/index.js",
+  "type": "module",
   "files": [
-    "src",
-    "index.ts",
     "build/src",
     "build/index.d.ts",
     "build/index.js"
   ],
   "engines": {
-    "node": ">18.16.0"
+    "node": ">=18.16.0"
   },
   "exports": {
     ".": "./build/index.js",
@@ -23,20 +21,18 @@
   "scripts": {
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
-    "clean": "del build",
-    "compile": "npm run lint && npm run clean && tsc",
+    "quick:test": "node --import=./tsnode.esm.js --enable-source-maps bin/test.ts",
+    "clean": "del-cli build",
+    "typecheck": "tsc --noEmit",
+    "precompile": "npm run lint && npm run clean",
+    "compile": "tsc",
     "build": "npm run compile",
+    "release": "np",
+    "version": "npm run build",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "release": "np",
-    "version": "npm run build",
-    "quick:test": "node --loader=ts-node/esm bin/test.ts",
     "sync-labels": "github-label-sync --labels .github/labels.json dimerapp/markdown"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dimerapp/markdown.git"
   },
   "keywords": [
     "markdown",
@@ -46,32 +42,26 @@
   ],
   "author": "virk,dimerapp",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dimerapp/markdown/issues"
-  },
-  "homepage": "https://github.com/dimerapp/markdown#readme",
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@japa/assert": "^1.4.1",
-    "@japa/run-failed-tests": "^1.1.1",
-    "@japa/runner": "^2.5.1",
-    "@japa/spec-reporter": "^1.3.3",
-    "@swc/core": "^1.3.78",
-    "@types/node": "^20.5.3",
+    "@adonisjs/eslint-config": "^1.2.1",
+    "@adonisjs/prettier-config": "^1.2.1",
+    "@adonisjs/tsconfig": "^1.2.1",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@japa/assert": "^2.1.0",
+    "@japa/runner": "^3.1.1",
+    "@swc/core": "^1.3.101",
+    "@types/node": "^20.10.5",
     "c8": "^8.0.1",
-    "del-cli": "^5.0.0",
-    "eslint": "^8.47.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-adonis": "^3.0.3",
-    "eslint-plugin-prettier": "^5.0.0",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.56.0",
     "github-label-sync": "^2.0.0",
     "husky": "^8.0.3",
-    "np": "^8.0.4",
-    "prettier": "^3.0.2",
+    "np": "^9.2.0",
+    "prettier": "^3.1.1",
     "ts-dedent": "^2.2.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "front-matter": "^4.0.2",
@@ -82,71 +72,54 @@
     "mdast-util-toc": "^6.1.1",
     "parseurl": "^1.3.3",
     "rehype-raw": "^6.1.1",
-    "rehype-stringify": "^9.0.4",
+    "rehype-stringify": "^10.0.0",
     "remark-autolink-headings": "^7.0.1",
     "remark-directive": "^2.0.1",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.0",
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
     "remark-slug": "^7.0.1",
-    "remark-squeeze-paragraphs": "^5.0.1",
-    "remark-stringify": "^10.0.3",
+    "remark-squeeze-paragraphs": "^6.0.0",
+    "remark-stringify": "^11.0.0",
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
     "vfile-message": "^4.0.2"
   },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimerapp/markdown.git"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:adonis/typescriptPackage",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
-      ]
-    }
+  "bugs": {
+    "url": "https://github.com/dimerapp/markdown/issues"
   },
-  "eslintIgnore": [
-    "build"
-  ],
-  "prettier": {
-    "trailingComma": "es5",
-    "semi": false,
-    "singleQuote": true,
-    "useTabs": false,
-    "quoteProps": "consistent",
-    "bracketSpacing": true,
-    "arrowParens": "always",
-    "printWidth": 100
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "np": {
-    "contents": "./",
-    "message": "chore(release): %s",
-    "branch": "main",
-    "anyBranch": false
-  },
+  "homepage": "https://github.com/dimerapp/markdown#readme",
   "c8": {
     "reporter": [
       "text",
       "html"
     ],
     "exclude": [
-      "tests/**"
+      "tests/**",
+      "bin/**"
     ]
-  }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "np": {
+    "message": "chore(release): %s",
+    "tag": "latest",
+    "branch": "main",
+    "anyBranch": false
+  },
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/package"
+  },
+  "prettier": "@adonisjs/prettier-config"
 }
