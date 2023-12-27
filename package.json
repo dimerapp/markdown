@@ -1,6 +1,6 @@
 {
   "name": "@dimerapp/markdown",
-  "version": "7.0.3",
+  "version": "8.0.0",
   "description": "Opinionated markdown processor built on top of remark and mdast",
   "main": "build/index.js",
   "type": "module",
