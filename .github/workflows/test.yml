@@ -45,7 +45,7 @@ jobs:
         with:
           node-version: 20.10.0
       - run: npm install
-      - run: npm run lint%
+      - run: npm run lint
   typecheck:
     runs-on: ubuntu-latest
     steps:
