@@ -66,7 +66,7 @@
   "dependencies": {
     "front-matter": "^4.0.2",
     "hast-util-to-html": "^8.0.4",
-    "hast-util-to-string": "^2.0.0",
+    "hast-util-to-string": "^3.0.0",
     "hastscript": "^8.0.0",
     "mdast-util-to-hast": "^12.3.0",
     "mdast-util-toc": "^6.1.1",
