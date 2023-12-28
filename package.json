@@ -81,7 +81,7 @@
     "remark-slug": "^7.0.1",
     "remark-squeeze-paragraphs": "^5.0.1",
     "remark-stringify": "^10.0.3",
-    "unified": "^10.1.2",
+    "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0",
     "vfile-message": "^4.0.2"
   },
