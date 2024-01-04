@@ -80,7 +80,7 @@
     "remark-rehype": "^10.1.0",
     "remark-slug": "^7.0.1",
     "remark-squeeze-paragraphs": "^5.0.1",
-    "remark-stringify": "^10.0.3",
+    "remark-stringify": "^11.0.0",
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
     "vfile-message": "^4.0.2"
