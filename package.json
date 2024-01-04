@@ -76,7 +76,7 @@
     "remark-autolink-headings": "^7.0.1",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.2",
+    "remark-parse": "^11.0.0",
     "remark-rehype": "^10.1.0",
     "remark-slug": "^7.0.1",
     "remark-squeeze-paragraphs": "^5.0.1",
