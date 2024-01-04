@@ -79,7 +79,7 @@
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
     "remark-slug": "^7.0.1",
-    "remark-squeeze-paragraphs": "^5.0.1",
+    "remark-squeeze-paragraphs": "^6.0.0",
     "remark-stringify": "^10.0.3",
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
